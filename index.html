@@ -3,454 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ЧАД БАНК — Social</title>
+<title>ЧАД БАНК</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f4f1;
-    color:#111;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-button{
-    border:0;
-    cursor:pointer;
-    font-weight:800;
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f1;
+    color: #111;
 }
 
-input{
-    outline:none;
+.hidden {
+    display: none !important;
 }
 
-.hidden{display:none!important}
-
-/* AUTH */
-
-.auth-screen{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:
-        radial-gradient(circle at 10% 10%,#eaff4d 0,transparent 25%),
-        #f4f4f1;
+button {
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.auth-box{
-    width:420px;
-    max-width:100%;
-    padding:35px;
-    background:white;
-    border-radius:30px;
-    border:1px solid #ddd;
-    box-shadow:0 30px 80px #00000012;
+input {
+    width: 100%;
+    padding: 14px;
+    margin-top: 7px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 14px;
 }
 
-.logo{
-    font-size:30px;
-    font-weight:1000;
-    letter-spacing:-3px;
+.auth {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.logo span,.header-logo span,.page-title span{
-    color:#b8d000;
+.box {
+    width: 400px;
+    max-width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px #00000015;
 }
 
-.auth-subtitle{
-    margin-top:10px;
-    color:#999;
-    font-size:11px;
-    line-height:1.6;
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 10px;
 }
 
-.auth-box h2{
-    margin-top:35px;
-    font-size:25px;
+.logo span {
+    color: #b8d000;
 }
 
-.field{margin-top:15px}
-
-.field label{
-    display:block;
-    margin-bottom:7px;
-    font-size:9px;
-    font-weight:900;
-    color:#777;
-    text-transform:uppercase;
+h2 {
+    margin-top: 30px;
 }
 
-.field input{
-    width:100%;
-    padding:14px 16px;
-    border:1px solid #ddd;
-    border-radius:14px;
-    font-size:13px;
+.field {
+    margin-top: 15px;
 }
 
-.primary{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border-radius:15px;
-    background:#111;
-    color:white;
+label {
+    font-size: 10px;
+    font-weight: bold;
+    color: #777;
 }
 
-.auth-switch{
-    margin-top:20px;
-    text-align:center;
-    color:#888;
-    font-size:10px;
+.primary {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 13px;
+    background: #111;
+    color: white;
 }
 
-.auth-switch button{
-    background:none;
-    color:#789000;
+.switch {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 11px;
+    color: #888;
 }
 
-/* APP */
-
-.app{min-height:100vh}
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:20;
-    height:70px;
-    padding:0 25px;
-    background:#fffdf9ee;
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid #ddd;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.switch button {
+    background: none;
+    color: #789000;
 }
 
-.header-logo{
-    font-size:23px;
-    font-weight:1000;
-    letter-spacing:-2px;
+.app {
+    min-height: 100vh;
 }
 
-.header-user{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.header {
+    height: 70px;
+    padding: 0 25px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.avatar,.mini-avatar,.big-avatar{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    background:#ddff00;
-    font-weight:1000;
+.header-logo {
+    font-size: 22px;
+    font-weight: 900;
 }
 
-.avatar{
-    width:38px;
-    height:38px;
+.header-logo span {
+    color: #b8d000;
 }
 
-.logout{
-    padding:10px 15px;
-    border-radius:20px;
-    background:#111;
-    color:white;
-    font-size:9px;
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.layout{
-    max-width:1250px;
-    margin:auto;
-    padding:25px;
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:20px;
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #dfff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
 }
 
-.sidebar{
-    height:fit-content;
-    position:sticky;
-    top:95px;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:25px;
-    padding:12px;
+.logout {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: #111;
+    color: white;
 }
 
-.nav-btn{
-    width:100%;
-    padding:14px;
-    margin-bottom:5px;
-    border-radius:14px;
-    background:transparent;
-    text-align:left;
-    font-size:11px;
+.main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
 }
 
-.nav-btn:hover,.nav-btn.active{
-    background:#eaff00;
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 25px;
+    margin-top: 20px;
 }
 
-.page{display:none}
-.page.active{display:block}
-
-.page-title{
-    font-size:60px;
-    letter-spacing:-5px;
-    line-height:.85;
+.title {
+    font-size: 55px;
+    font-weight: 900;
+    letter-spacing: -4px;
 }
 
-.card{
-    margin-top:25px;
-    padding:25px;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:25px;
+.title span {
+    color: #b8d000;
 }
 
-/* HOME */
-
-.small-label{
-    color:#777;
-    font-size:9px;
-    letter-spacing:3px;
+.menu {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
 }
 
-.balance-card{
-    margin-top:25px;
-    padding:30px;
-    border-radius:25px;
-    background:#111;
-    color:white;
+.menu button {
+    padding: 13px 18px;
+    border-radius: 15px;
+    background: white;
+    border: 1px solid #ddd;
 }
 
-.balance{
-    margin-top:10px;
-    font-size:55px;
-    font-weight:1000;
-    letter-spacing:-4px;
+.menu button:hover {
+    background: #eaff00;
 }
 
-.coin{
-    color:#dfff00;
-    font-size:12px;
-    letter-spacing:0;
+.page {
+    display: none;
 }
 
-/* USERS */
-
-.search{
-    display:flex;
-    gap:10px;
+.page.active {
+    display: block;
 }
 
-.search input{
-    flex:1;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:15px;
-}
-
-.search button,.add-btn{
-    padding:14px 20px;
-    border-radius:15px;
-    background:#111;
-    color:white;
-}
-
-.user-result,.friend,.request{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px 0;
-    border-bottom:1px solid #eee;
-}
-
-.user-info{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.mini-avatar{
-    width:42px;
-    height:42px;
-}
-
-.user-name{
-    font-size:12px;
-    font-weight:900;
-}
-
-.user-email{
-    margin-top:3px;
-    color:#999;
-    font-size:8px;
-}
-
-.add-btn{
-    padding:10px 14px;
-    font-size:9px;
-}
-
-/* CHAT */
-
-.chat-layout{
-    margin-top:25px;
-    height:650px;
-    display:grid;
-    grid-template-columns:230px 1fr;
-    background:white;
-    border:1px solid #ddd;
-    border-radius:25px;
-    overflow:hidden;
-}
-
-.chat-list{
-    border-right:1px solid #eee;
-    padding:10px;
-    overflow:auto;
-}
-
-.chat-user{
-    padding:14px;
-    border-radius:14px;
-    cursor:pointer;
-}
-
-.chat-user:hover,.chat-user.selected{
-    background:#eaff00;
-}
-
-.chat-window{
-    display:flex;
-    flex-direction:column;
-    min-width:0;
-}
-
-.chat-top{
-    height:65px;
-    padding:20px;
-    border-bottom:1px solid #eee;
-    font-size:12px;
-    font-weight:900;
-}
-
-.messages{
-    flex:1;
-    padding:20px;
-    overflow:auto;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.message{
-    max-width:70%;
-    padding:11px 14px;
-    border-radius:16px;
-    background:#f0f0ed;
-    font-size:12px;
-    word-break:break-word;
-}
-
-.message.me{
-    align-self:flex-end;
-    background:#dfff00;
-}
-
-.chat-input{
-    padding:12px;
-    border-top:1px solid #eee;
-    display:flex;
-    gap:8px;
-}
-
-.chat-input input{
-    flex:1;
-    padding:13px 15px;
-    border:1px solid #ddd;
-    border-radius:20px;
-}
-
-.send{
-    width:45px;
-    border-radius:50%;
-    background:#111;
-    color:white;
-}
-
-/* PROFILE */
-
-.profile-card{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.big-avatar{
-    width:80px;
-    height:80px;
-    font-size:30px;
-}
-
-.profile-name{
-    font-size:25px;
-    font-weight:1000;
-}
-
-.profile-email{
-    margin-top:5px;
-    color:#999;
-    font-size:10px;
-}
-
-@media(max-width:800px){
-
-    .layout{
-        grid-template-columns:1fr;
-        padding:12px;
+@media(max-width:600px) {
+    .main {
+        padding: 15px;
     }
 
-    .sidebar{
-        position:static;
-        display:flex;
-        overflow:auto;
+    .title {
+        font-size: 40px;
     }
 
-    .nav-btn{
-        min-width:100px;
-        text-align:center;
-    }
-
-    .chat-layout{
-        grid-template-columns:1fr;
-        height:650px;
-    }
-
-    .chat-list{
-        display:flex;
-        overflow:auto;
-        height:75px;
-        border-right:0;
-        border-bottom:1px solid #eee;
-    }
-
-    .chat-user{
-        min-width:130px;
-    }
-
-    .page-title{
-        font-size:45px;
-    }
-
-    .header-user span{
-        display:none;
+    .header {
+        padding: 0 15px;
     }
 }
 </style>
@@ -460,76 +216,102 @@ input{
 
 <!-- AUTH -->
 
-<div id="authScreen" class="auth-screen">
-<div class="auth-box">
+<div id="authScreen" class="auth">
 
-<div class="logo">ЧАД <span>БАНК</span></div>
+    <div class="box">
 
-<div class="auth-subtitle">
-Социальная платформа CHAD BANK.
-Общайся, добавляй друзей и управляй своим профилем.
-</div>
+        <div class="logo">
+            ЧАД <span>БАНК</span>
+        </div>
 
-<div id="loginForm">
+        <p style="color:#999;font-size:11px;">
+            Социальная платформа CHAD BANK
+        </p>
 
-<h2>Вход</h2>
 
-<div class="field">
-<label>Email</label>
-<input id="loginEmail" type="email" placeholder="email@example.com">
-</div>
+        <!-- LOGIN -->
 
-<div class="field">
-<label>Пароль</label>
-<input id="loginPassword" type="password" placeholder="Пароль">
-</div>
+        <div id="loginForm">
 
-<button class="primary" onclick="login()">Войти</button>
+            <h2>Вход</h2>
 
-<div class="auth-switch">
-Нет аккаунта?
-<button onclick="showRegister()">Зарегистрироваться</button>
-</div>
+            <div class="field">
+                <label>EMAIL</label>
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="Введите email">
+            </div>
 
-</div>
+            <div class="field">
+                <label>ПАРОЛЬ</label>
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Введите пароль">
+            </div>
 
-<div id="registerForm" class="hidden">
+            <button
+                class="primary"
+                onclick="login()">
+                Войти
+            </button>
 
-<h2>Регистрация</h2>
+            <div class="switch">
+                Нет аккаунта?
+                <button onclick="showRegister()">
+                    Зарегистрироваться
+                </button>
+            </div>
 
-<div class="field">
-<label>Username</label>
-<input id="registerUsername"
-       maxlength="20"
-       placeholder="например chad_user">
-</div>
+        </div>
+        <!-- REGISTER -->
 
-<div class="field">
-<label>Email</label>
-<input id="registerEmail"
-       type="email"
-       placeholder="email@example.com">
-</div>
+        <div id="registerForm" class="hidden">
 
-<div class="field">
-<label>Пароль</label>
-<input id="registerPassword"
-       type="password"
-       placeholder="Минимум 6 символов">
-</div>
+            <h2>Регистрация</h2>
 
-<button class="primary" onclick="register()">
-Создать аккаунт
-</button>
+            <div class="field">
+                <label>USERNAME</label>
+                <input
+                    id="registerUsername"
+                    maxlength="20"
+                    placeholder="chad_user">
+            </div>
 
-<div class="auth-switch">
-Уже есть аккаунт?
-<button onclick="showLogin()">Войти</button>
-</div>
+            <div class="field">
+                <label>EMAIL</label>
+                <input
+                    id="registerEmail"
+                    type="email"
+                    placeholder="Введите email">
+            </div>
 
-</div>
+            <div class="field">
+                <label>ПАРОЛЬ</label>
+                <input
+                    id="registerPassword"
+                    type="password"
+                    placeholder="Минимум 6 символов">
+            </div>
 
-</div>
+            <button
+                class="primary"
+                onclick="register()">
+                Создать аккаунт
+            </button>
+
+            <div class="switch">
+                Уже есть аккаунт?
+                <button onclick="showLogin()">
+                    Войти
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 
@@ -537,244 +319,152 @@ input{
 
 <div id="app" class="app hidden">
 
-<header class="header">
+    <header class="header">
 
-<div class="header-logo">
-ЧАД <span>БАНК</span>
-</div>
+        <div class="header-logo">
+            ЧАД <span>БАНК</span>
+        </div>
 
-<div class="header-user">
+        <div class="user">
 
-<div id="headerAvatar" class="avatar">C</div>
+            <div id="avatar" class="avatar">
+                C
+            </div>
 
-<span id="headerUsername">@user</span>
+            <span id="username">
+                @user
+            </span>
 
-<button class="logout" onclick="logout()">
-ВЫЙТИ
-</button>
+            <button
+                class="logout"
+                onclick="logout()">
+                Выйти
+            </button>
 
-</div>
-</header>
+        </div>
 
+    </header>
 
-<div class="layout">
 
-<aside class="sidebar">
+    <main class="main">
 
-<button class="nav-btn active"
-onclick="openPage('home',this)">
-🏠 Главная
-</button>
+        <div class="menu">
 
-<button class="nav-btn"
-onclick="openPage('friends',this)">
-👥 Друзья
-</button>
+            <button onclick="openPage('home')">
+                🏠 Главная
+            </button>
 
-<button class="nav-btn"
-onclick="openPage('requests',this)">
-🔔 Заявки
-</button>
+            <button onclick="openPage('friends')">
+                👥 Друзья
+            </button>
 
-<button class="nav-btn"
-onclick="openPage('chat',this)">
-💬 Чат
-</button>
+            <button onclick="openPage('chat')">
+                💬 Чаты
+            </button>
 
-<button class="nav-btn"
-onclick="openPage('profile',this)">
-👤 Профиль
-</button>
+            <button onclick="openPage('profile')">
+                👤 Профиль
+            </button>
 
-</aside>
+        </div>
 
 
-<main class="content">
+        <!-- HOME -->
 
-<!-- HOME -->
+        <section id="home" class="page active">
 
-<section id="home" class="page active">
+            <div class="card">
 
-<div class="small-label">CHAD SOCIAL</div>
+                <div class="title">
+                    ПРИВЕТ,<br>
+                    <span id="homeName">
+                        USER
+                    </span>
+                </div>
 
-<h1 class="page-title">
-ПРИВЕТ,<br>
-<span id="homeUsername">USER</span>
-</h1>
+                <p style="margin-top:20px;color:#888;">
+                    Добро пожаловать в CHAD BANK.
+                </p>
 
-<div class="balance-card">
+            </div>
 
-<div class="small-label">ТВОЙ БАЛАНС</div>
+        </section>
 
-<div class="balance">
-0 <span class="coin">CHAD COINS</span>
-</div>
 
-</div>
+        <!-- FRIENDS -->
 
-<div class="card">
+        <section id="friends" class="page">
 
-<h3>Добро пожаловать 👋</h3>
+            <div class="card">
 
-<p style="margin-top:10px;color:#888;font-size:11px;line-height:1.7;">
-Добавляй друзей, принимай заявки и общайся в личных чатах.
-</p>
+                <div class="title">
+                    ДРУЗЬЯ
+                </div>
 
-</div>
+                <input
+                    id="searchUsername"
+                    placeholder="Поиск по username">
 
-</section>
+                <button
+                    class="primary"
+                    onclick="searchUser()">
+                    Найти
+                </button>
 
+                <div
+                    id="searchResult"
+                    style="margin-top:20px;">
+                </div>
 
-<!-- FRIENDS -->
+            </div>
 
-<section id="friends" class="page">
+        </section>
 
-<div class="small-label">SOCIAL / FRIENDS</div>
 
-<h1 class="page-title">
-ТВОИ<br>
-<span>ДРУЗЬЯ</span>
-</h1>
+        <!-- CHAT -->
 
-<div class="card">
+        <section id="chat" class="page">
 
-<div class="search">
+            <div class="card">
 
-<input id="userSearch"
-placeholder="Введите username">
+                <div class="title">
+                    ЧАТЫ
+                </div>
 
-<button onclick="searchUser()">
-Найти
-</button>
+                <p style="margin-top:20px;color:#888;">
+                    Чаты подключим следующим шагом.
+                </p>
 
-</div>
+            </div>
 
-<div id="searchResult"></div>
+        </section>
 
-</div>
 
-<div class="card">
+        <!-- PROFILE -->
 
-<h3>Список друзей</h3>
+        <section id="profile" class="page">
 
-<div id="friendsList"></div>
+            <div class="card">
 
-</div>
+                <div class="title">
+                    ПРОФИЛЬ
+                </div>
 
-</section>
+                <h2 id="profileName">
+                    @user
+                </h2>
 
+                <p
+                    id="profileEmail"
+                    style="margin-top:10px;color:#999;">
+                    email
+                </p>
 
-<!-- REQUESTS -->
+            </div>
+            </section>
 
-<section id="requests" class="page">
+    </main>
 
-<div class="small-label">SOCIAL / REQUESTS</div>
-
-<h1 class="page-title">
-ЗАЯВКИ<br>
-<span>В ДРУЗЬЯ</span>
-</h1>
-
-<div class="card">
-
-<div id="requestsList">
-<p style="color:#999;font-size:10px;">
-Заявок пока нет.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CHAT -->
-
-<section id="chat" class="page">
-
-<div class="small-label">SOCIAL / CHAT</div>
-
-<h1 class="page-title">
-ЛИЧНЫЙ<br>
-<span>ЧАТ</span>
-</h1>
-
-<div class="chat-layout">
-
-<div id="chatList" class="chat-list"></div>
-
-<div class="chat-window">
-
-<div id="chatTop" class="chat-top">
-Выбери друга
-</div>
-
-<div id="messages" class="messages">
-
-<div style="color:#999;font-size:10px;">
-Выбери друга слева.
-</div>
-
-</div>
-
-<div class="chat-input">
-
-<input id="messageInput"
-placeholder="Написать сообщение..."
-maxlength="500"
-disabled>
-
-<button class="send" onclick="sendMessage()">
-➤
-</button>
-
-</div>
-
-</div>
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section id="profile" class="page">
-
-<div class="small-label">ACCOUNT / PROFILE</div>
-
-<h1 class="page-title">
-ТВОЙ<br>
-<span>ПРОФИЛЬ</span>
-</h1>
-
-<div class="card">
-
-<div class="profile-card">
-
-<div id="bigAvatar" class="big-avatar">C</div>
-
-<div>
-
-<div id="profileUsername"
-class="profile-name">
-@user
-</div>
-
-<div id="profileEmail"
-class="profile-email">
-email
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-</div>
 </div>
 
 
@@ -796,24 +486,16 @@ import {
     getFirestore,
     doc,
     setDoc,
-    getDoc,
-    updateDoc,
-    collection,
-    query,
-    where,
-    getDocs,
-    addDoc,
-    onSnapshot,
-    orderBy,
-    serverTimestamp,
-    runTransaction,
-    arrayUnion
+    getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* =====================================================
-   ВСТАВЬ СЮДА СВОЙ firebaseConfig
-   ===================================================== */
+/*
+====================================================
+ FIREBASE CONFIG
+ ЗАМЕНИ ТОЛЬКО ЭТОТ БЛОК НА СВОЙ
+====================================================
+*/
 
 <script type="module">
   // Import the functions you need from the SDKs you need
@@ -838,99 +520,128 @@ import {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+
+
 /* FIREBASE */
 
 const app = initializeApp(firebaseConfig);
+
 const auth = getAuth(app);
+
 const db = getFirestore(app);
 
 
 /* VARIABLES */
 
 let currentUser = null;
+
 let currentProfile = null;
-let currentFriend = null;
-let stopMessagesListener = null;
 
 
-/* AUTH UI */
+/* SHOW REGISTER */
 
-window.showRegister = function(){
+window.showRegister = function() {
 
     document
-    .getElementById("loginForm")
-    .classList.add("hidden");
+        .getElementById("loginForm")
+        .classList
+        .add("hidden");
 
     document
-    .getElementById("registerForm")
-    .classList.remove("hidden");
+        .getElementById("registerForm")
+        .classList
+        .remove("hidden");
+
 };
 
 
-window.showLogin = function(){
+/* SHOW LOGIN */
+
+window.showLogin = function() {
 
     document
-    .getElementById("registerForm")
-    .classList.add("hidden");
+        .getElementById("registerForm")
+        .classList
+        .add("hidden");
 
     document
-    .getElementById("loginForm")
-    .classList.remove("hidden");
+        .getElementById("loginForm")
+        .classList
+        .remove("hidden");
+
 };
 
 
 /* REGISTER */
 
-window.register = async function(){
+window.register = async function() {
 
     const username =
-        document.getElementById("registerUsername")
-        .value.trim().toLowerCase();
+        document
+        .getElementById("registerUsername")
+        .value
+        .trim()
+        .toLowerCase();
 
     const email =
-        document.getElementById("registerEmail")
-        .value.trim();
+        document
+        .getElementById("registerEmail")
+        .value
+        .trim();
 
     const password =
-        document.getElementById("registerPassword")
+        document
+        .getElementById("registerPassword")
         .value;
 
 
-    if(!/^[a-z0-9_]{3,20}$/.test(username)){
+    if (!/^[a-z0-9_]{3,20}$/.test(username)) {
 
         alert(
-            "Username должен содержать только a-z, 0-9 и _. От 3 до 20 символов."
+            "Username: 3-20 символов, только a-z, 0-9 и _"
         );
 
         return;
     }
 
 
-    if(password.length < 6){
+    if (password.length < 6) {
 
-        alert("Пароль должен быть минимум 6 символов.");
+        alert(
+            "Пароль должен быть минимум 6 символов."
+        );
 
         return;
     }
 
 
-    try{
+    try {
+
+        /* Проверяем username */
 
         const usernameRef =
-            doc(db,"usernames",username);
+            doc(
+                db,
+                "usernames",
+                username
+            );
 
 
-        const usernameCheck =
+        const usernameSnap =
             await getDoc(usernameRef);
 
 
-        if(usernameCheck.exists()){
+        if (usernameSnap.exists()) {
 
-            alert("Этот username уже занят.");
+            alert(
+                "Этот username уже занят."
+            );
 
             return;
         }
 
+
+        /* Создаём аккаунт */
 
         const credential =
             await createUserWithEmailAndPassword(
@@ -940,69 +651,74 @@ window.register = async function(){
             );
 
 
-        const uid = credential.user.uid;
+        const uid =
+            credential.user.uid;
 
+
+        /* Создаём профиль */
 
         await setDoc(
-            doc(db,"users",uid),
+            doc(
+                db,
+                "users",
+                uid
+            ),
             {
-                username:username,
-                email:email,
-                friends:[],
-                createdAt:serverTimestamp()
+                username: username,
+                email: email,
+                friends: [],
+                createdAt: new Date()
             }
         );
 
+
+        /* Сохраняем username */
 
         await setDoc(
             usernameRef,
             {
-                uid:uid
+                uid: uid
             }
         );
 
 
-        alert("Аккаунт создан!");
+        alert(
+            "Аккаунт успешно создан!"
+        );
 
     }
-    catch(error){
+
+    catch (error) {
 
         console.error(error);
 
-        if(error.code === "auth/email-already-in-use"){
+        alert(
+            "Ошибка регистрации:\n" +
+            error.message
+        );
 
-            alert("Этот email уже зарегистрирован.");
-
-        }else if(error.code === "auth/invalid-email"){
-
-            alert("Неверный email.");
-
-        }else if(error.code === "auth/weak-password"){
-
-            alert("Пароль слишком слабый.");
-
-        }else{
-
-            alert("Ошибка: " + error.message);
-        }
     }
+
 };
 
 
 /* LOGIN */
 
-window.login = async function(){
+window.login = async function() {
 
     const email =
-        document.getElementById("loginEmail")
-        .value.trim();
+        document
+        .getElementById("loginEmail")
+        .value
+        .trim();
 
     const password =
-        document.getElementById("loginPassword")
+        document
+        .getElementById("loginPassword")
         .value;
 
 
-    try{
+    try {
 
         await signInWithEmailAndPassword(
             auth,
@@ -1011,18 +727,26 @@ window.login = async function(){
         );
 
     }
-    catch(error){
 
-        alert("Не удалось войти: " + error.message);
+    catch (error) {
+
+        console.error(error);
+        alert(
+            "Ошибка входа:\n" +
+            error.message
+        );
+
     }
+
 };
 
 
 /* LOGOUT */
 
-window.logout = async function(){
+window.logout = async function() {
 
     await signOut(auth);
+
 };
 
 
@@ -1032,18 +756,19 @@ onAuthStateChanged(
     auth,
     async user => {
 
-        if(!user){
+        if (!user) {
 
             currentUser = null;
-            currentProfile = null;
 
             document
-            .getElementById("authScreen")
-            .classList.remove("hidden");
+                .getElementById("authScreen")
+                .classList
+                .remove("hidden");
 
             document
-            .getElementById("app")
-            .classList.add("hidden");
+                .getElementById("app")
+                .classList
+                .add("hidden");
 
             return;
         }
@@ -1054,13 +779,21 @@ onAuthStateChanged(
 
         const profileSnap =
             await getDoc(
-                doc(db,"users",user.uid)
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                )
             );
 
 
-        if(!profileSnap.exists()){
+        if (!profileSnap.exists()) {
 
             await signOut(auth);
+
+            alert(
+                "Профиль пользователя не найден."
+            );
 
             return;
         }
@@ -1070,123 +803,110 @@ onAuthStateChanged(
             profileSnap.data();
 
 
-        document
-        .getElementById("authScreen")
-        .classList.add("hidden");
+        /* Показываем приложение */
 
         document
-        .getElementById("app")
-        .classList.remove("hidden");
+            .getElementById("authScreen")
+            .classList
+            .add("hidden");
+
+        document
+            .getElementById("app")
+            .classList
+            .remove("hidden");
 
 
-        updateProfileUI();
-        loadFriends();
-        loadRequests();
+        updateUI();
+
     }
 );
 
 
-/* PROFILE */
-        function updateProfileUI(){
+/* UPDATE UI */
 
-    const username =
+function updateUI() {
+
+    const name =
         currentProfile.username;
 
-
     const letter =
-        username.charAt(0).toUpperCase();
+        name
+        .charAt(0)
+        .toUpperCase();
 
 
     document
-    .getElementById("headerUsername")
-    .textContent =
-    "@" + username;
+        .getElementById("username")
+        .textContent =
+        "@" + name;
 
 
     document
-    .getElementById("homeUsername")
-    .textContent =
-    username;
+        .getElementById("homeName")
+        .textContent =
+        name;
 
 
     document
-    .getElementById("profileUsername")
-    .textContent =
-    "@" + username;
+        .getElementById("profileName")
+        .textContent =
+        "@" + name;
 
 
     document
-    .getElementById("profileEmail")
-    .textContent =
-    currentProfile.email;
+        .getElementById("profileEmail")
+        .textContent =
+        currentProfile.email;
 
 
     document
-    .getElementById("headerAvatar")
-    .textContent =
-    letter;
+        .getElementById("avatar")
+        .textContent =
+        letter;
 
-
-    document
-    .getElementById("bigAvatar")
-    .textContent =
-    letter;
 }
 
 
-/* PAGES */
+/* PAGE */
 
-window.openPage = function(id,button){
-
-    document
-    .querySelectorAll(".page")
-    .forEach(
-        page => page.classList.remove("active")
-    );
-
+window.openPage = function(page) {
 
     document
-    .getElementById(id)
-    .classList.add("active");
+        .querySelectorAll(".page")
+        .forEach(
+            p => p.classList.remove("active")
+        );
 
 
     document
-    .querySelectorAll(".nav-btn")
-    .forEach(
-        btn => btn.classList.remove("active")
-    );
+        .getElementById(page)
+        .classList
+        .add("active");
 
-
-    button.classList.add("active");
-
-
-    if(id === "friends")
-        loadFriends();
-
-    if(id === "requests")
-        loadRequests();
-
-    if(id === "chat")
-        loadChatList();
 };
 
 
 /* SEARCH USER */
 
-window.searchUser = async function(){
+window.searchUser = async function() {
 
     const username =
-        document.getElementById("userSearch")
-        .value.trim().toLowerCase();
+        document
+        .getElementById("searchUsername")
+        .value
+        .trim()
+        .toLowerCase();
+
 
     const result =
-        document.getElementById("searchResult");
+        document
+        .getElementById("searchResult");
 
 
-    if(!username){
+    if (!username) {
 
         result.innerHTML =
-        "<p style='margin-top:20px;color:#999;font-size:10px;'>Введите username.</p>";
+            "<p>Введите username.</p>";
 
         return;
     }
@@ -1194,14 +914,18 @@ window.searchUser = async function(){
 
     const usernameSnap =
         await getDoc(
-            doc(db,"usernames",username)
+            doc(
+                db,
+                "usernames",
+                username
+            )
         );
 
 
-    if(!usernameSnap.exists()){
+    if (!usernameSnap.exists()) {
 
         result.innerHTML =
-        "<p style='margin-top:20px;color:#999;font-size:10px;'>Пользователь не найден.</p>";
+            "<p>Пользователь не найден.</p>";
 
         return;
     }
@@ -1211,699 +935,39 @@ window.searchUser = async function(){
         usernameSnap.data().uid;
 
 
-    if(uid === currentUser.uid){
-
-        result.innerHTML =
-        "<p style='margin-top:20px;color:#999;font-size:10px;'>Это ваш аккаунт.</p>";
-
-        return;
-    }
-
-
     const userSnap =
         await getDoc(
-            doc(db,"users",uid)
+            doc(
+                db,
+                "users",
+                uid
+            )
         );
 
 
-    if(!userSnap.exists()) return;
+    if (!userSnap.exists()) {
+
+        result.innerHTML =
+            "<p>Профиль не найден.</p>";
+
+        return;
+    }
 
 
     const user =
         userSnap.data();
 
 
-    const friends =
-        currentProfile.friends || [];
+    result.innerHTML = `
+        <div class="card">
+            <b>@${user.username}</b>
+            <p style="margin-top:8px;color:#999;">
+                Пользователь найден
+            </p>
+        </div>
+    `;
 
-
-    result.innerHTML = "";
-
-
-    const row =
-        document.createElement("div");
-
-    row.className = "user-result";
-
-
-    const info =
-        document.createElement("div");
-
-    info.className = "user-info";
-
-
-    const avatar =
-        document.createElement("div");
-
-    avatar.className = "mini-avatar";
-
-    avatar.textContent =
-        user.username.charAt(0).toUpperCase();
-
-
-    const text =
-        document.createElement("div");
-
-
-    const name =
-        document.createElement("div");
-
-    name.className = "user-name";
-
-    name.textContent =
-        "@" + user.username;
-
-
-    text.appendChild(name);
-
-    info.appendChild(avatar);
-    info.appendChild(text);
-
-
-    const button =
-        document.createElement("button");
-
-    button.className = "add-btn";
-
-
-    if(friends.includes(uid)){
-
-        button.textContent = "Уже друзья";
-
-        button.disabled = true;
-
-    }else{
-
-        button.textContent = "Добавить";
-
-        button.onclick = () =>
-            sendFriendRequest(
-                uid,
-                user.username
-            );
-    }
-
-
-    row.appendChild(info);
-    row.appendChild(button);
-
-    result.appendChild(row);
 };
-
-
-/* FRIEND REQUEST */
-
-async function sendFriendRequest(uid,username){
-
-    const requestId =
-        currentUser.uid + "_" + uid;
-
-
-    const requestRef =
-        doc(db,"friendRequests",requestId);
-
-
-    const existing =
-        await getDoc(requestRef);
-
-
-    if(existing.exists()){
-
-        alert("Заявка уже существует.");
-
-        return;
-    }
-
-
-    await setDoc(
-        requestRef,
-        {
-            from:currentUser.uid,
-            fromUsername:currentProfile.username,
-            to:uid,
-            toUsername:username,
-            status:"pending",
-        createdAt:serverTimestamp()
-        }
-    );
-
-
-    alert("Заявка отправлена!");
-}
-
-
-/* LOAD REQUESTS */
-
-async function loadRequests(){
-
-    if(!currentUser) return;
-
-
-    const list =
-        document.getElementById("requestsList");
-
-
-    list.innerHTML =
-    "<p style='color:#999;font-size:10px;'>Загрузка...</p>";
-
-
-    const q =
-        query(
-            collection(db,"friendRequests"),
-            where("to","==",currentUser.uid),
-            where("status","==","pending")
-        );
-
-
-    const snapshot =
-        await getDocs(q);
-
-
-    list.innerHTML = "";
-
-
-    if(snapshot.empty){
-
-        list.innerHTML =
-        "<p style='color:#999;font-size:10px;'>Заявок пока нет.</p>";
-
-        return;
-    }
-
-
-    snapshot.forEach(requestDoc => {
-
-        const request =
-            requestDoc.data();
-
-
-        const row =
-            document.createElement("div");
-
-        row.className = "request";
-
-
-        const info =
-            document.createElement("div");
-
-        info.className = "user-info";
-
-
-        const avatar =
-            document.createElement("div");
-
-        avatar.className = "mini-avatar";
-
-        avatar.textContent =
-            request.fromUsername
-            .charAt(0)
-            .toUpperCase();
-
-
-        const name =
-            document.createElement("div");
-
-        name.className = "user-name";
-
-        name.textContent =
-            "@" + request.fromUsername;
-
-
-        info.appendChild(avatar);
-        info.appendChild(name);
-
-
-        const accept =
-            document.createElement("button");
-
-        accept.className = "add-btn";
-
-        accept.textContent = "Принять";
-
-
-        accept.onclick = () =>
-            acceptFriendRequest(
-                requestDoc.id,
-                request.from
-            );
-
-
-        row.appendChild(info);
-        row.appendChild(accept);
-
-        list.appendChild(row);
-    });
-}
-
-
-/* ACCEPT FRIEND */
-
-async function acceptFriendRequest(requestId,fromUid){
-
-    try{
-
-        await runTransaction(
-            db,
-            async transaction => {
-
-                const requestRef =
-                    doc(
-                        db,
-                        "friendRequests",
-                        requestId
-                    );
-
-
-                const requestSnap =
-                    await transaction.get(requestRef);
-
-
-                if(!requestSnap.exists()){
-
-                    throw new Error(
-                        "Заявка уже обработана."
-                    );
-                }
-
-
-                const myRef =
-                    doc(
-                        db,
-                        "users",
-                        currentUser.uid
-                    );
-
-
-                const friendRef =
-                    doc(
-                        db,
-                        "users",
-                        fromUid
-                    );
-
-
-                transaction.update(
-                    myRef,
-                    {
-                        friends:
-                        arrayUnion(fromUid)
-                    }
-                );
-
-
-                transaction.update(
-                    friendRef,
-                    {
-                        friends:
-                        arrayUnion(currentUser.uid)
-                    }
-                );
-
-
-                transaction.update(
-                    requestRef,
-                    {
-                        status:"accepted"
-                    }
-                );
-            }
-        );
-
-
-        const updated =
-            await getDoc(
-                doc(db,"users",currentUser.uid)
-            );
-
-
-        currentProfile =
-            updated.data();
-
-
-        loadRequests();
-        loadFriends();
-
-        alert("Теперь вы друзья!");
-
-    }
-    catch(error){
-
-        alert("Ошибка: " + error.message);
-    }
-}
-
-
-/* FRIENDS */
-
-async function loadFriends(){
-
-    if(!currentUser || !currentProfile)
-        return;
-
-
-    const list =
-        document.getElementById("friendsList");
-
-
-    const friends =
-        currentProfile.friends || [];
-
-
-    list.innerHTML = "";
-        if(friends.length === 0){
-
-        list.innerHTML =
-        "<p style='margin-top:20px;color:#999;font-size:10px;'>Друзей пока нет.</p>";
-
-        return;
-    }
-
-
-    for(const uid of friends){
-
-        const snap =
-            await getDoc(
-                doc(db,"users",uid)
-            );
-
-
-        if(!snap.exists())
-            continue;
-
-
-        const user =
-            snap.data();
-
-
-        const row =
-            document.createElement("div");
-
-        row.className = "friend";
-
-
-        const info =
-            document.createElement("div");
-
-        info.className = "user-info";
-
-
-        const avatar =
-            document.createElement("div");
-
-        avatar.className = "mini-avatar";
-
-        avatar.textContent =
-            user.username.charAt(0).toUpperCase();
-
-
-        const name =
-            document.createElement("div");
-
-        name.className = "user-name";
-
-        name.textContent =
-            "@" + user.username;
-
-
-        info.appendChild(avatar);
-        info.appendChild(name);
-
-
-        const chatButton =
-            document.createElement("button");
-
-        chatButton.className = "add-btn";
-
-        chatButton.textContent = "Написать";
-
-
-        chatButton.onclick = () => {
-
-            openPage(
-                "chat",
-                document.querySelectorAll(".nav-btn")[3]
-            );
-
-            openChatWith(
-                uid,
-                user.username
-            );
-        };
-
-
-        row.appendChild(info);
-        row.appendChild(chatButton);
-
-        list.appendChild(row);
-    }
-}
-
-
-/* CHAT LIST */
-
-async function loadChatList(){
-
-    const list =
-        document.getElementById("chatList");
-
-
-    list.innerHTML = "";
-
-
-    const friends =
-        currentProfile.friends || [];
-
-
-    if(friends.length === 0){
-
-        list.innerHTML =
-        "<div style='padding:15px;color:#999;font-size:10px;'>Добавь друзей.</div>";
-
-        return;
-    }
-
-
-    for(const uid of friends){
-
-        const snap =
-            await getDoc(
-                doc(db,"users",uid)
-            );
-
-
-        if(!snap.exists())
-            continue;
-
-
-        const user =
-            snap.data();
-
-
-        const item =
-            document.createElement("div");
-
-        item.className = "chat-user";
-
-        item.textContent =
-            "@" + user.username;
-
-
-        item.onclick = () =>
-            openChatWith(
-                uid,
-                user.username
-            );
-
-
-        list.appendChild(item);
-    }
-}
-
-
-/* CHAT ID */
-
-function getChatId(uid1,uid2){
-
-    return [uid1,uid2]
-        .sort()
-        .join("_");
-}
-
-
-/* OPEN CHAT */
-
-async function openChatWith(uid,username){
-
-    currentFriend = {
-        uid:uid,
-        username:username
-    };
-
-
-    document
-    .getElementById("chatTop")
-    .textContent =
-    "@" + username;
-
-
-    document
-    .getElementById("messageInput")
-    .disabled = false;
-
-
-    document
-    .getElementById("messages")
-    .innerHTML = "";
-
-
-    if(stopMessagesListener)
-        stopMessagesListener();
-
-
-    const chatId =
-        getChatId(
-            currentUser.uid,
-            uid
-        );
-
-
-    const messagesRef =
-        collection(
-            db,
-            "chats",
-            chatId,
-            "messages"
-        );
-
-
-    const q =
-        query(
-            messagesRef,
-            orderBy("createdAt","asc")
-        );
-
-
-    stopMessagesListener =
-        onSnapshot(
-            q,
-            snapshot => {
-
-                const box =
-                    document.getElementById("messages");
-
-
-                box.innerHTML = "";
-
-
-                snapshot.forEach(
-                    messageDoc => {
-
-                        const message =
-                            messageDoc.data();
-
-
-                        const div =
-                            document.createElement("div");
-
-
-                        div.className = "message";
-
-
-                        if(
-                            message.senderId ===
-                            currentUser.uid
-                        ){
-
-                            div.classList.add("me");
-        }
-
-
-                        div.textContent =
-                            message.text;
-
-
-                        box.appendChild(div);
-                    }
-                );
-
-
-                box.scrollTop =
-                    box.scrollHeight;
-            }
-        );
-}
-
-
-/* SEND MESSAGE */
-
-window.sendMessage = async function(){
-
-    if(!currentFriend)
-        return;
-
-
-    const input =
-        document.getElementById("messageInput");
-
-
-    const text =
-        input.value.trim();
-
-
-    if(!text)
-        return;
-
-
-    if(text.length > 500){
-
-        alert("Сообщение слишком длинное.");
-
-        return;
-    }
-
-
-    const chatId =
-        getChatId(
-            currentUser.uid,
-            currentFriend.uid
-        );
-
-
-    await addDoc(
-        collection(
-            db,
-            "chats",
-            chatId,
-            "messages"
-        ),
-        {
-            text:text,
-            senderId:currentUser.uid,
-            senderUsername:
-                currentProfile.username,
-            createdAt:
-                serverTimestamp()
-        }
-    );
-
-
-    input.value = "";
-};
-
-
-/* ENTER */
-
-document
-.getElementById("messageInput")
-.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Enter"){
-            window.sendMessage();
-        }
-    }
-);
 
 </script>
 
