@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ЧАД БАНК</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f3;
+    color: #111;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid #e5e5e0;
+}
+
+.nav {
+    max-width: 1150px;
+    height: 70px;
+
+    margin: auto;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -2px;
+}
+
+.logo span {
+    color: #b6d000;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav button {
+    border: none;
+    background: none;
+
+    color: #777;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.profile-button {
+    background: #111 !important;
+    color: white !important;
+
+    padding: 12px 18px;
+
+    border-radius: 30px;
+}
+
+/* GENERAL */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.label {
+    color: #999;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: clamp(55px, 9vw, 105px);
+
+    line-height: 0.8;
+
+    letter-spacing: -8px;
+}
+
+.green-text {
+    color: #b6d000;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 700px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 50px;
+}
+
+.hero h1 {
+    font-size: clamp(70px, 10vw, 120px);
+
+    line-height: 0.75;
+
+    letter-spacing: -9px;
+}
+
+.hero h1 span {
+    color: #b6d000;
+}
+
+.hero p {
+    max-width: 500px;
+
+    margin-top: 35px;
+
+    color: #777;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+.green-button,
+.black-button {
+    padding: 15px 22px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.green-button {
+    background: #dcff00;
+    color: #111;
+}
+
+.black-button {
+    background: #111;
+    color: white;
+}
+
+/* CARD */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bank-card {
+    width: 400px;
+    height: 250px;
+
+    padding: 28px;
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(255,255,255,.8),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #eaff3b,
+            #b8ce00
+        );
+
+    box-shadow:
+        0 35px 80px rgba(100,120,0,.2);
+
+    transform: rotate(-7deg);
+
+    transition: .4s;
+}
+
+.bank-card:hover {
+    transform: rotate(-2deg) translateY(-10px);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.chip {
+    width: 48px;
+    height: 35px;
+
+    margin-top: 60px;
+
+    border-radius: 8px;
+
+    background: linear-gradient(
+        135deg,
+        #eeeeee,
+        #777777
+    );
+}
+
+.card-number {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+/* BANK */
+
+.gray {
+    background: #e9e9e6;
+}
+
+.bank-container {
+    margin-top: 50px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 28px;
+
+    border: 1px solid #e1e1dc;
+}
+
+.balance {
+    padding: 40px;
+
+    border-radius: 23px;
+
+    background: #111;
+
+    color: white;
+}
+
+.balance-label {
+    color: #777;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+.balance-number {
+    margin-top: 10px;
+
+    font-size: 65px;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+}
+
+.coins {
+    color: #dfff00;
+
+    font-size: 13px;
+
+    letter-spacing: 0;
+}
+
+.actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin: 15px 0;
+}
+
+.history {
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background: #f5f5f3;
+}
+
+.history-title {
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.empty {
+    padding: 35px 0;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+.transaction {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.transaction-name {
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.transaction-date {
+    margin-top: 4px;
+
+    color: #999;
+
+    font-size: 8px;
+}
+
+.plus {
+    color: #799300;
+
+    font-weight: 900;
+}
+
+.minus {
+    color: #dd4c57;
+
+    font-weight: 900;
+}
+
+/* CARDS */
+
+.cards {
+    margin-top: 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.card-box {
+    height: 370px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid #e1e1dc;
+
+    border-radius: 28px;
+}
+
+.card-box h3 {
+    font-size: 27px;
+
+    letter-spacing: -2px;
+}
+
+.card-box p {
+    margin-top: 10px;
+
+    color: #888;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+.mini-card {
+    position: absolute;
+
+    right: -35px;
+    bottom: 35px;
+
+    width: 250px;
+    height: 155px;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    transform: rotate(-8deg);
+
+    box-shadow: 0 25px 50px rgba(0,0,0,.15);
+}
+
+.mini-black {
+    background: #111;
+    color: white;
+}
+
+.mini-green {
+    background: #dfff00;
+}
+
+.mini-pink {
+    background: #ffb4c4;
+}
+
+/* MARKET */
+
+.market {
+    margin-top: 50px;
+
+    min-height: 320px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border: 1px solid #e1e1dc;
+
+    border-radius: 28px;
+}
+
+.market-content {
+    text-align: center;
+}
+
+.market-icon {
+    font-size: 60px;
+}
+
+.market-content h3 {
+    margin-top: 10px;
+
+    font-size: 22px;
+}
+
+.market-content p {
+    margin-top: 8px;
+
+    color: #999;
+
+    font-size: 10px;
+}
+
+/* PROFILE */
+
+.profile {
+    margin-top: 50px;
+
+    padding: 35px;
+
+    background: #111;
+
+    color: white;
+
+    border-radius: 28px;
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #dfff00;
+
+    color: #111;
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+.username {
+    margin-top: 18px;
+
+    font-size: 22px;
+
+    font-weight: 900;
+}
+
+.userid {
+    margin-top: 5px;
+
+    color: #777;
+
+    font-size: 9px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 70px 0;
+
+    border-top: 1px solid #ddd;
+}
+
+.footer-logo {
+    font-size: 38px;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.footer-text {
+    max-width: 550px;
+
+    margin-top: 15px;
+
+    color: #999;
+
+    font-size: 9px;
+
+    line-height: 1.8;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 70px;
+    }
+
+    .bank-card {
+        width: 320px;
+        height: 200px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .actions,
+    .buttons {
+        flex-direction: column;
+    }
+
+    .balance-number {
+        font-size: 45px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+ЧАД <span>БАНК</span>
+</div>
+
+<nav>
+
+<button onclick="goTo('bank')">
+БАНК
+</button>
+
+<button onclick="goTo('cards')">
+КАРТЫ
+</button>
+
+<button onclick="goTo('market')">
+МАРКЕТ
+</button>
+
+</nav>
+
+<button
+class="profile-button"
+onclick="goTo('profile')">
+
+ПРОФИЛЬ
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section>
+
+<div class="container hero">
+
+
+<div>
+
+<div class="label">
+CHAD DIGITAL BANK
+</div>
+
+
+<h1>
+
+ЧАД<br>
+
+<span>БАНК</span>
+
+</h1>
+
+
+<p>
+
+Добро пожаловать в ЧАД БАНК —
+демонстрационный цифровой банк
+с виртуальными картами,
+CHAD Coins и будущим маркетом.
+
+</p>
+
+
+<div class="buttons">
+
+<button
+class="green-button"
+onclick="goTo('bank')">
+
+ОТКРЫТЬ БАНК
+
+</button>
+
+
+<button
+class="black-button"
+onclick="goTo('market')">
+
+CHAD MARKET
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card-container">
+<div class="bank-card">
+
+<div class="card-top">
+
+<span>
+ЧАД БАНК
+</span>
+
+<span>
+ULTRA
+</span>
+
+</div>
+
+
+<div class="chip"></div>
+
+
+<div class="card-number">
+
+1337 0000 0000 0001
+
+</div>
+
+
+<div class="card-bottom">
+
+<span>
+CHAD USER
+</span>
+
+<span>
+09/30
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- BANK -->
+
+<section
+id="bank"
+class="gray">
+
+<div class="container">
+
+
+<div class="label">
+001 / BANK
+</div>
+
+
+<h2 class="title">
+
+ТВОЙ<br>
+
+<span>БАЛАНС</span>
+
+</h2>
+
+
+<div class="bank-container">
+
+
+<div class="balance">
+
+<div class="balance-label">
+
+ДОСТУПНО
+
+</div>
+
+
+<div class="balance-number">
+
+<span id="balance">
+0
+</span>
+
+<span class="coins">
+CHAD COINS
+</span>
+
+</div>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="green-button"
+onclick="addCoins()">
+
++100 🪙
+
+</button>
+
+
+<button
+class="black-button"
+onclick="removeCoins()">
+
+−50 🪙
+
+</button>
+
+</div>
+
+
+<div class="history">
+
+<div class="history-title">
+
+ИСТОРИЯ ОПЕРАЦИЙ
+
+</div>
+
+
+<div id="history">
+
+<div class="empty">
+
+Операций пока нет.
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CARDS -->
+
+<section id="cards">
+
+<div class="container">
+
+
+<div class="label">
+002 / CARDS
+</div>
+
+
+<h2 class="title">
+
+ВИРТУАЛЬНЫЕ<br>
+
+<span>КАРТЫ</span>
+
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card-box">
+
+<h3>
+CLASSIC
+</h3>
+
+<p>
+Стандартная виртуальная
+карта ЧАД БАНКА.
+</p>
+
+
+<div class="mini-card mini-black">
+
+<b>
+CHAD BANK
+</b>
+
+<br><br>
+
+•••• 0001
+
+</div>
+
+</div>
+
+
+<div class="card-box">
+
+<h3>
+ULTRA
+</h3>
+
+<p>
+Яркая виртуальная карта
+для CHAD USER.
+</p>
+
+
+<div class="mini-card mini-green">
+
+<b>
+CHAD ULTRA
+</b>
+
+<br><br>
+
+•••• 0002
+
+</div>
+
+</div>
+
+
+<div class="card-box">
+
+<h3>
+CHAOS
+</h3>
+
+<p>
+Коллекционная виртуальная
+карта.
+</p>
+
+
+<div class="mini-card mini-pink">
+
+<b>
+CHAD CHAOS
+</b>
+
+<br><br>
+
+•••• 0003
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MARKET -->
+
+<section
+id="market"
+class="gray">
+
+<div class="container">
+
+
+<div class="label">
+003 / MARKET
+</div>
+
+
+<h2 class="title">
+
+CHAD<br>
+
+<span>MARKET</span>
+
+</h2>
+
+
+<div class="market">
+
+<div class="market-content">
+
+<div class="market-icon">
+🛒
+</div>
+
+
+<h3>
+
+MARKET ПОКА ПУСТ
+
+</h3>
+
+
+<p>
+
+В этой демо-версии товары
+пока не продаются.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile">
+
+<div class="container">
+
+
+<div class="label">
+004 / PROFILE
+</div>
+
+
+<h2 class="title">
+
+CHAD<br>
+
+<span>ID</span>
+
+</h2>
+
+
+<div class="profile">
+
+
+<div class="avatar">
+C
+</div>
+
+
+<div class="username">
+
+@chad_user
+
+</div>
+
+
+<div class="userid">
+
+CHAD ID · 00000001
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="container">
+
+
+<div class="footer-logo">
+
+ЧАД БАНК
+
+</div>
+
+
+<div class="footer-text">
+
+Демонстрационный вымышленный проект.
+CHAD Coins и виртуальные карты
+не являются настоящими деньгами
+или банковскими продуктами.
+
+<br><br>
+
+© 2026 CHAD BANK
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+let balance = 0;
+
+let transactions = [];
+
+
+function updateBalance() {
+
+    document.getElementById("balance").textContent =
+        balance.toLocaleString("ru-RU");
+
+}
+
+
+function addCoins() {
+
+    balance += 100;
+
+    transactions.push({
+        name: "Демо-пополнение",
+        amount: 100
+    });
+
+    renderTransactions();
+
+    updateBalance();
+
+}
+
+
+function removeCoins() {
+
+    if (balance < 50) {
+
+        alert("Недостаточно CHAD Coins.");
+
+        return;
+
+    }
+
+    balance -= 50;
+
+    transactions.push({
+        name: "Демо-расход",
+        amount: -50
+    });
+
+    renderTransactions();
+
+    updateBalance();
+
+}
+
+
+function renderTransactions() {
+
+    const history =
+        document.getElementById("history");
+
+
+    if (transactions.length === 0) {
+
+        history.innerHTML =
+            '<div class="empty">Операций пока нет.</div>';
+
+        return;
+
+    }
+
+
+    history.innerHTML =
+        transactions
+        .slice()
+        .reverse()
+        .map(function(transaction) {
+
+            const positive =
+                transaction.amount > 0;
+
+            return `
+
+                <div class="transaction">
+
+                    <div>
+<div class="transaction-name">
+
+                            ${transaction.name}
+
+                        </div>
+
+                        <div class="transaction-date">
+
+                            Только что
+
+                        </div>
+
+                    </div>
+
+                    <div class="${
+                        positive ? "plus" : "minus"
+                    }">
+
+                        ${positive ? "+" : ""}
+                        ${transaction.amount} 🪙
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function goTo(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+}
+
+
+updateBalance();
+
+</script>
+
+</body>
+</html>
