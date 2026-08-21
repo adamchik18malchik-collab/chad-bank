@@ -1,356 +1,288 @@
-onclick="addCoins()">
-+100 🪙
-</button>
-
-<button
-class="dark"
-onclick="removeCoins()">
-−50 🪙
-</button>
-
-</div>
-
-
-<div class="history">
-
-<div class="history-title">
-ИСТОРИЯ ОПЕРАЦИЙ
-</div>
-
-<div id="history">
-
-<div class="empty">
-Операций пока нет.
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CARDS -->
-
-<section id="cards">
-
-<div class="container">
-
-<div class="overline">
-002 / CARDS
-</div>
-
-<h2 class="title">
-ТВОИ<br>
-<span>КАРТЫ</span>
-</h2>
-
-
-<div class="cards">
-
-
-<div class="card-box">
-
-<h3>CLASSIC</h3>
-
-<p>
-Минималистичная виртуальная
-карта ЧАД БАНКА.
-</p>
-
-<div class="mini black-card">
-
-<b>CHAD BANK</b>
-
-<br><br>
-
-•••• 0001
-
-</div>
-
-</div>
-
-
-<div class="card-box">
-
-<h3>ULTRA</h3>
-
-<p>
-Яркая виртуальная карта
-для CHAD USER.
-</p>
-
-<div class="mini green-card">
-
-<b>CHAD ULTRA</b>
-
-<br><br>
-
-•••• 0002
-
-</div>
-
-</div>
-
-
-<div class="card-box">
-
-<h3>CHAOS</h3>
-
-<p>
-Коллекционная виртуальная
-карта ЧАД БАНКА.
-</p>
-
-<div class="mini pink-card">
-
-<b>CHAD CHAOS</b>
-
-<br><br>
-
-•••• 0003
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MARKET -->
-
-<section
-id="market"
-class="gray">
-
-<div class="container">
-
-<div class="overline">
-003 / MARKET
-</div>
-
-<h2 class="title">
-CHAD<br>
-<span>MARKET</span>
-</h2>
-
-
-<div class="market-box">
-
-<div class="market-empty">
-
-<div class="market-icon">
-🛒
-</div>
-
-<h3>
-MARKET ПОКА ПУСТ
-</h3>
-
-<p>
-Здесь в будущем появятся товары пользователей.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section id="profile">
-
-<div class="container">
-
-<div class="overline">
-004 / PROFILE
-</div>
-
-<h2 class="title">
-CHAD<br>
-<span>ID</span>
-</h2>
-
-
-<div class="profile">
-
-<div class="avatar">
-C
-</div>
-
-<div class="username">
-@chad_user
-</div>
-
-<div class="id">
-CHAD ID · 00000001
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<footer>
-
-<div class="container">
-
-<div class="footer-logo">
-ЧАД БАНК
-</div>
-
-<div class="footer-text">
-Демонстрационный вымышленный проект.
-CHAD Coins и виртуальные карты
-не являются настоящими банковскими
-продуктами или реальными деньгами.
-<br><br>
-© 2026 CHAD BANK
-</div>
-
-</div>
-
-</footer>
-
-
-<script>
-
-let balance = 0;
-let operations = [];
-
-
-function update(){
-
-document.getElementById("balance")
-.textContent =
-balance.toLocaleString("ru-RU");
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЧАД БАНК</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-
-function addCoins(){
-
-balance += 100;
-
-operations.push({
-name:"Демо-пополнение",
-amount:100
-});
-
-render();
-
+html{
+    scroll-behavior:smooth;
 }
 
-
-function removeCoins(){
-
-if(balance < 50){
-
-alert("Недостаточно CHAD Coins");
-
-return;
-
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7f5;
+    color:#111;
 }
 
-balance -= 50;
-
-operations.push({
-name:"Демо-расход",
-amount:-50
-});
-
-render();
-
+button{
+    border:0;
+    cursor:pointer;
+    font-weight:800;
 }
 
-
-function render(){
-
-update();
-
-const history =
-document.getElementById("history");
-
-if(operations.length === 0){
-
-history.innerHTML =
-'<div class="empty">Операций пока нет.</div>';
-
-return;
-
+.header{
+    position:sticky;
+    top:0;
+    z-index:99;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid #e5e5e0;
 }
 
-
-history.innerHTML =
-operations
-.slice()
-.reverse()
-.map(operation => `
-
-<div class="operation">
-
-<div>
-
-<div class="operation-name">
-${operation.name}
-</div>
-
-<div class="operation-date">
-Только что
-</div>
-
-</div>
-
-<div class="${
-operation.amount > 0
-? "plus"
-: "minus"
-}">
-
-${operation.amount > 0 ? "+" : ""}
-${operation.amount} 🪙
-
-</div>
-
-</div>
-
-`)
-.join("");
-
+.nav{
+    max-width:1200px;
+    height:72px;
+    margin:auto;
+    padding:0 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-
-function scrollToId(id){
-
-document
-.getElementById(id)
-.scrollIntoView({
-behavior:"smooth"
-});
-
+.logo{
+    font-size:25px;
+    font-weight:1000;
+    letter-spacing:-2px;
 }
 
+.logo span{
+    color:#b5ce00;
+}
 
-update();
+.menu{
+    display:flex;
+    gap:25px;
+}
 
-</script>
+.menu button{
+    background:none;
+    color:#777;
+    font-size:10px;
+}
 
-</body>
-</html>
+.profile-btn{
+    background:#111!important;
+    color:#fff!important;
+    padding:12px 18px;
+    border-radius:30px;
+}
+
+.container{
+    width:min(1200px,100%);
+    margin:auto;
+    padding:0 25px;
+}
+
+.hero{
+    min-height:720px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+}
+
+.overline{
+    color:#999;
+    font-size:9px;
+    letter-spacing:4px;
+    font-weight:900;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(70px,10vw,125px);
+    line-height:.76;
+    letter-spacing:-10px;
+}
+
+.hero h1 span{
+    color:#b7d000;
+}
+
+.hero p{
+    max-width:520px;
+    margin-top:35px;
+    color:#777;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:30px;
+}
+
+.green{
+    background:#ddff00;
+    color:#111;
+    padding:16px 23px;
+    border-radius:30px;
+}
+
+.dark{
+    background:#111;
+    color:white;
+    padding:16px 23px;
+    border-radius:30px;
+}
+
+.card-place{
+    display:flex;
+    justify-content:center;
+}
+
+.bank-card{
+    width:410px;
+    height:255px;
+    padding:28px;
+    border-radius:30px;
+
+    background:
+    radial-gradient(circle at 85% 10%,#ffffffaa,transparent 25%),
+    linear-gradient(135deg,#eaff38,#b6ca00);
+
+    box-shadow:0 35px 90px #91a50035;
+
+    transform:rotate(-8deg);
+    transition:.4s;
+}
+
+.bank-card:hover{
+    transform:rotate(-2deg) translateY(-12px);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    font-weight:1000;
+}
+
+.chip{
+    width:50px;
+    height:36px;
+    margin-top:60px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#eeeeee,#777);
+}
+
+.number{
+    margin-top:22px;
+    font-size:15px;
+    letter-spacing:3px;
+}
+
+.card-footer{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    font-size:9px;
+    font-weight:900;
+}
+
+section{
+    padding:110px 0;
+}
+
+.gray{
+    background:#eaeae7;
+}
+
+.title{
+    font-size:clamp(60px,9vw,105px);
+    line-height:.8;
+    letter-spacing:-8px;
+}
+
+.title span{
+    color:#b6ce00;
+}
+
+/* BALANCE */
+
+.bank-box{
+    margin-top:55px;
+    background:white;
+    padding:20px;
+    border:1px solid #e2e2dd;
+    border-radius:30px;
+}
+
+.balance{
+    padding:40px;
+    border-radius:25px;
+    background:#111;
+    color:white;
+}
+
+.balance-label{
+    color:#777;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.amount{
+    margin-top:12px;
+    font-size:65px;
+    font-weight:1000;
+    letter-spacing:-5px;
+}
+
+.coin{
+    color:#d9f000;
+    font-size:13px;
+    letter-spacing:0;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+}
+
+.history{
+    background:#f5f5f2;
+    padding:25px;
+    border-radius:22px;
+}
+
+.history-title{
+    font-size:11px;
+    font-weight:1000;
+}
+
+.empty{
+    padding:35px 0;
+    text-align:center;
+    color:#999;
+    font-size:10px;
+}
+
+.operation{
+    padding:16px 0;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #deded9;
+}
+
+.operation:last-child{
+    border:0;
+}
+
+.operation-name{
+    font-size:11px;
+    font-weight:900;
+}
+
+.operation-date{
+    margin-top:4px;
+    color:#999;
