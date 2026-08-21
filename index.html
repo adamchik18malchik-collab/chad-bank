@@ -2,657 +2,620 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>ЧАД БАНК</title>
+<title>ЧАД БАНК — Social</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f4f1;
+    color:#111;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f3;
-    color: #111;
+button{
+    border:0;
+    cursor:pointer;
+    font-weight:800;
 }
 
-/* HEADER */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid #e5e5e0;
+input{
+    outline:none;
 }
 
-.nav {
-    max-width: 1150px;
-    height: 70px;
-
-    margin: auto;
-    padding: 0 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.hidden{
+    display:none!important;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: -2px;
-}
+/* AUTH */
 
-.logo span {
-    color: #b6d000;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-}
-
-nav button {
-    border: none;
-    background: none;
-
-    color: #777;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    cursor: pointer;
-}
-
-.profile-button {
-    background: #111 !important;
-    color: white !important;
-
-    padding: 12px 18px;
-
-    border-radius: 30px;
-}
-
-/* GENERAL */
-
-.container {
-    max-width: 1150px;
-    margin: auto;
-    padding: 0 20px;
-}
-
-section {
-    padding: 100px 0;
-}
-
-.label {
-    color: #999;
-
-    font-size: 9px;
-    font-weight: 900;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 25px;
-}
-
-.title {
-    font-size: clamp(55px, 9vw, 105px);
-
-    line-height: 0.8;
-
-    letter-spacing: -8px;
-}
-
-.green-text {
-    color: #b6d000;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 700px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 50px;
-}
-
-.hero h1 {
-    font-size: clamp(70px, 10vw, 120px);
-
-    line-height: 0.75;
-
-    letter-spacing: -9px;
-}
-
-.hero h1 span {
-    color: #b6d000;
-}
-
-.hero p {
-    max-width: 500px;
-
-    margin-top: 35px;
-
-    color: #777;
-
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.buttons {
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 30px;
-}
-
-.green-button,
-.black-button {
-    padding: 15px 22px;
-
-    border: none;
-
-    border-radius: 30px;
-
-    font-size: 10px;
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.green-button {
-    background: #dcff00;
-    color: #111;
-}
-
-.black-button {
-    background: #111;
-    color: white;
-}
-
-/* CARD */
-
-.card-container {
-    display: flex;
-    justify-content: center;
-}
-
-.bank-card {
-    width: 400px;
-    height: 250px;
-
-    padding: 28px;
-
-    border-radius: 28px;
-
+.auth-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
     background:
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(255,255,255,.8),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #eaff3b,
-            #b8ce00
-        );
-
-    box-shadow:
-        0 35px 80px rgba(100,120,0,.2);
-
-    transform: rotate(-7deg);
-
-    transition: .4s;
+        radial-gradient(circle at 10% 10%,#eaff4d 0,transparent 25%),
+        #f4f4f1;
 }
 
-.bank-card:hover {
-    transform: rotate(-2deg) translateY(-10px);
+.auth-box{
+    width:420px;
+    max-width:100%;
+    padding:35px;
+    background:white;
+    border-radius:30px;
+    border:1px solid #ddd;
+    box-shadow:0 30px 80px #00000012;
 }
 
-.card-top {
-    display: flex;
-    justify-content: space-between;
-
-    font-size: 11px;
-    font-weight: 900;
+.logo{
+    font-size:30px;
+    font-weight:1000;
+    letter-spacing:-3px;
 }
 
-.chip {
-    width: 48px;
-    height: 35px;
-
-    margin-top: 60px;
-
-    border-radius: 8px;
-
-    background: linear-gradient(
-        135deg,
-        #eeeeee,
-        #777777
-    );
+.logo span{
+    color:#b8d000;
 }
 
-.card-number {
-    margin-top: 20px;
-
-    font-size: 14px;
-
-    letter-spacing: 3px;
+.auth-subtitle{
+    margin-top:10px;
+    color:#999;
+    font-size:11px;
+    line-height:1.6;
 }
 
-.card-bottom {
-    display: flex;
-    justify-content: space-between;
-
-    margin-top: 18px;
-
-    font-size: 9px;
-    font-weight: 900;
+.auth-box h2{
+    margin-top:35px;
+    font-size:25px;
 }
 
-/* BANK */
-
-.gray {
-    background: #e9e9e6;
+.field{
+    margin-top:15px;
 }
 
-.bank-container {
-    margin-top: 50px;
-
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 28px;
-
-    border: 1px solid #e1e1dc;
+.field label{
+    display:block;
+    margin-bottom:7px;
+    font-size:9px;
+    font-weight:900;
+    color:#777;
+    text-transform:uppercase;
 }
 
-.balance {
-    padding: 40px;
-
-    border-radius: 23px;
-
-    background: #111;
-
-    color: white;
+.field input{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    font-size:13px;
 }
 
-.balance-label {
-    color: #777;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
+.primary{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border-radius:15px;
+    background:#111;
+    color:white;
 }
 
-.balance-number {
-    margin-top: 10px;
-
-    font-size: 65px;
-
-    font-weight: 900;
-
-    letter-spacing: -5px;
+.secondary{
+    width:100%;
+    margin-top:10px;
+    padding:14px;
+    border-radius:15px;
+    background:#e3ff00;
+    color:#111;
 }
 
-.coins {
-    color: #dfff00;
-
-    font-size: 13px;
-
-    letter-spacing: 0;
+.auth-switch{
+    margin-top:20px;
+    text-align:center;
+    color:#888;
+    font-size:10px;
 }
 
-.actions {
-    display: flex;
-
-    gap: 10px;
-
-    margin: 15px 0;
+.auth-switch button{
+    background:none;
+    color:#789000;
 }
 
-.history {
-    padding: 25px;
+/* APP */
 
-    border-radius: 22px;
-
-    background: #f5f5f3;
+.app{
+    min-height:100vh;
 }
 
-.history-title {
-    font-size: 11px;
-    font-weight: 900;
+.header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    height:70px;
+    padding:0 25px;
+    background:#fffdf9eF;
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.empty {
-    padding: 35px 0;
-
-    text-align: center;
-
-    color: #999;
-
-    font-size: 10px;
+.header-logo{
+    font-size:23px;
+    font-weight:1000;
+    letter-spacing:-2px;
 }
 
-.transaction {
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 15px 0;
-
-    border-bottom: 1px solid #ddd;
+.header-logo span{
+    color:#b8d000;
 }
 
-.transaction-name {
-    font-size: 11px;
-    font-weight: 900;
+.header-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.transaction-date {
-    margin-top: 4px;
-
-    color: #999;
-
-    font-size: 8px;
+.avatar{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#ddff00;
+    font-weight:1000;
 }
 
-.plus {
-    color: #799300;
-
-    font-weight: 900;
+.logout{
+    padding:10px 15px;
+    border-radius:20px;
+    background:#111;
+    color:white;
+    font-size:9px;
 }
 
-.minus {
-    color: #dd4c57;
-
-    font-weight: 900;
+.layout{
+    max-width:1250px;
+    margin:auto;
+    padding:25px;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:20px;
 }
 
-/* CARDS */
-
-.cards {
-    margin-top: 50px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
+.sidebar{
+    height:fit-content;
+    position:sticky;
+    top:95px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:25px;
+    padding:12px;
 }
 
-.card-box {
-    height: 370px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    padding: 25px;
-
-    background: white;
-
-    border: 1px solid #e1e1dc;
-
-    border-radius: 28px;
+.nav-btn{
+    width:100%;
+    padding:14px;
+    margin-bottom:5px;
+    border-radius:14px;
+    background:transparent;
+    text-align:left;
+    font-size:11px;
 }
 
-.card-box h3 {
-    font-size: 27px;
-
-    letter-spacing: -2px;
+.nav-btn:hover,
+.nav-btn.active{
+    background:#eaff00;
 }
 
-.card-box p {
-    margin-top: 10px;
-
-    color: #888;
-
-    font-size: 10px;
-
-    line-height: 1.6;
+.content{
+    min-width:0;
 }
 
-.mini-card {
-    position: absolute;
-
-    right: -35px;
-    bottom: 35px;
-
-    width: 250px;
-    height: 155px;
-
-    padding: 20px;
-
-    border-radius: 20px;
-
-    transform: rotate(-8deg);
-
-    box-shadow: 0 25px 50px rgba(0,0,0,.15);
+.page{
+    display:none;
 }
 
-.mini-black {
-    background: #111;
-    color: white;
+.page.active{
+    display:block;
 }
 
-.mini-green {
-    background: #dfff00;
+.page-title{
+    font-size:60px;
+    letter-spacing:-5px;
+    line-height:.85;
 }
 
-.mini-pink {
-    background: #ffb4c4;
+.page-title span{
+    color:#b8d000;
 }
 
-/* MARKET */
-
-.market {
-    margin-top: 50px;
-
-    min-height: 320px;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    background: white;
-
-    border: 1px solid #e1e1dc;
-
-    border-radius: 28px;
+.card{
+    margin-top:25px;
+    padding:25px;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:25px;
 }
 
-.market-content {
-    text-align: center;
+/* HOME */
+
+.balance-card{
+    margin-top:25px;
+    padding:30px;
+    border-radius:25px;
+    background:#111;
+    color:white;
 }
 
-.market-icon {
-    font-size: 60px;
+.small-label{
+    color:#777;
+    font-size:9px;
+    letter-spacing:3px;
 }
 
-.market-content h3 {
-    margin-top: 10px;
-
-    font-size: 22px;
+.balance{
+    margin-top:10px;
+    font-size:55px;
+    font-weight:1000;
+    letter-spacing:-4px;
 }
 
-.market-content p {
-    margin-top: 8px;
+.coin{
+    color:#dfff00;
+    font-size:12px;
+    letter-spacing:0;
+}
 
-    color: #999;
+/* FRIENDS */
 
-    font-size: 10px;
+.search{
+    display:flex;
+    gap:10px;
+}
+
+.search input{
+    flex:1;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:15px;
+}
+
+.
+    search button{
+    padding:14px 20px;
+    border-radius:15px;
+    background:#111;
+    color:white;
+}
+
+.user-result,
+.friend{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.user-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.mini-avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eaff00;
+    font-weight:1000;
+}
+
+.user-name{
+    font-size:12px;
+    font-weight:900;
+}
+
+.user-email{
+    margin-top:3px;
+    color:#999;
+    font-size:8px;
+}
+
+.add-btn{
+    padding:10px 14px;
+    border-radius:15px;
+    background:#111;
+    color:white;
+    font-size:9px;
+}
+
+/* CHAT */
+
+.chat-layout{
+    margin-top:25px;
+    height:650px;
+    display:grid;
+    grid-template-columns:230px 1fr;
+    background:white;
+    border:1px solid #ddd;
+    border-radius:25px;
+    overflow:hidden;
+}
+
+.chat-list{
+    border-right:1px solid #eee;
+    padding:10px;
+    overflow:auto;
+}
+
+.chat-user{
+    padding:14px;
+    border-radius:14px;
+    cursor:pointer;
+}
+
+.chat-user:hover,
+.chat-user.selected{
+    background:#eaff00;
+}
+
+.chat-window{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+}
+
+.chat-top{
+    height:65px;
+    padding:20px;
+    border-bottom:1px solid #eee;
+    font-size:12px;
+    font-weight:900;
+}
+
+.messages{
+    flex:1;
+    padding:20px;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.message{
+    max-width:70%;
+    padding:11px 14px;
+    border-radius:16px;
+    background:#f0f0ed;
+    font-size:12px;
+    word-break:break-word;
+}
+
+.message.me{
+    align-self:flex-end;
+    background:#dfff00;
+}
+
+.chat-input{
+    padding:12px;
+    border-top:1px solid #eee;
+    display:flex;
+    gap:8px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:13px 15px;
+    border:1px solid #ddd;
+    border-radius:20px;
+}
+
+.send{
+    width:45px;
+    border-radius:50%;
+    background:#111;
+    color:white;
 }
 
 /* PROFILE */
 
-.profile {
-    margin-top: 50px;
-
-    padding: 35px;
-
-    background: #111;
-
-    color: white;
-
-    border-radius: 28px;
+.profile-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-.avatar {
-    width: 65px;
-    height: 65px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #dfff00;
-
-    color: #111;
-
-    font-size: 25px;
-
-    font-weight: 900;
+.big-avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#dfff00;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:1000;
 }
 
-.username {
-    margin-top: 18px;
-
-    font-size: 22px;
-
-    font-weight: 900;
+.profile-name{
+    font-size:25px;
+    font-weight:1000;
 }
 
-.userid {
-    margin-top: 5px;
-
-    color: #777;
-
-    font-size: 9px;
+.profile-email{
+    margin-top:5px;
+    color:#999;
+    font-size:10px;
 }
 
-/* FOOTER */
+/* RESPONSIVE */
 
-footer {
-    padding: 70px 0;
+@media(max-width:800px){
 
-    border-top: 1px solid #ddd;
-}
-
-.footer-logo {
-    font-size: 38px;
-
-    font-weight: 900;
-
-    letter-spacing: -3px;
-}
-
-.footer-text {
-    max-width: 550px;
-
-    margin-top: 15px;
-
-    color: #999;
-
-    font-size: 9px;
-
-    line-height: 1.8;
-}
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    nav {
-        display: none;
+    .layout{
+        grid-template-columns:1fr;
+        padding:12px;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding-top: 70px;
+    .sidebar{
+        position:static;
+        display:flex;
+        overflow:auto;
     }
 
-    .bank-card {
-        width: 320px;
-        height: 200px;
+    .nav-btn{
+        min-width:100px;
+        text-align:center;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
+    .chat-layout{
+        grid-template-columns:1fr;
+        height:650px;
     }
 
-    .actions,
-    .buttons {
-        flex-direction: column;
+    .chat-list{
+        display:flex;
+        overflow:auto;
+        height:75px;
+        border-right:0;
+        border-bottom:1px solid #eee;
     }
 
-    .balance-number {
-        font-size: 45px;
+    .chat-user{
+        min-width:130px;
+    }
+
+    .page-title{
+        font-size:45px;
     }
 }
-
 </style>
 </head>
-
 
 <body>
 
 
-<header>
+<!-- AUTH -->
 
-<div class="nav">
+<div id="authScreen" class="auth-screen">
+
+<div class="auth-box">
 
 <div class="logo">
 ЧАД <span>БАНК</span>
 </div>
 
-<nav>
+<div class="auth-subtitle">
+Социальная платформа CHAD BANK.
+Общайся, добавляй друзей и управляй
+своим профилем.
+</div>
 
-<button onclick="goTo('bank')">
-БАНК
+
+<div id="loginForm">
+
+<h2>Вход</h2>
+
+<div class="field">
+<label>Email</label>
+<input id="loginEmail" type="email">
+</div>
+
+<div class="field">
+<label>Пароль</label>
+<input id="loginPassword" type="password">
+</div>
+
+<button class="primary" onclick="login()">
+Войти
 </button>
 
-<button onclick="goTo('cards')">
-КАРТЫ
+<div class="auth-switch">
+Нет аккаунта?
+<button onclick="showRegister()">
+Зарегистрироваться
+</button>
+</div>
+
+</div>
+
+
+<div id="registerForm" class="hidden">
+
+<h2>Регистрация</h2>
+
+<div class="field">
+<label>Username</label>
+<input id="registerUsername"
+       maxlength="20"
+       placeholder="например chad_user">
+</div>
+
+<div class="field">
+<label>Email</label>
+<input id="registerEmail" type="email">
+</div>
+
+<div class="field">
+    <label>Пароль</label>
+<input id="registerPassword" type="password">
+</div>
+
+<button class="primary" onclick="register()">
+Создать аккаунт
 </button>
 
-<button onclick="goTo('market')">
-МАРКЕТ
+<div class="auth-switch">
+Уже есть аккаунт?
+<button onclick="showLogin()">
+Войти
 </button>
+</div>
 
-</nav>
+</div>
 
-<button
-class="profile-button"
-onclick="goTo('profile')">
+</div>
 
-ПРОФИЛЬ
+</div>
 
+
+<!-- APP -->
+
+<div id="app" class="app hidden">
+
+<header class="header">
+
+<div class="header-logo">
+ЧАД <span>БАНК</span>
+</div>
+
+<div class="header-user">
+
+<div id="headerAvatar" class="avatar">
+C
+</div>
+
+<span id="headerUsername">
+@user
+</span>
+
+<button class="logout" onclick="logout()">
+ВЫЙТИ
 </button>
 
 </div>
@@ -660,205 +623,125 @@ onclick="goTo('profile')">
 </header>
 
 
-<!-- HERO -->
+<div class="layout">
 
-<section>
+<aside class="sidebar">
 
-<div class="container hero">
+<button class="nav-btn active"
+        onclick="openPage('home',this)">
+🏠 Главная
+</button>
+
+<button class="nav-btn"
+        onclick="openPage('friends',this)">
+👥 Друзья
+</button>
+
+<button class="nav-btn"
+        onclick="openPage('chat',this)">
+💬 Чат
+</button>
+
+<button class="nav-btn"
+        onclick="openPage('profile',this)">
+👤 Профиль
+</button>
+
+</aside>
 
 
-<div>
+<main class="content">
 
-<div class="label">
-CHAD DIGITAL BANK
+
+<!-- HOME -->
+
+<section id="home"
+         class="page active">
+
+<div class="small-label">
+CHAD SOCIAL
 </div>
 
-
-<h1>
-
-ЧАД<br>
-
-<span>БАНК</span>
-
+<h1 class="page-title">
+ПРИВЕТ,<br>
+<span id="homeUsername">
+USER
+</span>
 </h1>
 
 
-<p>
+<div class="balance-card">
 
-Добро пожаловать в ЧАД БАНК —
-демонстрационный цифровой банк
-с виртуальными картами,
-CHAD Coins и будущим маркетом.
-
-</p>
-
-
-<div class="buttons">
-
-<button
-class="green-button"
-onclick="goTo('bank')">
-
-ОТКРЫТЬ БАНК
-
-</button>
-
-
-<button
-class="black-button"
-onclick="goTo('market')">
-
-CHAD MARKET
-
-</button>
-
+<div class="small-label">
+ТВОЙ БАЛАНС
 </div>
-
-</div>
-
-
-<div class="card-container">
-<div class="bank-card">
-
-<div class="card-top">
-
-<span>
-ЧАД БАНК
-</span>
-
-<span>
-ULTRA
-</span>
-
-</div>
-
-
-<div class="chip"></div>
-
-
-<div class="card-number">
-
-1337 0000 0000 0001
-
-</div>
-
-
-<div class="card-bottom">
-
-<span>
-CHAD USER
-</span>
-
-<span>
-09/30
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- BANK -->
-
-<section
-id="bank"
-class="gray">
-
-<div class="container">
-
-
-<div class="label">
-001 / BANK
-</div>
-
-
-<h2 class="title">
-
-ТВОЙ<br>
-
-<span>БАЛАНС</span>
-
-</h2>
-
-
-<div class="bank-container">
-
 
 <div class="balance">
-
-<div class="balance-label">
-
-ДОСТУПНО
-
-</div>
-
-
-<div class="balance-number">
-
-<span id="balance">
-0
-</span>
-
-<span class="coins">
-CHAD COINS
-</span>
-
+0 <span class="coin">CHAD COINS</span>
 </div>
 
 </div>
 
 
-<div class="actions">
+<div class="card">
 
-<button
-class="green-button"
-onclick="addCoins()">
+<h3>
+Добро пожаловать 👋
+</h3>
 
-+100 🪙
+<p style="margin-top:10px;color:#888;font-size:11px;line-height:1.7;">
+Добавляй друзей, общайся в личных чатах
+и развивай свой профиль.
+</p>
 
+</div>
+
+</section>
+
+
+<!-- FRIENDS -->
+
+<section id="friends"
+         class="page">
+
+<div class="small-label">
+SOCIAL / FRIENDS
+</div>
+
+<h1 class="page-title">
+ТВОИ<br>
+<span>ДРУЗЬЯ</span>
+</h1>
+
+
+<div class="card">
+
+<div class="search">
+
+<input id="userSearch"
+       placeholder="Введите username">
+
+<button onclick="searchUser()">
+Найти
 </button>
 
+</div>
 
-<button
-class="black-button"
-onclick="removeCoins()">
-
-−50 🪙
-
-</button>
+<div id="searchResult"></div>
 
 </div>
 
 
-<div class="history">
+<div class="card">
 
-<div class="history-title">
+<h3>
+Список друзей
+</h3>
 
-ИСТОРИЯ ОПЕРАЦИЙ
-
-</div>
-
-
-<div id="history">
-
-<div class="empty">
-
-Операций пока нет.
-
-</div>
-
-</div>
-
-</div>
-
-
+<div id="friendsList">
+<p style="margin-top:20px;color:#999;font-size:10px;">
+Друзей пока нет.
+</p>
 </div>
 
 </div>
@@ -866,163 +749,57 @@ onclick="removeCoins()">
 </section>
 
 
-<!-- CARDS -->
+<!-- CHAT -->
 
-<section id="cards">
+<section id="chat"
+         class="page">
 
-<div class="container">
+<div class="small-label">
+SOCIAL / CHAT
+</div>
+
+<h1 class="page-title">
+ЛИЧНЫЙ<br>
+<span>ЧАТ</span>
+</h1>
 
 
-<div class="label">
-002 / CARDS
+<div class="chat-layout">
+
+<div id="chatList"
+     class="chat-list">
 </div>
 
 
-<h2 class="title">
+<div class="chat-window">
 
-ВИРТУАЛЬНЫЕ<br>
-
-<span>КАРТЫ</span>
-
-</h2>
-
-
-<div class="cards">
+<div id="chatTop"
+     class="chat-top">
+Выбери друга
+</div>
 
 
-<div class="card-box">
+<div id="messages"
+     class="messages">
 
-<h3>
-CLASSIC
-</h3>
-
-<p>
-Стандартная виртуальная
-карта ЧАД БАНКА.
-</p>
-
-
-<div class="mini-card mini-black">
-
-<b>
-CHAD BANK
-</b>
-
-<br><br>
-
-•••• 0001
-
+<div style="color:#999;font-size:10px;">
+Выбери друга слева.
 </div>
 
 </div>
 
 
-<div class="card-box">
+<div class="chat-input">
 
-<h3>
-ULTRA
-</h3>
+<input id="messageInput"
+       placeholder="Написать сообщение..."
+       maxlength="500"
+       disabled>
 
-<p>
-Яркая виртуальная карта
-для CHAD USER.
-</p>
-
-
-<div class="mini-card mini-green">
-
-<b>
-CHAD ULTRA
-</b>
-
-<br><br>
-
-•••• 0002
-
-</div>
-
-</div>
-
-
-<div class="card-box">
-
-<h3>
-CHAOS
-</h3>
-
-<p>
-Коллекционная виртуальная
-карта.
-</p>
-
-
-<div class="mini-card mini-pink">
-
-<b>
-CHAD CHAOS
-</b>
-
-<br><br>
-
-•••• 0003
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MARKET -->
-
-<section
-id="market"
-class="gray">
-
-<div class="container">
-
-
-<div class="label">
-003 / MARKET
-</div>
-
-
-<h2 class="title">
-
-CHAD<br>
-
-<span>MARKET</span>
-
-</h2>
-
-
-<div class="market">
-
-<div class="market-content">
-
-<div class="market-icon">
-🛒
-</div>
-
-
-<h3>
-
-MARKET ПОКА ПУСТ
-
-</h3>
-
-
-<p>
-
-В этой демо-версии товары
-пока не продаются.
-
-</p>
+<button class="send"
+        onclick="sendMessage()">
+➤
+</button>
 
 </div>
 
@@ -1035,46 +812,41 @@ MARKET ПОКА ПУСТ
 
 <!-- PROFILE -->
 
-<section id="profile">
+<section id="profile"
+         class="page">
 
-<div class="container">
-
-
-<div class="label">
-004 / PROFILE
+<div class="small-label">
+ACCOUNT / PROFILE
 </div>
 
-
-<h2 class="title">
-
-CHAD<br>
-
-<span>ID</span>
-
-</h2>
+<h1 class="page-title">
+ТВОЙ<br>
+<span>ПРОФИЛЬ</span>
+</h1>
 
 
-<div class="profile">
+<div class="card">
 
+<div class="profile-card">
 
-<div class="avatar">
+<div id="bigAvatar"
+     class="big-avatar">
 C
 </div>
 
+<div>
 
-<div class="username">
-
-@chad_user
-
+<div id="profileUsername"
+     class="profile-name">
+@user
 </div>
 
-
-<div class="userid">
-
-CHAD ID · 00000001
-
+<div id="profileEmail"
+     class="profile-email">
+email
 </div>
 
+</div>
 
 </div>
 
@@ -1083,171 +855,1060 @@ CHAD ID · 00000001
 </section>
 
 
-<footer>
-
-<div class="container">
-
-
-<div class="footer-logo">
-
-ЧАД БАНК
-
-</div>
-
-
-<div class="footer-text">
-
-Демонстрационный вымышленный проект.
-CHAD Coins и виртуальные карты
-не являются настоящими деньгами
-или банковскими продуктами.
-
-<br><br>
-
-© 2026 CHAD BANK
+</main>
 
 </div>
 
 </div>
 
-</footer>
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    updateDoc,
+    onSnapshot,
+    orderBy,
+    serverTimestamp,
+    runTransaction
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-<script>
+/* =====================================================
+   ВСТАВЬ СЮДА СВОЙ firebaseConfig
+   ===================================================== */
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-let balance = 0;
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvJp6ZeCPeeCpsLRjxScRaXZbWvu_RTNc",
+    authDomain: "chad-bank.firebaseapp.com",
+    projectId: "chad-bank",
+    storageBucket: "chad-bank.firebasestorage.app",
+    messagingSenderId: "332527972110",
+    appId: "1:332527972110:web:7ad16cd5f0e8a68e14715f",
+    measurementId: "G-FEXBCHWV3N"
+  };
 
-let transactions = [];
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 
 
-function updateBalance() {
+/* FIREBASE */
 
-    document.getElementById("balance").textContent =
-        balance.toLocaleString("ru-RU");
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+const db =
+    getFirestore(app);
+
+
+/* GLOBAL */
+
+let currentUser = null;
+let currentProfile = null;
+let currentFriend = null;
+let stopMessagesListener = null;
+
+
+/* AUTH UI */
+
+window.showRegister = function(){
+
+    document
+        .getElementById("loginForm")
+        .classList.add("hidden");
+
+    document
+        .getElementById("registerForm")
+        .classList.remove("hidden");
+
+};
+
+
+window.showLogin = function(){
+
+    document
+        .getElementById("registerForm")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginForm")
+        .classList.remove("hidden");
+
+};
+
+
+/* REGISTER */
+
+window.register = async function(){
+
+    const username =
+        document
+        .getElementById("registerUsername")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const email =
+        document
+        .getElementById("registerEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("registerPassword")
+        .value;
+
+
+    if(!/^[a-z0-9_]{3,20}$/.test(username)){
+
+        alert(
+            "Username: только a-z, 0-9 и _. От 3 до 20 символов."
+        );
+
+        return;
+    }
+
+
+    if(password.length < 6){
+
+        alert("Пароль должен быть минимум 6 символов.");
+
+        return;
+    }
+
+
+    try{
+
+        /*
+        Сначала резервируем username.
+        */
+
+        const usernameRef =
+            doc(db,"usernames",username);
+
+
+        const result =
+            await runTransaction(
+                db,
+                async transaction => {
+
+                    const existing =
+                        await transaction.get(usernameRef);
+
+                    if(existing.exists()){
+
+                        throw new Error(
+                            "USERNAME_EXISTS"
+                        );
+
+                    }
+
+                    return true;
+
+                }
+            );
+
+
+        if(!result){
+            return;
+        }
+
+
+        const credential =
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        const uid =
+            credential.user.uid;
+
+
+        await setDoc(
+            doc(db,"users",uid),
+            {
+                username:username,
+                email:email,
+                friends:[],
+                createdAt:serverTimestamp()
+            }
+        );
+
+
+        await setDoc(
+            usernameRef,
+            {
+                uid:uid
+            }
+        );
+
+
+        alert("Аккаунт создан!");
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        if(error.message === "USERNAME_EXISTS"){
+
+            alert("Этот username уже занят.");
+
+        }else{
+
+            alert(
+                "Ошибка регистрации: " +
+                error.message
+            );
+
+        }
+
+    }
+
+};
+
+
+/* LOGIN */
+
+window.login = async function(){
+
+    const email =
+        document
+        .getElementById("loginEmail")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+    }
+    catch(error){
+
+        alert(
+            "Не удалось войти: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+/* LOGOUT */
+
+window.logout = async function(){
+
+    await signOut(auth);
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(
+    auth,
+    async user => {
+
+        if(!user){
+
+            currentUser = null;
+
+            document
+                .getElementById("authScreen")
+                .classList.remove("hidden");
+
+            document
+                .getElementById("app")
+                .classList.add("hidden");
+
+            return;
+            }
+
+
+        currentUser = user;
+
+
+        const profileSnap =
+            await getDoc(
+                doc(db,"users",user.uid)
+            );
+
+
+        if(!profileSnap.exists()){
+
+            await signOut(auth);
+
+            return;
+
+        }
+
+
+        currentProfile =
+            profileSnap.data();
+
+
+        document
+            .getElementById("authScreen")
+            .classList.add("hidden");
+
+        document
+            .getElementById("app")
+            .classList.remove("hidden");
+
+
+        updateProfileUI();
+
+        loadFriends();
+
+    }
+);
+
+
+/* PROFILE UI */
+
+function updateProfileUI(){
+
+    const username =
+        currentProfile.username;
+
+
+    document
+        .getElementById("headerUsername")
+        .textContent =
+        "@" + username;
+
+
+    document
+        .getElementById("homeUsername")
+        .textContent =
+        username;
+
+
+    document
+        .getElementById("profileUsername")
+        .textContent =
+        "@" + username;
+
+
+    document
+        .getElementById("profileEmail")
+        .textContent =
+        currentProfile.email;
+
+
+    const letter =
+        username
+        .charAt(0)
+        .toUpperCase();
+
+
+    document
+        .getElementById("headerAvatar")
+        .textContent =
+        letter;
+
+
+    document
+        .getElementById("bigAvatar")
+        .textContent =
+        letter;
 
 }
 
 
-function addCoins() {
+/* PAGE */
 
-    balance += 100;
+window.openPage = function(
+    id,
+    button
+){
 
-    transactions.push({
-        name: "Демо-пополнение",
-        amount: 100
-    });
-
-    renderTransactions();
-
-    updateBalance();
-
-}
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            page =>
+            page.classList.remove("active")
+        );
 
 
-function removeCoins() {
+    document
+        .getElementById(id)
+        .classList.add("active");
 
-    if (balance < 50) {
 
-        alert("Недостаточно CHAD Coins.");
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(
+            btn =>
+            btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    if(id === "friends"){
+
+        loadFriends();
+
+    }
+
+
+    if(id === "chat"){
+
+        loadChatList();
+
+    }
+
+};
+
+
+/* SEARCH USER */
+
+window.searchUser = async function(){
+
+    const username =
+        document
+        .getElementById("userSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const result =
+        document
+        .getElementById("searchResult");
+
+
+    if(!username){
+
+        result.innerHTML =
+            "<p style='margin-top:20px;color:#999;font-size:10px;'>Введите username.</p>";
 
         return;
 
     }
 
-    balance -= 50;
 
-    transactions.push({
-        name: "Демо-расход",
-        amount: -50
-    });
-
-    renderTransactions();
-
-    updateBalance();
-
-}
+    const usernameSnap =
+        await getDoc(
+            doc(db,"usernames",username)
+        );
 
 
-function renderTransactions() {
+    if(!usernameSnap.exists()){
 
-    const history =
-        document.getElementById("history");
-
-
-    if (transactions.length === 0) {
-
-        history.innerHTML =
-            '<div class="empty">Операций пока нет.</div>';
+        result.innerHTML =
+            "<p style='margin-top:20px;color:#999;font-size:10px;'>Пользователь не найден.</p>";
 
         return;
 
     }
 
 
-    history.innerHTML =
-        transactions
-        .slice()
-        .reverse()
-        .map(function(transaction) {
+    const uid =
+        usernameSnap.data().uid;
 
-            const positive =
-                transaction.amount > 0;
 
-            return `
+    if(uid === currentUser.uid){
 
-                <div class="transaction">
+        result.innerHTML =
+            "<p style='margin-top:20px;color:#999;font-size:10px;'>Это ваш аккаунт.</p>";
 
-                    <div>
-<div class="transaction-name">
+        return;
 
-                            ${transaction.name}
+    }
 
-                        </div>
 
-                        <div class="transaction-date">
+    const userSnap =
+        await getDoc(
+            doc(db,"users",uid)
+        );
 
-                            Только что
 
-                        </div>
+    const user =
+        userSnap.data();
 
-                    </div>
 
-                    <div class="${
-                        positive ? "plus" : "minus"
-                    }">
+    result.innerHTML = "";
 
-                        ${positive ? "+" : ""}
-                        ${transaction.amount} 🪙
 
-                    </div>
+    const row =
+        document.createElement("div");
 
-                </div>
+    row.className =
+        "user-result";
 
-            `;
 
-        })
-        .join("");
+    const info =
+        document.createElement("div");
+
+    info.className =
+        "user-info";
+
+
+    const avatar =
+        document.createElement("div");
+
+    avatar.className =
+        "mini-avatar";
+
+    avatar.textContent =
+        user.username
+        .charAt(0)
+        .toUpperCase();
+
+
+    const text =
+        document.createElement("div");
+
+
+    const name =
+        document.createElement("div");
+
+    name.className =
+        "user-name";
+
+    name.textContent =
+        "@" + user.username;
+
+
+    text.appendChild(name);
+
+    info.appendChild(avatar);
+
+    info.appendChild(text);
+
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "add-btn";
+
+    button.textContent =
+        "Добавить";
+
+
+    button.onclick = () =>
+        sendFriendRequest(
+            uid,
+            user.username
+        );
+
+
+    row.appendChild(info);
+
+    row.appendChild(button);
+
+    result.
+        appendChild(row);
+
+};
+
+
+/* FRIEND REQUEST */
+
+async function sendFriendRequest(
+    uid,
+    username
+){
+
+    const requestId =
+        currentUser.uid +
+        "_" +
+        uid;
+
+
+    const requestRef =
+        doc(
+            db,
+            "friendRequests",
+            requestId
+        );
+
+
+    const existing =
+        await getDoc(requestRef);
+
+
+    if(existing.exists()){
+
+        alert("Заявка уже отправлена.");
+
+        return;
+
+    }
+
+
+    await setDoc(
+        requestRef,
+        {
+            from:currentUser.uid,
+            fromUsername:
+                currentProfile.username,
+
+            to:uid,
+
+            toUsername:
+                username,
+
+            status:"pending",
+
+            createdAt:
+                serverTimestamp()
+        }
+    );
+
+
+    alert("Заявка отправлена!");
 
 }
 
 
-function goTo(id) {
+/* LOAD FRIENDS */
 
-    const element =
-        document.getElementById(id);
+function loadFriends(){
 
-    if (element) {
+    const list =
+        document
+        .getElementById("friendsList");
 
-        element.scrollIntoView({
-            behavior: "smooth"
-        });
+
+    const friends =
+        currentProfile.friends || [];
+
+
+    if(friends.length === 0){
+
+        list.innerHTML =
+            "<p style='margin-top:20px;color:#999;font-size:10px;'>Друзей пока нет.</p>";
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    friends.forEach(
+        async uid => {
+
+            const snap =
+                await getDoc(
+                    doc(db,"users",uid)
+                );
+
+
+            if(!snap.exists()){
+                return;
+            }
+
+
+            const user =
+                snap.data();
+
+
+            const row =
+                document.createElement("div");
+
+            row.className =
+                "friend";
+
+
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "user-info";
+
+
+            const avatar =
+                document.createElement("div");
+
+            avatar.className =
+                "mini-avatar";
+
+            avatar.textContent =
+                user.username
+                .charAt(0)
+                .toUpperCase();
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "user-name";
+
+            name.textContent =
+                "@" + user.username;
+
+
+            info.appendChild(avatar);
+
+            info.appendChild(name);
+
+
+            const chatButton =
+                document.createElement("button");
+
+            chatButton.className =
+                "add-btn";
+
+            chatButton.textContent =
+                "Написать";
+
+
+            chatButton.onclick = () => {
+
+                openChatWith(
+                    uid,
+                    user.username
+                );
+
+            };
+
+
+            row.appendChild(info);
+
+            row.appendChild(chatButton);
+
+
+            list.appendChild(row);
+
+        }
+    );
+
+}
+
+
+/* CHAT LIST */
+
+async function loadChatList(){
+
+    const list =
+        document
+        .getElementById("chatList");
+
+
+    list.innerHTML = "";
+
+
+    const friends =
+        currentProfile.friends || [];
+
+
+    if(friends.length === 0){
+
+        list.innerHTML =
+            "<div style='padding:15px;color:#999;font-size:10px;'>Добавь друзей.</div>";
+
+        return;
+
+    }
+
+
+    for(
+        const uid of friends
+    ){
+
+        const snap =
+            await getDoc(
+                doc(db,"users",uid)
+            );
+
+
+        if(!snap.exists()){
+            continue;
+        }
+
+
+        const user =
+            snap.data();
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "chat-user";
+
+        item.textContent =
+            "@" + user.username;
+
+
+        item.onclick = () =>
+            openChatWith(
+                uid,
+                user.username
+            );
+
+
+        list.appendChild(item);
 
     }
 
 }
 
 
-updateBalance();
+/* CHAT ID */
+
+function getChatId(
+    uid1,
+    uid2
+){
+
+    return [
+        uid1,
+        uid2
+    ].sort().join("_");
+
+}
+
+
+/* OPEN CHAT */
+
+async function openChatWith(
+    uid,
+    username
+){
+
+    currentFriend = {
+        uid:uid,
+        username:username
+    };
+
+
+    document
+        .
+        getElementById("chatTop")
+        .textContent =
+        "@" + username;
+
+
+    document
+        .getElementById("messageInput")
+        .disabled =
+        false;
+
+
+    document
+        .getElementById("messages")
+        .innerHTML = "";
+
+
+    if(stopMessagesListener){
+
+        stopMessagesListener();
+
+    }
+
+
+    const chatId =
+        getChatId(
+            currentUser.uid,
+            uid
+        );
+
+
+    const messagesRef =
+        collection(
+            db,
+            "chats",
+            chatId,
+            "messages"
+        );
+
+
+    const q =
+        query(
+            messagesRef,
+            orderBy(
+                "createdAt",
+                "asc"
+            )
+        );
+
+
+    stopMessagesListener =
+        onSnapshot(
+            q,
+            snapshot => {
+
+                const box =
+                    document
+                    .getElementById("messages");
+
+
+                box.innerHTML = "";
+
+
+                snapshot.forEach(
+                    messageDoc => {
+
+                        const message =
+                            messageDoc.data();
+
+
+                        const div =
+                            document
+                            .createElement("div");
+
+
+                        div.className =
+                            "message";
+
+
+                        if(
+                            message.senderId ===
+                            currentUser.uid
+                        ){
+
+                            div.classList.add("me");
+
+                        }
+
+
+                        div.textContent =
+                            message.text;
+
+
+                        box.appendChild(div);
+
+                    }
+                );
+
+
+                box.scrollTop =
+                    box.scrollHeight;
+
+            }
+        );
+
+}
+
+
+/* SEND MESSAGE */
+
+window.sendMessage = async function(){
+
+    if(!currentFriend){
+        return;
+    }
+
+
+    const input =
+        document
+        .getElementById("messageInput");
+
+
+    const text =
+        input.value.trim();
+
+
+    if(!text){
+        return;
+    }
+
+
+    const chatId =
+        getChatId(
+            currentUser.uid,
+            currentFriend.uid
+        );
+
+
+    await addDoc(
+        collection(
+            db,
+            "chats",
+            chatId,
+            "messages"
+        ),
+        {
+            text:text,
+            senderId:
+                currentUser.uid,
+
+            senderUsername:
+                currentProfile.username,
+
+            createdAt:
+                serverTimestamp()
+        }
+    );
+
+
+    input.value = "";
+
+};
+
+
+/* ENTER */
+
+document
+    .getElementById("messageInput")
+    .addEventListener(
+        "keydown",
+        event => {
+
+            if(event.key === "Enter"){
+
+                window.sendMessage();
+
+            }
+
+        }
+    );
 
 </script>
 
