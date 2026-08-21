@@ -1,0 +1,356 @@
+onclick="addCoins()">
++100 🪙
+</button>
+
+<button
+class="dark"
+onclick="removeCoins()">
+−50 🪙
+</button>
+
+</div>
+
+
+<div class="history">
+
+<div class="history-title">
+ИСТОРИЯ ОПЕРАЦИЙ
+</div>
+
+<div id="history">
+
+<div class="empty">
+Операций пока нет.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CARDS -->
+
+<section id="cards">
+
+<div class="container">
+
+<div class="overline">
+002 / CARDS
+</div>
+
+<h2 class="title">
+ТВОИ<br>
+<span>КАРТЫ</span>
+</h2>
+
+
+<div class="cards">
+
+
+<div class="card-box">
+
+<h3>CLASSIC</h3>
+
+<p>
+Минималистичная виртуальная
+карта ЧАД БАНКА.
+</p>
+
+<div class="mini black-card">
+
+<b>CHAD BANK</b>
+
+<br><br>
+
+•••• 0001
+
+</div>
+
+</div>
+
+
+<div class="card-box">
+
+<h3>ULTRA</h3>
+
+<p>
+Яркая виртуальная карта
+для CHAD USER.
+</p>
+
+<div class="mini green-card">
+
+<b>CHAD ULTRA</b>
+
+<br><br>
+
+•••• 0002
+
+</div>
+
+</div>
+
+
+<div class="card-box">
+
+<h3>CHAOS</h3>
+
+<p>
+Коллекционная виртуальная
+карта ЧАД БАНКА.
+</p>
+
+<div class="mini pink-card">
+
+<b>CHAD CHAOS</b>
+
+<br><br>
+
+•••• 0003
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MARKET -->
+
+<section
+id="market"
+class="gray">
+
+<div class="container">
+
+<div class="overline">
+003 / MARKET
+</div>
+
+<h2 class="title">
+CHAD<br>
+<span>MARKET</span>
+</h2>
+
+
+<div class="market-box">
+
+<div class="market-empty">
+
+<div class="market-icon">
+🛒
+</div>
+
+<h3>
+MARKET ПОКА ПУСТ
+</h3>
+
+<p>
+Здесь в будущем появятся товары пользователей.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile">
+
+<div class="container">
+
+<div class="overline">
+004 / PROFILE
+</div>
+
+<h2 class="title">
+CHAD<br>
+<span>ID</span>
+</h2>
+
+
+<div class="profile">
+
+<div class="avatar">
+C
+</div>
+
+<div class="username">
+@chad_user
+</div>
+
+<div class="id">
+CHAD ID · 00000001
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="container">
+
+<div class="footer-logo">
+ЧАД БАНК
+</div>
+
+<div class="footer-text">
+Демонстрационный вымышленный проект.
+CHAD Coins и виртуальные карты
+не являются настоящими банковскими
+продуктами или реальными деньгами.
+<br><br>
+© 2026 CHAD BANK
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+let balance = 0;
+let operations = [];
+
+
+function update(){
+
+document.getElementById("balance")
+.textContent =
+balance.toLocaleString("ru-RU");
+
+}
+
+
+function addCoins(){
+
+balance += 100;
+
+operations.push({
+name:"Демо-пополнение",
+amount:100
+});
+
+render();
+
+}
+
+
+function removeCoins(){
+
+if(balance < 50){
+
+alert("Недостаточно CHAD Coins");
+
+return;
+
+}
+
+balance -= 50;
+
+operations.push({
+name:"Демо-расход",
+amount:-50
+});
+
+render();
+
+}
+
+
+function render(){
+
+update();
+
+const history =
+document.getElementById("history");
+
+if(operations.length === 0){
+
+history.innerHTML =
+'<div class="empty">Операций пока нет.</div>';
+
+return;
+
+}
+
+
+history.innerHTML =
+operations
+.slice()
+.reverse()
+.map(operation => `
+
+<div class="operation">
+
+<div>
+
+<div class="operation-name">
+${operation.name}
+</div>
+
+<div class="operation-date">
+Только что
+</div>
+
+</div>
+
+<div class="${
+operation.amount > 0
+? "plus"
+: "minus"
+}">
+
+${operation.amount > 0 ? "+" : ""}
+${operation.amount} 🪙
+
+</div>
+
+</div>
+
+`)
+.join("");
+
+}
+
+
+function scrollToId(id){
+
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+update();
+
+</script>
+
+</body>
+</html>
