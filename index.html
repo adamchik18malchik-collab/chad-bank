@@ -6,447 +6,355 @@
 <title>CHAD BANK</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f3f3ef;
-    color:#111;
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f3ef;
+    color: #111;
 }
 
-button{
-    border:0;
-    cursor:pointer;
-    font-weight:800;
+button {
+    border: 0;
+    cursor: pointer;
+    font-weight: 800;
 }
 
-input{
-    outline:none;
+input {
+    outline: none;
 }
 
-.hidden{
-    display:none!important;
+.hidden {
+    display: none !important;
 }
 
 /* AUTH */
 
-.auth{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-
+.auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            #eaff00 0,
-            transparent 25%
-        ),
+        radial-gradient(circle at 10% 10%, #eaff00 0, transparent 25%),
         #f3f3ef;
 }
 
-.auth-box{
-    width:430px;
-    max-width:100%;
-    padding:35px;
-
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:30px;
-
-    box-shadow:0 30px 80px rgba(0,0,0,.08);
+.auth-box {
+    width: 430px;
+    max-width: 100%;
+    padding: 35px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.08);
 }
 
-.logo{
-    font-size:32px;
-    font-weight:1000;
-    letter-spacing:-3px;
+.logo {
+    font-size: 32px;
+    font-weight: 1000;
+    letter-spacing: -3px;
 }
 
-.logo span{
-    color:#b7ce00;
+.logo span {
+    color: #b7ce00;
 }
 
-.subtitle{
-    margin-top:10px;
-    color:#999;
-    font-size:11px;
-    line-height:1.6;
+.subtitle {
+    margin-top: 10px;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.6;
 }
 
-.auth-box h2{
-    margin-top:30px;
-    font-size:27px;
+.auth-box h2 {
+    margin-top: 30px;
+    font-size: 27px;
 }
 
-.field{
-    margin-top:16px;
+.field {
+    margin-top: 16px;
 }
 
-.field label{
-    display:block;
-    margin-bottom:7px;
-
-    font-size:9px;
-    font-weight:900;
-    color:#777;
-    letter-spacing:1px;
+.field label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 9px;
+    font-weight: 900;
+    color: #777;
 }
 
-.field input{
-    width:100%;
-    padding:15px;
-
-    border:1px solid #ddd;
-    border-radius:14px;
-
-    font-size:14px;
+.field input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    font-size: 14px;
 }
 
-.primary{
-    width:100%;
-    margin-top:20px;
-    padding:16px;
-
-    border-radius:15px;
-
-    background:#111;
-    color:#fff;
+.primary {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 15px;
+    background: #111;
+    color: white;
 }
 
-.switch{
-    margin-top:20px;
-    text-align:center;
-
-    color:#999;
-    font-size:11px;
+.switch {
+    margin-top: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 11px;
 }
 
-.switch button{
-    background:none;
-    color:#7b9200;
+.switch button {
+    background: none;
+    color: #789000;
 }
 
 /* APP */
 
-.app{
-    min-height:100vh;
+.app {
+    min-height: 100vh;
 }
 
-.header{
-    height:72px;
-    padding:0 25px;
-
-    position:sticky;
-    top:0;
-    z-index:10;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:rgba(255,255,255,.9);
-    backdrop-filter:blur(15px);
-
-    border-bottom:1px solid #ddd;
+.header {
+    height: 72px;
+    padding: 0 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #ddd;
 }
 
-.header-logo{
-    font-size:24px;
-    font-weight:1000;
-    letter-spacing:-2px;
+.header-logo {
+    font-size: 24px;
+    font-weight: 1000;
+    letter-spacing: -2px;
 }
 
-.header-logo span{
-    color:#b7ce00;
+.header-logo span {
+    color: #b7ce00;
 }
 
-.header-user{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.avatar{
-    width:40px;
-    height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-    background:#ddff00;
-
-    font-weight:1000;
+.avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ddff00;
+    font-weight: 1000;
 }
 
-.logout{
-    padding:10px 15px;
-    border-radius:20px;
-
-    background:#111;
-    color:white;
-
-    font-size:9px;
+.logout {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: #111;
+    color: white;
+    font-size: 9px;
 }
 
-.layout{
-    max-width:1250px;
-    margin:auto;
-    padding:25px;
-
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:20px;
+.layout {
+    max-width: 1250px;
+    margin: auto;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
 }
 
-.sidebar{
-    height:max-content;
-
-    position:sticky;
-    top:97px;
-
-    padding:10px;
-
-    background:white;
-    border:1px solid #ddd;
-    border-radius:25px;
+.sidebar {
+    height: max-content;
+    position: sticky;
+    top: 97px;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
 }
 
-.nav{
-    width:100%;
-    padding:15px;
-    margin-bottom:5px;
-
-    border-radius:14px;
-    background:transparent;
-
-    text-align:left;
-    font-size:11px;
+.nav {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 14px;
+    background: transparent;
+    text-align: left;
+    font-size: 11px;
 }
 
 .nav:hover,
-.nav.active{
-    background:#eaff00;
+.nav.active {
+    background: #eaff00;
 }
 
-.page{
-    display:none;
+.page {
+    display: none;
 }
 
-.page.active{
-    display:block;
+.page.active {
+    display: block;
 }
 
-.label{
-    color:#777;
-
-    font-size:9px;
-    font-weight:900;
-    letter-spacing:3px;
+.label {
+    color: #777;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
-.title{
-    margin-top:8px;
-
-    font-size:65px;
-    font-weight:1000;
-
-    line-height:.85;
-    letter-spacing:-6px;
+.title {
+    margin-top: 8px;
+    font-size: 65px;
+    font-weight: 1000;
+    line-height: .85;
+    letter-spacing: -6px;
 }
 
-.title span{
-    color:#b7ce00;
+.title span {
+    color: #b7ce00;
 }
 
-.card{
-    margin-top:25px;
-    padding:25px;
-
-    background:white;
-    border:1px solid #ddd;
-    border-radius:25px;
+.card {
+    margin-top: 25px;
+    padding: 25px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 25px;
 }
 
-.balance{
-    margin-top:25px;
-    padding:30px;
-
-    background:#111;
-    color:white;
-
-    border-radius:25px;
+.balance {
+    margin-top: 25px;
+    padding: 30px;
+    background: #111;
+    color: white;
+    border-radius: 25px;
 }
 
-.balance-label{
-    color:#777;
-    font-size:9px;
-    letter-spacing:3px;
+.balance-label {
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 3px;
 }
 
-.balance-number{
-    margin-top:10px;
-
-    font-size:52px;
-    font-weight:1000;
-    letter-spacing:-4px;
+.balance-number {
+    margin-top: 10px;
+    font-size: 52px;
+    font-weight: 1000;
 }
 
-.coins{
-    color:#dfff00;
-    font-size:12px;
-    letter-spacing:0;
+.coins {
+    color: #dfff00;
+    font-size: 12px;
 }
 
-.stat-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-
-    margin-top:15px;
+.search {
+    display: flex;
+    gap: 10px;
 }
 
-.stat{
-    padding:20px;
-    background:#f5f5f1;
-    border-radius:18px;
+.search input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+}
+    .search button {
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #111;
+    color: white;
 }
 
-.stat small{
-    color:#888;
-    font-size:9px;
+.user-row {
+    margin-top: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #eee;
 }
 
-.stat strong{
-    display:block;
-    margin-top:8px;
-    font-size:20px;
+.mini-avatar,
+.big-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eaff00;
+    font-weight: 1000;
 }
 
-.search{
-    display:flex;
-    gap:10px;
+.mini-avatar {
+    width: 42px;
+    height: 42px;
 }
 
-.search input{
-    flex:1;
-
-    padding:14px;
-
-    border:1px solid #ddd;
-    border-radius:14px;
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.search button{
-    padding:14px 20px;
-
-    border-radius:14px;
-
-    background:#111;
-    color:white;
+.big-avatar {
+    width: 85px;
+    height: 85px;
+    font-size: 32px;
 }
 
-.user-row{
-    margin-top:15px;
-    padding:15px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border-bottom:1px solid #eee;
+.profile-name {
+    font-size: 25px;
+    font-weight: 1000;
 }
 
-.user-info{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.profile-email {
+    margin-top: 5px;
+    color: #999;
+    font-size: 10px;
 }
 
-.mini-avatar{
-    width:42px;
-    height:42px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#eaff00;
-
-    font-weight:1000;
-}
-
-.profile{
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.big-avatar{
-    width:85px;
-    height:85px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:#dfff00;
-
-    font-size:32px;
-    font-weight:1000;
-}
-
-.profile-name{
-    font-size:25px;
-    font-weight:1000;
-}
-
-.profile-email{
-    margin-top:5px;
-    color:#999;
-    font-size:10px;
-}
-
-@media(max-width:800px){
-
-    .layout{
-        grid-template-columns:1fr;
-        padding:12px;
+@media(max-width:800px) {
+    .layout {
+        grid-template-columns: 1fr;
+        padding: 12px;
     }
 
-    .sidebar{
-        position:static;
-
-        display:flex;
-        overflow:auto;
+    .sidebar {
+        position: static;
+        display: flex;
+        overflow: auto;
     }
 
-    .nav{
-        min-width:105px;
-        text-align:center;
+    .nav {
+        min-width: 105px;
+        text-align: center;
     }
 
-    .title{
-        font-size:45px;
+    .title {
+        font-size: 45px;
     }
 
-    .stat-grid{
-        grid-template-columns:1fr;
-    }
-
-    .header{
-        padding:0 12px;
+    .header {
+        padding: 0 12px;
     }
 }
 </style>
@@ -458,131 +366,107 @@ input{
 
 <div id="authScreen" class="auth">
 
-<div class="auth-box">
+    <div class="auth-box">
 
-<div class="logo">
-CHAD <span>BANK</span>
-</div>
+        <div class="logo">
+            CHAD <span>BANK</span>
+        </div>
 
-<div class="subtitle">
-Социальный банк нового поколения.
-Создай аккаунт и начни пользоваться CHAD BANK.
-</div>
+        <div class="subtitle">
+            Социальный банк нового поколения.
+            Создай аккаунт и пользуйся CHAD BANK.
+        </div>
 
+        <!-- LOGIN -->
 
-<!-- LOGIN -->
+        <div id="loginForm">
 
-<div id="loginForm">
+            <h2>Вход</h2>
 
-<h2>Вход</h2>
+            <div class="field">
+                <label>EMAIL</label>
+                <input
+                    id="loginEmail"
+                    type="email"
+                    placeholder="example@mail.com"
+                >
+            </div>
 
-<div class="field">
+            <div class="field">
+                <label>ПАРОЛЬ</label>
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Введите пароль"
+                >
+            </div>
 
-<label>EMAIL</label>
+            <button
+                class="primary"
+                id="loginButton"
+            >
+                Войти
+            </button>
 
-<input
-id="loginEmail"
-type="email"
-placeholder="example@mail.com">
+            <div class="switch">
+                Нет аккаунта?
+                <button id="registerButton">
+                    Зарегистрироваться
+                </button>
+            </div>
 
-</div>
+        </div>
 
-<div class="field">
+        <!-- REGISTER -->
 
-<label>ПАРОЛЬ</label>
+        <div id="registerForm" class="hidden">
 
-<input
-id="loginPassword"
-type="password"
-placeholder="Введите пароль">
+            <h2>Регистрация</h2>
 
-</div>
+            <div class="field">
+                <label>USERNAME</label>
+                <input
+                    id="registerUsername"
+                    maxlength="20"
+                    placeholder="chad_user"
+                >
+            </div>
 
-<button
-class="primary"
-id="loginButton">
+            <div class="field">
+                <label>EMAIL</label>
+                <input
+                    id="registerEmail"
+                    type="email"
+                    placeholder="example@mail.com"
+                >
+            </div>
 
-Войти
+            <div class="field">
+                <label>ПАРОЛЬ</label>
+                <input
+                    id="registerPassword"
+                    type="password"
+                    placeholder="Минимум 6 символов"
+                >
+            </div>
 
-</button>
+            <button
+                class="primary"
+                id="createAccountButton"
+            >
+                Создать аккаунт
+            </button>
 
-<div class="switch">
+            <div class="switch">
+                Уже есть аккаунт?
+                <button id="loginSwitchButton">
+                    Войти
+                </button>
+            </div>
 
-Нет аккаунта?
+        </div>
 
-<button id="registerButton">
-
-Зарегистрироваться
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- REGISTER -->
-
-<div id="registerForm" class="hidden">
-
-<h2>Регистрация</h2>
-
-<div class="field">
-
-<label>USERNAME</label>
-
-<input
-id="registerUsername"
-maxlength="20"
-placeholder="chad_user">
-
-</div>
-
-<div class="field">
-
-<label>EMAIL</label>
-
-<input
-id="registerEmail"
-type="email"
-placeholder="example@mail.com">
-
-</div>
-
-<div class="field">
-
-<label>ПАРОЛЬ</label>
-
-<input
-id="registerPassword"
-type="password"
-placeholder="Минимум 6 символов">
-
-</div>
-
-<button
-class="primary"
-id="createAccountButton">
-
-Создать аккаунт
-
-</button>
-
-<div class="switch">
-
-Уже есть аккаунт?
-
-<button id="loginSwitchButton">
-
-Войти
-
-</button>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </div>
 
@@ -591,291 +475,218 @@ id="createAccountButton">
 
 <div id="app" class="app hidden">
 
-<header class="header">
+    <header class="header">
 
-<div class="header-logo">
-CHAD <span>BANK</span>
-</div>
+        <div class="header-logo">
+            CHAD <span>BANK</span>
+        </div>
 
-<div class="header-user">
+        <div class="header-user">
 
-<div
-id="headerAvatar"
-class="avatar">
-C
-</div>
+            <div id="headerAvatar" class="avatar">
+                C
+            </div>
 
-<span id="headerUsername">
-@user
-</span>
+            <span id="headerUsername">
+                @user
+            </span>
 
-<button
-class="logout"
-id="logoutButton">
+            <button
+                class="logout"
+                id="logoutButton"
+            >
+                ВЫЙТИ
+            </button>
 
-ВЫЙТИ
+        </div>
 
-</button>
+    </header>
 
-</div>
 
-</header>
+    <div class="layout">
 
+        <aside class="sidebar">
 
-<div class="layout">
+            <button class="nav active" data-page="home">
+                🏠 Главная
+            </button>
 
-<aside class="sidebar">
+            <button class="nav" data-page="users">
+                👥 Пользователи
+            </button>
 
-<button
-class="nav active"
-data-page="home">
+            <button class="nav" data-page="chat">
+                💬 Чаты
+            </button>
 
-🏠 Главная
+            <button class="nav" data-page="profile">
+                👤 Профиль
+            </button>
 
-</button>
+        </aside>
 
-<button
-class="nav"
-data-page="friends">
 
-👥 Пользователи
+        <main>
 
-</button>
+            <!-- HOME -->
 
-<button
-class="nav"
-data-page="chat">
+            <section id="home" class="page active">
 
-💬 Чаты
+                <div class="label">
+                    CHAD BANK / DASHBOARD
+                </div>
 
-</button>
+                <div class="title">
+                    ПРИВЕТ,<br>
+                    <span id="homeUsername">USER</span>
+                </div>
 
-<button
-class="nav"
-data-page="profile">
+                <div class="balance">
 
-👤 Профиль
+                    <div class="balance-label">
+                        ТВОЙ БАЛАНС
+                    </div>
 
-</button>
+                    <div class="balance-number">
+                        <span id="balance">0</span>
+                        <span class="coins">
+                            CHAD COINS
+                        </span>
+                    </div>
 
-</aside>
+                </div>
 
+                <div class="card">
 
-<main>
+                    <h3>
+                        Добро пожаловать 👋
+                    </h3>
 
+                    <p style="margin-top:10px;color:#888;font-size:11px;line-height:1.7;">
+                        Это твой личный кабинет CHAD BANK.
+                        Здесь находятся твой баланс, пользователи,
+                        чаты и профиль.
+                    </p>
 
-<!-- HOME -->
+                </div>
 
-<section
-id="home"
-class="page active">
+            </section>
 
-<div class="label">
-CHAD BANK / DASHBOARD
-</div>
 
-<div class="title">
+            <!-- USERS -->
 
-ПРИВЕТ,<br>
+            <section id="users" class="page">
 
-<span id="homeUsername">
-USER
-</span>
+                <div class="label">
+                    SOCIAL / USERS
+                </div>
 
-</div>
+                <div class="title">
+                    ПОИСК<br>
+                    <span>ЮЗЕРОВ</span>
+                </div>
 
-<div class="balance">
+                <div class="card">
 
-<div class="balance-label">
-ТВОЙ БАЛАНС
-</div>
+                    <div class="search">
 
-<div class="balance-number">
+                        <input
+                            id="userSearch"
+                            placeholder="Введите username"
+                        >
 
-<span id="balance">
-0
-</span>
+                        <button id="searchButton">
+                            Найти
+                        </button>
 
-<span class="coins">
-CHAD COINS
-</span>
+                    </div>
 
-</div>
-</div>
+                    <div id="searchResult"></div>
 
-<div class="stat-grid">
+                </div>
 
-<div class="stat">
+            </section>
 
-<small>
-СТАТУС
-</small>
 
-<strong>
-ACTIVE
-</strong>
+            <!-- CHAT -->
 
-</div>
+            <section id="chat" class="page">
 
-<div class="stat">
+                <div class="label">
+                    SOCIAL / MESSAGES
+                </div>
 
-<small>
-АККАУНТ
-</small>
+                <div class="title">
+                    ЛИЧНЫЕ<br>
+                    <span>ЧАТЫ</span>
+                </div>
 
-<strong>
-USER
-</strong>
+                <div class="card">
 
-</div>
+                    <h3>
+                        💬 Чаты
+                    </h3>
 
-</div>
+                    <p style="margin-top:10px;color:#888;font-size:11px;">
+                        Раздел чатов готов для подключения.
+                    </p>
 
-<div class="card">
+                </div>
 
-<h3>
-Добро пожаловать 👋
-</h3>
+            </section>
 
-<p style="margin-top:10px;color:#888;font-size:11px;line-height:1.7;">
 
-Это твой личный кабинет CHAD BANK.
-Здесь будут баланс, пользователи, чаты и профиль.
+            <!-- PROFILE -->
 
-</p>
+            <section id="profile" class="page">
 
-</div>
+                <div class="label">
+                    ACCOUNT / PROFILE
+                </div>
 
-</section>
+                <div class="title">
+                    ТВОЙ<br>
+                    <span>ПРОФИЛЬ</span>
+                </div>
 
+                <div class="card">
 
-<!-- USERS -->
+                    <div class="profile">
 
-<section
-id="friends"
-class="page">
+                        <div
+                            id="bigAvatar"
+                            class="big-avatar"
+                        >
+                            C
+                        </div>
 
-<div class="label">
-SOCIAL / USERS
-</div>
+                        <div>
 
-<div class="title">
+                            <div
+                                id="profileUsername"
+                                class="profile-name"
+                            >
+                                @user
+                                </div>
 
-ПОИСК<br>
+                            <div
+                                id="profileEmail"
+                                class="profile-email"
+                            >
+                                email
+                            </div>
 
-<span>ЮЗЕРОВ</span>
+                        </div>
 
-</div>
+                    </div>
 
-<div class="card">
+                </div>
 
-<div class="search">
+            </section>
 
-<input
-id="userSearch"
-placeholder="Введите username">
+        </main>
 
-<button id="searchButton">
-Найти
-</button>
-
-</div>
-
-<div id="searchResult"></div>
-
-</div>
-
-</section>
-
-
-<!-- CHAT -->
-
-<section
-id="chat"
-class="page">
-
-<div class="label">
-SOCIAL / MESSAGES
-</div>
-
-<div class="title">
-
-ЛИЧНЫЕ<br>
-
-<span>ЧАТЫ</span>
-
-</div>
-
-<div class="card">
-
-<h3>
-💬 Чаты
-</h3>
-
-<p style="margin-top:10px;color:#888;font-size:11px;line-height:1.7;">
-
-Система личных сообщений будет подключена сюда.
-
-</p>
-
-</div>
-
-</section>
-
-
-<!-- PROFILE -->
-
-<section
-id="profile"
-class="page">
-
-<div class="label">
-ACCOUNT / PROFILE
-</div>
-
-<div class="title">
-
-ТВОЙ<br>
-
-<span>ПРОФИЛЬ</span>
-
-</div>
-
-<div class="card">
-
-<div class="profile">
-
-<div
-id="bigAvatar"
-class="big-avatar">
-C
-</div>
-
-<div>
-
-<div
-id="profileUsername"
-class="profile-name">
-@user
-</div>
-
-<div
-id="profileEmail"
-class="profile-email">
-email
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-</div>
+    </div>
 
 </div>
 
@@ -904,7 +715,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* ТВОЙ FIREBASE */
+/* ТВОЙ FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -921,20 +732,16 @@ const firebaseConfig = {
     appId: "1:332527972110:web:7ad16cd5f0e8a68e14715f",
 
     measurementId: "G-FEXBCHWV3N"
-
 };
 
 
-/* INIT */
+/* FIREBASE */
 
-const app =
-    initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth =
-    getAuth(app);
+const auth = getAuth(app);
 
-const db =
-    getFirestore(app);
+const db = getFirestore(app);
 
 
 /* ELEMENTS */
@@ -956,11 +763,11 @@ let currentUser = null;
 let currentProfile = null;
 
 
-/* SWITCH LOGIN / REGISTER */
+/* LOGIN / REGISTER */
 
 document
 .getElementById("registerButton")
-.addEventListener("click", () => {
+.addEventListener("click", function() {
 
     loginForm.classList.add("hidden");
     registerForm.classList.remove("hidden");
@@ -970,7 +777,7 @@ document
 
 document
 .getElementById("loginSwitchButton")
-.addEventListener("click", () => {
+.addEventListener("click", function() {
 
     registerForm.classList.add("hidden");
     loginForm.classList.remove("hidden");
@@ -982,7 +789,7 @@ document
 
 document
 .getElementById("createAccountButton")
-.addEventListener("click", async () => {
+.addEventListener("click", async function() {
 
     const username =
         document
@@ -1003,17 +810,17 @@ document
         .value;
 
 
-    if(!/^[a-z0-9_]{3,20}$/.test(username)){
+    if (!/^[a-z0-9_]{3,20}$/.test(username)) {
 
         alert(
-            "Username: 3-20 символов, только a-z, 0-9 и _"
+            "Username должен содержать 3–20 символов: a-z, 0-9 или _"
         );
 
         return;
     }
 
 
-    if(password.length < 6){
+    if (password.length < 6) {
 
         alert(
             "Пароль должен быть минимум 6 символов."
@@ -1023,9 +830,7 @@ document
     }
 
 
-    try{
-
-        /* Проверяем username */
+    try {
 
         const usernameRef =
             doc(
@@ -1034,12 +839,11 @@ document
                 username
             );
 
-
         const usernameSnap =
             await getDoc(usernameRef);
 
 
-        if(usernameSnap.exists()){
+        if (usernameSnap.exists()) {
 
             alert(
                 "Этот username уже занят."
@@ -1048,8 +852,6 @@ document
             return;
         }
 
-
-        /* Создаём аккаунт */
 
         const credential =
             await createUserWithEmailAndPassword(
@@ -1063,8 +865,6 @@ document
             credential.user.uid;
 
 
-        /* Профиль */
-
         await setDoc(
             doc(
                 db,
@@ -1072,22 +872,14 @@ document
                 uid
             ),
             {
-
                 username: username,
-
                 email: email,
-
-                friends: [],
-
                 balance: 0,
-
+                friends: [],
                 createdAt: new Date()
-
             }
         );
 
-
-        /* Username */
 
         await setDoc(
             usernameRef,
@@ -1097,13 +889,9 @@ document
         );
 
 
-        alert(
-            "Аккаунт создан!"
-        );
+        alert("Аккаунт создан!");
 
-    }
-
-    catch(error){
+    } catch (error) {
 
         console.error(error);
 
@@ -1120,8 +908,9 @@ document
 /* LOGIN */
 
 document
-.getElementById("loginButton")
-.addEventListener("click", async () => {
+.
+    getElementById("loginButton")
+.addEventListener("click", async function() {
 
     const email =
         document
@@ -1135,7 +924,7 @@ document
         .value;
 
 
-    if(!email || !password){
+    if (!email || !password) {
 
         alert(
             "Введите email и пароль."
@@ -1145,7 +934,7 @@ document
     }
 
 
-    try{
+    try {
 
         await signInWithEmailAndPassword(
             auth,
@@ -1153,9 +942,7 @@ document
             password
         );
 
-    }
-
-    catch(error){
+    } catch (error) {
 
         console.error(error);
 
@@ -1173,7 +960,7 @@ document
 
 document
 .getElementById("logoutButton")
-.addEventListener("click", async () => {
+.addEventListener("click", async function() {
 
     await signOut(auth);
 
@@ -1184,19 +971,15 @@ document
 
 onAuthStateChanged(
     auth,
-    async user => {
+    async function(user) {
 
-        if(!user){
+        if (!user) {
 
             currentUser = null;
 
-            authScreen
-                .classList
-                .remove("hidden");
+            authScreen.classList.remove("hidden");
 
-            appScreen
-                .classList
-                .add("hidden");
+            appScreen.classList.add("hidden");
 
             return;
         }
@@ -1205,50 +988,59 @@ onAuthStateChanged(
         currentUser = user;
 
 
-        const profileSnap =
-            await getDoc(
-                doc(
-                    db,
-                    "users",
-                    user.uid
-                )
-            );
+        try {
+
+            const profileSnap =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
 
 
-        if(!profileSnap.exists()){
+            if (!profileSnap.exists()) {
+
+                alert(
+                    "Профиль не найден."
+                );
+
+                await signOut(auth);
+
+                return;
+            }
+
+
+            currentProfile =
+                profileSnap.data();
+
+
+            authScreen.classList.add("hidden");
+
+            appScreen.classList.remove("hidden");
+
+
+            updateProfile();
+
+        } catch (error) {
+
+            console.error(error);
 
             alert(
-                "Профиль пользователя не найден."
+                "Ошибка загрузки профиля:\n" +
+                error.message
             );
 
-            await signOut(auth);
-
-            return;
         }
-
-
-        currentProfile =
-            profileSnap.data();
-
-
-        authScreen
-            .classList
-            .add("hidden");
-
-        appScreen
-            .classList
-            .remove("hidden");
-
-
-        updateProfile();
 
     }
 );
 
 
-/* PROFILE */
+/* UPDATE PROFILE */
 
-function updateProfile(){
+function updateProfile() {
 
     const username =
         currentProfile.username;
@@ -1260,44 +1052,44 @@ function updateProfile(){
 
 
     document
-        .getElementById("headerUsername")
-        .textContent =
+    .getElementById("headerUsername")
+    .textContent =
         "@" + username;
 
 
     document
-        .getElementById("homeUsername")
-        .textContent =
+    .getElementById("homeUsername")
+    .textContent =
         username;
 
 
     document
-        .getElementById("profileUsername")
-        .textContent =
+    .getElementById("profileUsername")
+    .textContent =
         "@" + username;
 
 
     document
-        .getElementById("profileEmail")
-        .textContent =
+    .getElementById("profileEmail")
+    .textContent =
         currentProfile.email;
 
 
     document
-        .getElementById("headerAvatar")
-        .textContent =
+    .getElementById("headerAvatar")
+    .textContent =
         letter;
 
 
     document
-        .getElementById("bigAvatar")
-        .textContent =
+    .getElementById("bigAvatar")
+    .textContent =
         letter;
 
 
     document
-        .getElementById("balance")
-        .textContent =
+    .getElementById("balance")
+    .textContent =
         currentProfile.balance || 0;
 
 }
@@ -1307,18 +1099,17 @@ function updateProfile(){
 
 document
 .querySelectorAll(".nav")
-.forEach(button => {
+.forEach(function(button) {
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function() {
 
         const page =
-            button.dataset.
-            page;
+            button.dataset.page;
 
 
         document
         .querySelectorAll(".page")
-        .forEach(section => {
+        .forEach(function(section) {
 
             section.classList.remove("active");
 
@@ -1327,13 +1118,12 @@ document
 
         document
         .getElementById(page)
-        .classList
-        .add("active");
+        .classList.add("active");
 
 
         document
         .querySelectorAll(".nav")
-        .forEach(item => {
+        .forEach(function(item) {
 
             item.classList.remove("active");
 
@@ -1347,11 +1137,11 @@ document
 });
 
 
-/* SEARCH */
+/* SEARCH USERS */
 
 document
 .getElementById("searchButton")
-.addEventListener("click", async () => {
+.addEventListener("click", async function() {
 
     const username =
         document
@@ -1360,22 +1150,21 @@ document
         .trim()
         .toLowerCase();
 
-
     const result =
         document
         .getElementById("searchResult");
 
 
-    if(!username){
+    if (!username) {
 
         result.innerHTML =
-            "<p style='margin-top:15px;color:#999;'>Введите username.</p>";
+            "<p style='margin-top:15px;color:#999'>Введите username.</p>";
 
         return;
     }
 
 
-    try{
+    try {
 
         const usernameSnap =
             await getDoc(
@@ -1385,12 +1174,10 @@ document
                     username
                 )
             );
-
-
-        if(!usernameSnap.exists()){
+        if (!usernameSnap.exists()) {
 
             result.innerHTML =
-                "<p style='margin-top:15px;color:#999;'>Пользователь не найден.</p>";
+                "<p style='margin-top:15px;color:#999'>Пользователь не найден.</p>";
 
             return;
         }
@@ -1410,10 +1197,10 @@ document
             );
 
 
-        if(!userSnap.exists()){
+        if (!userSnap.exists()) {
 
             result.innerHTML =
-                "<p style='margin-top:15px;color:#999;'>Профиль не найден.</p>";
+                "<p style='margin-top:15px;color:#999'>Профиль не найден.</p>";
 
             return;
         }
@@ -1423,48 +1210,42 @@ document
             userSnap.data();
 
 
-        result.innerHTML = `
+        result.innerHTML = "";
 
-            <div class="user-row">
 
-                <div class="user-info">
+        const row =
+            document.createElement("div");
 
-                    <div class="mini-avatar">
+        row.className =
+            "user-row";
 
-                        ${user.username
-                        .charAt(0)
-                        .toUpperCase()}
 
-                    </div>
+        const avatar =
+            document.createElement("div");
 
-                    <div>
+        avatar.className =
+            "mini-avatar";
 
-                        <b>
-                            @${user.username}
-                        </b>
+        avatar.textContent =
+            user.username
+            .charAt(0)
+            .toUpperCase();
 
-                        <div
-                        style="
-                        margin-top:4px;
-                        color:#999;
-                        font-size:9px;
-                        ">
 
-                            CHAD BANK USER
+        const name =
+            document.createElement("strong");
 
-                        </div>
+        name.textContent =
+            "@" + user.username;
 
-                    </div>
 
-                </div>
+        row.appendChild(avatar);
 
-            </div>
+        row.appendChild(name);
 
-        `;
+        result.appendChild(row);
 
-    }
-
-    catch(error){
+    } catch (error) {
 
         console.error(error);
 
