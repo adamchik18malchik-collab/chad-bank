@@ -1292,125 +1292,82 @@ document
 
 document
 .getElementById("searchButton")
-.addEventListener("click",async()=>{
+.addEventListener("click", async () => {
 
-    const username =
-    document
-    .getElementById("userSearch")
-    .value
-    .trim()
-    .toLowerCase();
+    const username = document
+        .getElementById("userSearch")
+        .value
+        .trim()
+        .toLowerCase();
 
+    const result = document
+        .getElementById("searchResult");
 
-    const result =
-    document
-    .getElementById("searchResult");
-
-
-    if(!username){
-
-        result.innerHTML =
-'<p style="margin-top:15px;color:#999">Введите username.</p>';
+    if (!username) {
+        result.textContent = "Введите username.";
         return;
     }
 
+    const { data, error } = await supabase
+        .from("profiles")
+        .select("id, username, email")
+        .eq("username", username)
+        .maybeSingle();
 
-    const {data,error}
-    =
-    await supabase
-    .from("profiles")
-    .select("id,username,email")
-    .eq("username",username)
-    .maybeSingle();
-
-
-    if(error){
-
-        alert(
-        "Ошибка поиска:\n"+
-        error.message
-        );
-
+    if (error) {
+        console.error(error);
+        result.textContent = "Ошибка поиска: " + error.message;
         return;
     }
 
-
-    if(!data){
-
-        result.innerHTML =
-        '<p style="margin-top:15px;color:#999">Пользователь не найден.</p>';
-
+    if (!data) {
+        result.textContent = "Пользователь не найден.";
         return;
     }
-
 
     result.innerHTML = "";
 
+    const row = document.createElement("div");
+    row.className = "user-result";
 
-    const row =
-    document.createElement("div");
+    const info = document.createElement("div");
+    info.className = "user-info";
 
-    row.className =
-    "user-result";
+    const avatar = document.createElement("div");
+    avatar.className = "mini-avatar";
+    avatar.textContent = data.username
+        .charAt(0)
+        .toUpperCase();
 
+    const text = document.createElement("div");
 
-    const info =
-    document.createElement("div");
+    const name = document.createElement("div");
+    name.className = "user-name";
+    name.textContent = "@" + data.username;
 
-    info.className =
-    "user-info";
-
-
-    const avatar =
-    document.createElement("div");
-
-    avatar.className =
-    "mini-avatar";
-
-    avatar.textContent =
-    data.username
-    .charAt(0)
-    .toUpperCase();
-    const text =
-    document.createElement("div");
-
-
-    const name =
-    document.createElement("div");
-
-    name.className =
-    "user-name";
-
-    name.textContent =
-    "@"+data.username;
-
-
-    const email =
-    document.createElement("div");
-
-    email.className =
-    "user-email";
-
-    email.textContent =
-    data.email || "";
-
+    const email = document.createElement("div");
+    email.className = "user-email";
+    email.textContent = data.email || "";
 
     text.appendChild(name);
-
     text.appendChild(email);
 
     info.appendChild(avatar);
-
     info.appendChild(text);
 
     row.appendChild(info);
-const writeButton =
-    document.createElement("button");
 
-writeButton.textContent = "Написать";
+    const writeButton = document.createElement("button");
+    writeButton.textContent = "Написать";
 
-writeButton.addEventListener("click", () => {
-    openChat(data.id, data.username);
+    writeButton.addEventListener("click", () => {
+        openChat(data.id, data.username);
+    });
+
+    row.appendChild(writeButton);
+
+    result.appendChild(row);
+
 });
 
 row.appendChild(writeButton);
