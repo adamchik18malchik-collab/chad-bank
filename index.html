@@ -673,7 +673,27 @@ C
 class="profile-name">
 @user
 </div>
+<div class="field" style="margin-top:20px;">
+    <label>USERNAME</label>
+    <input
+        id="profileUsernameInput"
+        type="text"
+        placeholder="Новый username"
+        maxlength="20"
+    >
 
+    <button
+        id="saveUsername"
+        class="primary"
+        style="margin-top:10px;">
+        Сохранить username
+    </button>
+
+    <p id="usernameMessage"
+       style="margin-top:10px;font-size:12px;">
+    </p>
+</div>
+    
 <div id="profileEmail"
 class="profile-email">
 email
@@ -1247,7 +1267,72 @@ document
     result.appendChild(row);
 
 });
+const profileUsernameInput =
+    document.getElementById("profileUsernameInput");
 
+const saveUsernameButton =
+    document.getElementById("saveUsername");
+
+const usernameMessage =
+    document.getElementById("usernameMessage");
+
+
+saveUsernameButton.addEventListener("click", async () => {
+
+    const username =
+        profileUsernameInput.value.trim();
+
+    if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+        usernameMessage.textContent =
+            "Используй 3–20 символов: буквы, цифры и _";
+        return;
+    }
+
+    const {
+        data: { user },
+        error: userError
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+        usernameMessage.textContent =
+            "Сначала войди в аккаунт";
+        return;
+    }
+
+    const { error } = await supabase
+        .from("profiles")
+        .update({
+            username: username
+        })
+        .eq("id", user.id);
+
+    if (error) {
+    console.error(error);
+
+    if (error.code === "23505") {
+        usernameMessage.textContent =
+            "❌ Этот username уже занят";
+    } else {
+        usernameMessage.textContent =
+            "Ошибка: " + error.message;
+    }
+
+    return;
+}
+
+    document.getElementById("profileUsername")
+        .textContent = "@" + username;
+
+    document.getElementById("headerUsername")
+        .textContent = "@" + username;
+
+    document.getElementById("homeUsername")
+        .textContent = username;
+
+    usernameMessage.textContent =
+        "Username успешно изменён ✓";
+});
+    
 </script>
 
 </body>
