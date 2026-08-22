@@ -1287,7 +1287,6 @@ document
 
 });
 
-
 /* SEARCH */
 
 document
@@ -1335,9 +1334,8 @@ document
 
     const avatar = document.createElement("div");
     avatar.className = "mini-avatar";
-    avatar.textContent = data.username
-        .charAt(0)
-        .toUpperCase();
+    avatar.textContent =
+        data.username.charAt(0).toUpperCase();
 
     const text = document.createElement("div");
 
@@ -1357,7 +1355,9 @@ document
 
     row.appendChild(info);
 
-    const writeButton = document.createElement("button");
+    const writeButton =
+        document.createElement("button");
+
     writeButton.textContent = "Написать";
 
     writeButton.addEventListener("click", () => {
@@ -1365,7 +1365,6 @@ document
     });
 
     row.appendChild(writeButton);
-
     result.appendChild(row);
 
 });
