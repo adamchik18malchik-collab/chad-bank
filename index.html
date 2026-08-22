@@ -922,7 +922,55 @@ document
     }
 
 });
+/* USER SEARCH */
 
+document
+.getElementById("searchButton")
+.addEventListener("click", async () => {
+
+    const username =
+        document
+        .getElementById("userSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const result =
+        document.getElementById("searchResult");
+
+    if (!username) {
+        result.innerHTML = "Введите username.";
+        return;
+    }
+
+    const { data, error } =
+        await supabase
+        .from("profiles")
+        .select("id, username")
+        .eq("username", username)
+        .maybeSingle();
+
+    if (error) {
+        console.error(error);
+        result.innerHTML = "Ошибка поиска.";
+        return;
+    }
+
+    if (!data) {
+        result.innerHTML = "Пользователь не найден.";
+        return;
+    }
+
+    result.innerHTML = `
+        <div class="card" style="margin-top:15px;">
+            <h3>@${data.username}</h3>
+            <button
+                onclick="openChat('${data.id}', '${data.username}')">
+                Написать
+            </button>
+        </div>
+    `;
+});
 
 /* LOGIN */
 
