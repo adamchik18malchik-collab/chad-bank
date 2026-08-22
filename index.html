@@ -635,8 +635,28 @@ SOCIAL / MESSAGES
 
 <h3>💬 Чаты</h3>
 
-<p style="margin-top:10px;color:#888;font-size:11px">
-Система чатов будет подключена следующим этапом.
+<p>
+<div id="chatUser" style="margin-bottom:15px;">
+    Выберите пользователя
+</div>
+
+<div id="messages"
+     style="height:300px;overflow-y:auto;
+     border:1px solid #333;padding:10px;
+     margin-bottom:10px;">
+</div>
+
+<div style="display:flex;gap:8px;">
+    <input
+        id="messageInput"
+        placeholder="Введите сообщение"
+        style="flex:1;"
+    >
+
+    <button id="sendMessageButton">
+        Отправить
+    </button>
+</div>
 </p>
 
 </div>
