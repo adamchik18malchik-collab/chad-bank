@@ -1320,7 +1320,7 @@ document
     =
     await supabase
     .from("profiles")
-    .select("username,email")
+    .select("id,username,email")
     .eq("username",username)
     .maybeSingle();
 
@@ -1405,7 +1405,16 @@ document
     info.appendChild(text);
 
     row.appendChild(info);
+const writeButton =
+    document.createElement("button");
 
+writeButton.textContent = "Написать";
+
+writeButton.addEventListener("click", () => {
+    openChat(data.id, data.username);
+});
+
+row.appendChild(writeButton);
     result.appendChild(row);
 
 });
