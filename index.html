@@ -2,1529 +2,1125 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CHAD BANK</title>
 
 <style>
-
-:root {
-    --green: #8cff00;
-    --green-dark: #4f9e00;
-    --yellow: #ffd900;
-    --white: #ffffff;
-    --black: #080a08;
-    --dark: #0d120d;
-    --dark2: #131a13;
-    --dark3: #192219;
-    --border: #293529;
-    --gray: #929c92;
-    --red: #ff4d5a;
+:root{
+--green:#8cff00;
+--green2:#58b800;
+--yellow:#ffd900;
+--white:#fff;
+--black:#050705;
+--dark:#0b100b;
+--dark2:#101710;
+--dark3:#172017;
+--border:#293629;
+--gray:#929b92;
+--red:#ff5360;
 }
 
-* {
-    box-sizing: border-box;
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+body{
+min-height:100vh;
+background:
+radial-gradient(circle at 0 0,rgba(140,255,0,.12),transparent 35%),
+radial-gradient(circle at 100% 100%,rgba(255,217,0,.08),transparent 35%),
+var(--black);
+color:var(--white);
+font-family:Arial,Helvetica,sans-serif;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(140,255,0,.12),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at bottom right,
-            rgba(255,217,0,.08),
-            transparent 35%
-        ),
-        var(--black);
-    color: var(--white);
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+button,input,textarea{
+font:inherit;
 }
 
-/* ================================
-   GENERAL
-================================ */
-
-button,
-input,
-textarea {
-    font-family: inherit;
+button{
+cursor:pointer;
 }
 
-button {
-    cursor: pointer;
+.hidden{
+display:none!important;
 }
 
-.hidden {
-    display: none !important;
+.green{
+color:var(--green);
 }
 
-.green {
-    color: var(--green);
+.yellow{
+color:var(--yellow);
 }
 
-.yellow {
-    color: var(--yellow);
+.muted{
+color:var(--gray);
 }
 
-.muted {
-    color: var(--gray);
+.center{
+text-align:center;
 }
 
-.center {
-    text-align: center;
+.container{
+width:100%;
+max-width:1200px;
+margin:auto;
 }
-
-/* ================================
-   AUTH
-================================ */
-
-#authScreen {
-    min-height: 100vh;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
 
-    padding: 20px;
+.logo{
+font-size:34px;
+font-weight:1000;
+letter-spacing:-2px;
 }
 
-.auth-box {
-    width: 100%;
-
-    max-width: 450px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,34,25,.98),
-            rgba(9,12,9,.98)
-        );
-
-    border: 1px solid var(--border);
-
-    border-radius: 25px;
-
-    padding: 30px;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.5);
+.logo span{
+color:var(--green);
 }
-
-.logo {
-    font-size: 34px;
-
-    font-weight: 1000;
 
-    letter-spacing: -2px;
+/* AUTH */
 
-    margin-bottom: 5px;
+#authScreen{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
-.logo span {
-    color: var(--green);
+.auth-box{
+width:100%;
+max-width:460px;
+padding:32px;
+border:1px solid var(--border);
+border-radius:24px;
+background:linear-gradient(145deg,#182218,#090c09);
+box-shadow:0 30px 100px rgba(0,0,0,.55);
 }
 
-.auth-description {
-    color: var(--gray);
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    margin-bottom: 25px;
+.auth-description{
+margin-top:8px;
+margin-bottom:25px;
+color:var(--gray);
+line-height:1.6;
+font-size:14px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.form-group{
+margin-bottom:15px;
 }
 
-.form-group label {
-    display: block;
-
-    font-size: 12px;
-
-    color: var(--gray);
-
-    margin-bottom: 7px;
+.form-group label{
+display:block;
+margin-bottom:7px;
+font-size:11px;
+font-weight:800;
+color:var(--gray);
+letter-spacing:1px;
 }
-
-.form-group input {
-    width: 100%;
 
-    padding: 14px;
-
-    border-radius: 12px;
-
-    border: 1px solid var(--border);
-
-    background: #090d09;
-
-    color: var(--white);
-
-    outline: none;
-
-    transition: .2s;
+input,textarea{
+width:100%;
+background:#080c08;
+color:white;
+border:1px solid var(--border);
+border-radius:11px;
+outline:none;
+padding:13px;
+transition:.2s;
 }
 
-.form-group input:focus {
-    border-color: var(--green);
-
-    box-shadow:
-        0 0 0 3px rgba(140,255,0,.08);
+input:focus,textarea:focus{
+border-color:var(--green);
+box-shadow:0 0 0 3px rgba(140,255,0,.08);
 }
-
-.auth-buttons {
-    display: flex;
 
-    gap: 10px;
-
-    margin-top: 20px;
+.auth-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
 }
-
-.primary-button {
-    background: var(--green);
-
-    color: #071000;
-
-    border: none;
-
-    border-radius: 11px;
-
-    padding: 13px 18px;
-
-    font-weight: 900;
 
-    transition: .2s;
+.auth-buttons button{
+flex:1;
 }
 
-.primary-button:hover {
-    transform: translateY(-1px);
-
-    filter: brightness(1.08);
+.primary{
+background:var(--green);
+color:#071000;
+border:0;
+border-radius:11px;
+padding:13px 18px;
+font-weight:900;
 }
-
-.secondary-button {
-    background: var(--dark3);
-
-    color: var(--white);
-
-    border: 1px solid var(--border);
 
-    border-radius: 11px;
-
-    padding: 13px 18px;
-
-    font-weight: 800;
+.primary:hover{
+filter:brightness(1.08);
 }
 
-.secondary-button:hover {
-    border-color: var(--green);
+.secondary{
+background:var(--dark3);
+color:white;
+border:1px solid var(--border);
+border-radius:11px;
+padding:13px 18px;
+font-weight:900;
 }
 
-.auth-buttons button {
-    flex: 1;
+.secondary:hover{
+border-color:var(--green);
 }
-
-.status {
-    min-height: 20px;
-
-    margin-top: 12px;
 
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.5;
+.status{
+min-height:20px;
+margin-top:12px;
+font-size:13px;
+color:var(--gray);
+line-height:1.5;
 }
-
-/* ================================
-   APP
-================================ */
 
-#app {
-    min-height: 100vh;
-
-    display: grid;
-
-    grid-template-columns: 250px 1fr;
+.status.error{
+color:var(--red);
 }
-
-/* ================================
-   SIDEBAR
-================================ */
-
-.sidebar {
-    min-height: 100vh;
 
-    position: sticky;
-
-    top: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            #0c110c,
-            #070907
-        );
-
-    border-right: 1px solid var(--border);
-
-    padding: 20px 15px;
+.status.success{
+color:var(--green);
 }
 
-.sidebar-logo {
-    padding: 10px;
+/* APP */
 
-    margin-bottom: 25px;
+#app{
+min-height:100vh;
+display:grid;
+grid-template-columns:250px 1fr;
 }
 
-.sidebar-subtitle {
-    color: var(--gray);
+/* SIDEBAR */
 
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    margin-top: 5px;
+.sidebar{
+position:sticky;
+top:0;
+height:100vh;
+padding:20px 15px;
+background:linear-gradient(180deg,#0c120c,#060806);
+border-right:1px solid var(--border);
 }
-
-.nav-button {
-    width: 100%;
-
-    text-align: left;
 
-    padding: 13px;
-
-    margin-bottom: 6px;
-
-    background: transparent;
-
-    border: 1px solid transparent;
-
-    color: var(--gray);
-
-    border-radius: 12px;
-
-    font-weight: 800;
-
-    transition: .2s;
+.sidebar-subtitle{
+margin-top:5px;
+font-size:10px;
+letter-spacing:2px;
+color:var(--gray);
 }
 
-.nav-button:hover {
-    color: var(--white);
-
-    background: var(--dark2);
-
-    border-color: var(--border);
+.nav{
+margin-top:30px;
 }
-
-.nav-button.active {
-    color: #071000;
-
-    background: var(--green);
 
-    border-color: var(--green);
+.nav-button{
+width:100%;
+padding:13px;
+margin-bottom:7px;
+text-align:left;
+background:transparent;
+border:1px solid transparent;
+border-radius:12px;
+color:var(--gray);
+font-weight:800;
 }
-
-.sidebar-account {
-    position: absolute;
-
-    left: 15px;
-
-    right: 15px;
-
-    bottom: 15px;
 
-    padding-top: 15px;
-
-    border-top: 1px solid var(--border);
+.nav-button:hover{
+background:var(--dark2);
+border-color:var(--border);
+color:white;
 }
-
-.sidebar-account-name {
-    font-weight: 900;
-
-    overflow: hidden;
 
-    text-overflow: ellipsis;
+.nav-button.active{
+background:var(--green);
+border-color:var(--green);
+color:#071000;
 }
-
-.sidebar-account-email {
-    color: var(--gray);
-
-    font-size: 11px;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
 
-    margin-top: 4px;
+.account{
+position:absolute;
+left:15px;
+right:15px;
+bottom:15px;
+padding-top:15px;
+border-top:1px solid var(--border);
 }
 
-.logout-button {
-    width: 100%;
-
-    margin-top: 10px;
-
-    background: transparent;
-
-    color: var(--red);
-
-    border: 1px solid rgba(255,77,90,.3);
-
-    border-radius: 10px;
-
-    padding: 10px;
-
-    font-weight: 800;
+.account-name{
+font-weight:900;
+overflow:hidden;
+text-overflow:ellipsis;
 }
-
-/* ================================
-   MAIN
-================================ */
 
-.main {
-    min-width: 0;
-
-    padding: 35px;
+.account-email{
+margin-top:4px;
+font-size:11px;
+color:var(--gray);
+overflow:hidden;
+text-overflow:ellipsis;
 }
 
-.page {
-    display: none;
+.logout{
+width:100%;
+margin-top:10px;
+padding:10px;
+border-radius:10px;
+background:transparent;
+border:1px solid rgba(255,83,96,.3);
+color:var(--red);
+font-weight:800;
+}
 
-    max-width: 1100px;
+/* MAIN */
 
-    margin: 0 auto;
+.main{
+min-width:0;
+padding:35px;
 }
 
-.page.active {
-    display: block;
+.page{
+display:none;
+max-width:1100px;
+margin:auto;
 }
-
-.section-label {
-    color: var(--green);
 
-    font-size: 11px;
-
-    font-weight: 900;
-
-    letter-spacing: 3px;
+.page.active{
+display:block;
 }
-
-.page-title {
-    margin: 10px 0 25px;
-
-    font-size: clamp(
-        40px,
-        7vw,
-        75px
-    );
 
-    line-height: .9;
-
-    letter-spacing: -5px;
+.label{
+font-size:11px;
+font-weight:900;
+letter-spacing:3px;
+color:var(--green);
 }
 
-.page-title span {
-    color: var(--green);
+.title{
+margin:10px 0 25px;
+font-size:clamp(42px,7vw,75px);
+line-height:.9;
+letter-spacing:-5px;
 }
-
-/* ================================
-   CARDS
-================================ */
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
 
-    gap: 16px;
+.title span{
+    color:var(--green);
 }
 
-.card {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,28,20,.95),
-            rgba(11,15,11,.95)
-        );
+/* CARDS */
 
-    border: 1px solid var(--border);
-
-    border-radius: 18px;
-
-    padding: 22px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.18);
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:16px;
 }
 
-.card h3 {
-    margin-top: 0;
+.card{
+padding:22px;
+border:1px solid var(--border);
+border-radius:18px;
+background:linear-gradient(145deg,#151e15,#0b100b);
+box-shadow:0 15px 45px rgba(0,0,0,.2);
 }
-
-.balance {
-    font-size: 45px;
 
-    font-weight: 1000;
-
-    color: var(--green);
-
-    margin: 10px 0;
+.card h3{
+margin-bottom:10px;
 }
-
-.balance::after {
-    content: " ₿";
-
-    color: var(--yellow);
 
-    font-size: 25px;
+.balance{
+margin:10px 0;
+font-size:45px;
+font-weight:1000;
+color:var(--green);
 }
 
-/* ================================
-   SEARCH
-================================ */
-
-.search-row {
-    display: flex;
-
-    gap: 10px;
+.balance:after{
+content:" ₿";
+font-size:23px;
+color:var(--yellow);
 }
-
-.search-row input {
-    flex: 1;
-
-    min-width: 0;
 
-    background: #090d09;
+/* SEARCH */
 
-    color: var(--white);
-
-    border: 1px solid var(--border);
-
-    border-radius: 11px;
-
-    padding: 14px;
-
-    outline: none;
+.search-row{
+display:flex;
+gap:10px;
 }
 
-.search-row input:focus {
-    border-color: var(--green);
+.search-row input{
+flex:1;
 }
-
-.user-result {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 15px;
 
-    margin-top: 15px;
-
-    padding: 15px;
-
-    background: #0d130d;
-
-    border: 1px solid var(--border);
-
-    border-radius: 14px;
+.user-result{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+margin-top:15px;
+padding:15px;
+border:1px solid var(--border);
+border-radius:14px;
+background:#0d130d;
 }
-
-.user-info {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
 
-    min-width: 0;
+.user-info{
+display:flex;
+align-items:center;
+gap:12px;
+min-width:0;
 }
-
-.avatar {
-    width: 45px;
-
-    height: 45px;
-
-    flex-shrink: 0;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--green),
-            var(--yellow)
-        );
-
-    color: #071000;
 
-    font-size: 20px;
-
-    font-weight: 1000;
+.avatar{
+width:46px;
+height:46px;
+display:grid;
+place-items:center;
+flex-shrink:0;
+border-radius:13px;
+background:linear-gradient(135deg,var(--green),var(--yellow));
+color:#071000;
+font-weight:1000;
+font-size:20px;
 }
 
-.user-name {
-    font-weight: 900;
+.username{
+font-weight:900;
 }
-
-.user-email {
-    color: var(--gray);
-
-    font-size: 11px;
 
-    margin-top: 3px;
+.email{
+margin-top:3px;
+font-size:11px;
+color:var(--gray);
 }
-
-/* ================================
-   CHAT
-================================ */
-
-.chat-layout {
-    min-height: 600px;
-
-    display: grid;
-
-    grid-template-columns: 250px 1fr;
 
-    padding: 0;
+/* CHAT */
 
-    overflow: hidden;
+.chat-layout{
+height:620px;
+padding:0;
+display:grid;
+grid-template-columns:250px 1fr;
+overflow:hidden;
 }
 
-.chat-list {
-    border-right: 1px solid var(--border);
-
-    padding: 15px;
+.chat-list{
+padding:15px;
+border-right:1px solid var(--border);
+overflow-y:auto;
 }
-
-.chat-list-title {
-    color: var(--gray);
-
-    font-size: 11px;
-
-    font-weight: 900;
 
-    letter-spacing: 2px;
-
-    padding: 8px;
-
-    margin-bottom: 10px;
+.chat-list-title{
+padding:8px;
+margin-bottom:10px;
+font-size:11px;
+font-weight:900;
+letter-spacing:2px;
+color:var(--gray);
 }
-
-.
-    chat-contact {
-    width: 100%;
-
-    text-align: left;
 
-    background: transparent;
-
-    color: var(--white);
-
-    border: 1px solid transparent;
-
-    border-radius: 10px;
-
-    padding: 12px;
-
-    margin-bottom: 5px;
-
-    font-weight: 800;
+.contact{
+width:100%;
+padding:12px;
+margin-bottom:5px;
+text-align:left;
+background:transparent;
+border:1px solid transparent;
+border-radius:10px;
+color:white;
+font-weight:800;
 }
-
-.chat-contact:hover,
-.chat-contact.active {
-    background: var(--dark3);
 
-    border-color: var(--border);
+.contact:hover,
+.contact.active{
+background:var(--dark3);
+border-color:var(--border);
 }
 
-.chat-window {
-    min-width: 0;
-
-    display: grid;
-
-    grid-template-rows:
-        auto
-        1fr
-        auto;
+.chat-window{
+min-width:0;
+display:grid;
+grid-template-rows:auto 1fr auto;
 }
-
-.chat-header {
-    padding: 18px;
-
-    border-bottom: 1px solid var(--border);
 
-    font-weight: 900;
+.chat-header{
+padding:18px;
+border-bottom:1px solid var(--border);
+font-weight:900;
 }
-
-.messages {
-    min-height: 0;
-
-    overflow-y: auto;
-
-    padding: 20px;
-
-    display: flex;
 
-    flex-direction: column;
-
-    gap: 10px;
+.messages{
+min-height:0;
+overflow-y:auto;
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
-
-.message {
-    max-width: 75%;
-
-    padding: 11px 14px;
-
-    border-radius: 14px;
 
-    background: var(--dark3);
-
-    border: 1px solid var(--border);
-
-    white-space: pre-wrap;
-
-    overflow-wrap: anywhere;
+.message{
+max-width:75%;
+padding:11px 14px;
+border:1px solid var(--border);
+border-radius:14px;
+background:var(--dark3);
+white-space:pre-wrap;
+overflow-wrap:anywhere;
 }
-
-.message.mine {
-    align-self: flex-end;
 
-    background:
-        linear-gradient(
-            135deg,
-            #294018,
-            #172512
-        );
-
-    border-color: #45662c;
+.message.mine{
+align-self:flex-end;
+background:linear-gradient(135deg,#294018,#172512);
+border-color:#45662c;
 }
 
-.message.theirs {
-    align-self: flex-start;
+.message.theirs{
+align-self:flex-start;
 }
-
-.message-time {
-    color: var(--gray);
 
-    font-size: 9px;
-
-    margin-top: 5px;
+.message-time{
+margin-top:5px;
+font-size:9px;
+color:var(--gray);
 }
-
-.chat-form {
-    display: flex;
 
-    gap: 8px;
-
-    padding: 12px;
-
-    border-top: 1px solid var(--border);
+.chat-form{
+display:flex;
+gap:8px;
+padding:12px;
+border-top:1px solid var(--border);
 }
-
-.chat-form textarea {
-    flex: 1;
-
-    resize: none;
 
-    min-height: 46px;
-
-    max-height: 130px;
-
-    background: #090d09;
-
-    color: var(--white);
-
-    border: 1px solid var(--border);
-
-    border-radius: 11px;
-
-    padding: 12px;
-
-    outline: none;
+.chat-form textarea{
+min-height:46px;
+max-height:130px;
+resize:none;
 }
 
-.chat-form textarea:focus {
-    border-color: var(--green);
+.empty{
+padding:35px 10px;
+text-align:center;
+color:var(--gray);
 }
 
-/* ================================
-   PROFILE
-================================ */
+/* PROFILE */
 
-.profile-layout {
-    display: grid;
-
-    grid-template-columns: 150px 1fr;
-
-    gap: 25px;
-
-    align-items: center;
+.profile{
+display:grid;
+grid-template-columns:150px 1fr;
+gap:25px;
+align-items:center;
 }
-
-.big-avatar {
-    width: 130px;
-
-    height: 130px;
-
-    border-radius: 30px;
-
-    display: grid;
-
-    place-items: center;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--green),
-            var(--yellow)
-        );
-
-    color: #071000;
-
-    font-size: 50px;
-
-    font-weight: 1000;
+.big-avatar{
+width:130px;
+height:130px;
+display:grid;
+place-items:center;
+border-radius:30px;
+background:linear-gradient(135deg,var(--green),var(--yellow));
+color:#071000;
+font-size:50px;
+font-weight:1000;
 }
 
-.profile-name {
-    font-size: 28px;
-
-    font-weight: 1000;
+.profile-name{
+font-size:28px;
+font-weight:1000;
 }
-
-.profile-email {
-    color: var(--gray);
 
-    margin-top: 5px;
+.profile-email{
+margin-top:5px;
+color:var(--gray);
 }
-
-.profile-input {
-    width: 100%;
-
-    margin-top: 20px;
 
-    background: #090d09;
+.profile-input{
+margin-top:20px;
+}
 
-    color: var(--white);
+/* TOAST */
 
-    border: 1px solid var(--border);
+#toast{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:100;
+max-width:360px;
+padding:14px 16px;
+border:1px solid var(--border);
+border-left:4px solid var(--green);
+border-radius:12px;
+background:var(--dark2);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
 
-    border-radius: 11px;
+/* MOBILE */
 
-    padding: 13px;
+@media(max-width:800px){
 
-    outline: none;
+#app{
+display:block;
 }
 
-.profile-input:focus {
-    border-color: var(--green);
+.sidebar{
+position:static;
+height:auto;
+border-right:0;
+border-bottom:1px solid var(--border);
 }
-
-/* ================================
-   TOAST
-================================ */
-
-#toast {
-    position: fixed;
-
-    right: 20px;
-
-    bottom: 20px;
-
-    z-index: 100;
-
-    max-width: 350px;
 
-    background: var(--dark2);
-
-    border: 1px solid var(--border);
-
-    border-left: 4px solid var(--green);
-
-    border-radius: 12px;
-
-    padding: 14px 16px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.5);
+.account{
+position:static;
+margin-top:20px;
 }
-
-/* ================================
-   EMPTY
-================================ */
-
-.empty {
-    text-align: center;
 
-    color: var(--gray);
-
-    padding: 35px 10px;
+.main{
+padding:20px 14px;
 }
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (max-width: 800px) {
-
-    #app {
-        display: block;
-    }
-
-    .sidebar {
-        position: static;
-
-        min-height: auto;
-
-        border-right: 0;
-
-        border-bottom: 1px solid var(--border);
-    }
 
-    .sidebar-account {
-        position: static;
-
-        margin-top: 15px;
-    }
-
-    .main {
-        padding: 20px 14px;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .chat-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .chat-list {
-        border-right: 0;
-
-        border-bottom: 1px solid var(--border);
-
-        max-height: 180px;
-
-        overflow-y: auto;
-    }
-
-    .chat-window {
-        min-height: 500px;
-    }
+.grid{
+grid-template-columns:1fr;
+}
 
-    .profile-layout {
-        grid-template-columns: 1fr;
-    }
+.chat-layout{
+height:650px;
+grid-template-columns:1fr;
+}
 
-    .search-row {
-        flex-direction: column;
-    }
+.chat-list{
+max-height:180px;
+border-right:0;
+border-bottom:1px solid var(--border);
+}
 
-    .user-result {
-        align-items: flex-start;
+.profile{
+grid-template-columns:1fr;
+}
 
-        flex-direction: column;
-    }
+.search-row{
+flex-direction:column;
+}
 
-    .message {
-        max-width: 90%;
-    }
+.user-result{
+align-items:flex-start;
+flex-direction:column;
+}
 
+.message{
+max-width:90%;
 }
 
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
-     AUTH SCREEN
-========================================================= -->
-
 <div id="authScreen">
 
-    <div class="auth-box">
+<div class="auth-box">
 
-        <div class="logo">
-            CHAD <span>BANK</span>
-        </div>
+<div class="logo">
+CHAD <span>BANK</span>
+</div>
 
-        <div class="auth-description">
-            Социальный банк с профилями,
-            поиском пользователей и личными чатами.
-        </div>
+<div class="auth-description">
+    Социальный банк с аккаунтами,
+username, поиском пользователей
+и личными чатами.
+</div>
 
-        <!-- LOGIN -->
+<form id="loginForm">
 
-        <form id="loginForm">
+<div class="form-group">
+<label>EMAIL</label>
+<input
+id="loginEmail"
+type="email"
+placeholder="email@example.com"
+required>
+</div>
 
-            <div class="form-group">
+<div class="form-group">
+<label>ПАРОЛЬ</label>
+<input
+id="loginPassword"
+type="password"
+placeholder="Пароль"
+required>
+</div>
 
-                <label>
-                    EMAIL
-                </label>
+<div class="auth-buttons">
 
-                <input
-                    id="loginEmail"
-                    type="email"
-                    placeholder="email@example.com"
-                    required
-                >
+<button
+class="primary"
+type="submit">
+ВОЙТИ
+</button>
 
-            </div>
-
-            <div class="form-group">
-
-                <label>
-                    ПАРОЛЬ
-                </label>
-
-                <input
-                    id="loginPassword"
-                    type="password"
-                    placeholder="Пароль"
-                    required
-                >
-
-            </div>
-
-            <div class="auth-buttons">
-
-                <button
-                    class="primary-button"
-                    type="submit"
-                >
-                    ВОЙТИ
-                </button>
-
-                <button
-                    class="secondary-button"
-                    type="button"
-                    id="showRegister"
-                >
-                    РЕГИСТРАЦИЯ
-                </button>
-
-            </div>
-
-            <div
-                id="loginStatus"
-                class="status"
-            ></div>
-
-        </form>
-
-        <!-- REGISTER -->
-
-        <form
-            id="registerForm"
-            class="hidden"
-        >
-
-            <div class="form-group">
-
-                <label>
-                    USERNAME
-                </label>
-
-                <input
-                    id="registerUsername"
-                    maxlength="20"
-                    placeholder="neit_123"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>
-                    EMAIL
-                </label>
-
-                <input
-                    id="registerEmail"
-                    type="email"
-                    placeholder="email@example.com"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>
-                    ПАРОЛЬ
-                </label>
-
-                <input
-                    id="registerPassword"
-                    type="password"
-                    minlength="6"
-                    placeholder="Минимум 6 символов"
-                    required
-                >
-
-            </div>
-
-            <div class="auth-buttons">
-
-                <button
-                    class="primary-button"
-                    type="submit"
-                >
-                    СОЗДАТЬ
-                </button>
-
-                <button
-                    class="secondary-button"
-                    type="button"
-                    id="showLogin"
-                >
-                    НАЗАД
-                </button>
-
-            </div>
-
-            <div
-                id="registerStatus"
-                class="status"
-            ></div>
-
-        </form>
-
-    </div>
+<button
+class="secondary"
+type="button"
+id="showRegister">
+РЕГИСТРАЦИЯ
+</button>
 
 </div>
 
-<!-- =========================================================
-     MAIN APPLICATION
-========================================================= -->
-
-<div
-    id="app"
-    class="hidden"
->
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar">
-
-        <div class="sidebar-logo">
-
-            <div class="logo">
-                CHAD <span>BANK</span>
-            </div>
-
-            <div class="sidebar-subtitle">
-                SOCIAL SYSTEM
-            </div>
-
-        </div>
-
-        <button
-            class="nav-button active"
-            data-page="home"
-        >
-            🏦 Главная
-        </button>
-
-        <button
-            class="nav-button"
-            data-page="users"
-        >
-            🔎 Поиск юзеров
-        </button>
-
-        <button
-            class="nav-button"
-            data-page="chat"
-        >
-            💬 Личные чаты
-        </button>
-
-        <button
-            class="nav-button"
-            data-page="profile"
-        >
-            👤 Профиль
-        </button>
-
-        <div class="sidebar-account">
-
-            <div
-                id="sidebarUsername"
-                class="sidebar-account-name"
-            >
-                @user
-            </div>
-
-            <div
-                id="sidebarEmail"
-                class="sidebar-account-email"
-            >
-                email
-            </div>
-
-            <button
-                id="logoutButton"
-                class="logout-button"
-            >
-                Выйти
-            </button>
-
-        </div>
-
-    </aside>
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-        <!-- HOME -->
-
-        <section
-            id="home"
-            class="page active"
-        >
-
-            <div class="section-label">
-                ACCOUNT / HOME
-            </div>
-
-            <h1 class="page-title">
-                CHAD<br>
-                <span>BANK</span>
-            </h1>
-
-            <div class="grid">
-
-                <div class="card">
-
-                    <h3>
-                        Добро пожаловать
-                    </h3>
-
-                    <div class="muted">
-                        Твой username
-                    </div>
-
-                    <div
-                        id="homeUsername"
-                        style="
-                            font-size:30px;
-                            font-weight:1000;
-                            margin-top:10px;
-                        "
-                    >
-                        @user
-                    </div>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>
-                        Баланс
-                    </h3>
-
-                    <div
-                        id="balance"
-                        class="balance"
-                    >
-                        0
-                    </div>
-
-                    <div class="muted">
-                        CHAD BANK balance
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div
-                class="card"
-                style="margin-top:16px;"
-            >
-
-                <h3>
-                    Социальная сеть
-                </h3>
-
-                <p class="muted">
-                    Найди пользователя по username,
-                    открой чат и отправляй сообщения.
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- USERS -->
-
-        <section
-            id="users"
-            class="page"
-        >
-
-            <div class="section-label">
-                SOCIAL / USERS
-            </div>
-
-            <h1 class="page-title">
-                ПОИСК<br>
-                <span>ЮЗЕРОВ</span>
-            </h1>
-
-            <div class="card">
-
-                <div class="search-row">
-
-                    <input
-                        id="userSearch"
-                        maxlength="20"
-                        placeholder="Введите username"
-                    >
-
-                    <button
-                        id="searchButton"
-                        class="primary-button"
-                        type="button"
-                    >
-                        Найти
-                    </button>
-
-                </div>
-
-                <div
-                    id="searchStatus"
-                    class="status"
-                ></div>
-
-                <div id="searchResult"></div>
-
-            </div>
-
-        </section>
-
-        <!-- CHAT -->
-
-        <section
-            id="chat"
-            class="page"
-        >
-
-            <div class="section-label">
-                SOCIAL / MESSAGES
-            </div>
-
-            <h1 class="page-title">
-                ЛИЧНЫЕ<br>
-                <span>ЧАТЫ</span>
-            </h1>
-
-            <div
-                class="card chat-layout"
-            >
-
-                <div class="chat-list">
-
-                    <div class="chat-list-title">
-                        НЕДАВНИЕ ЧАТЫ
-                    </div>
-
-                    <div id="chatContacts">
-
-                        <div class="empty">
-                            Пока нет чатов.
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="chat-window">
-
-                    <div
-                        id="chatHeader"
-                        class="chat-header"
-                    >
-                        Выберите пользователя
-                    </div>
-
-                    <div
-                        id="messages"
-                        class="messages"
-                    >
-
-                        <div class="empty">
-                            Найди пользователя
-                            и нажми «Написать».
-                        </div>
-
-                    </div>
-
-                    <form
-                        id="messageForm"
-                        class="chat-form"
-                    >
-
-                        <textarea
-                            id="messageInput"
-                            maxlength="2000"
-                            placeholder="Введите сообщение..."
-                            disabled
-                        ></textarea>
-
-                        <button
-                            id="sendMessageButton"
-                            class="primary-button"
-                            type="submit"
-                            disabled
-                        >
-                            Отправить
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- PROFILE -->
-
-        <section
-            id="profile"
-            class="page"
-        >
-
-            <div class="section-label">
-                ACCOUNT / PROFILE
-            </div>
-
-            <h1 class="page-title">
-                ТВОЙ<br>
-                <span>ПРОФИЛЬ</span>
-            </h1>
-
-            <div class="card">
-
-                <div class="profile-layout">
-
-                    <div
-                        id="bigAvatar"
-                        class="big-avatar"
-                    >
-                        C
-                    </div>
-
-                    <div>
-
-                        <div
-                            id="profileUsername"
-                            class="profile-name"
-                        >
-                            @user
-                        </div>
-
-                        <div
-                            id="profileEmail"
-                            class="profile-email"
-                        >
-                            email
-                        </div>
-
-                        <input
-                            id="profileUsernameInput"
-                            class="profile-input"
-                            maxlength="20"
-                            placeholder="Новый username"
-                        >
-
-                        <button
-                            id="saveUsername"
-                            class="primary-button"
-                            type="button"
-                            style="margin-top:10px;"
-                        >
-                            Сохранить username
-                        </button>
-
-                        <div
-                            id="usernameMessage"
-                            class="status"
-                        ></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
+<div id="loginStatus" class="status"></div>
+
+</form>
+
+<form id="registerForm" class="hidden">
+
+<div class="form-group">
+<label>USERNAME</label>
+<input
+id="registerUsername"
+maxlength="20"
+placeholder="neit_123"
+required>
+</div>
+
+<div class="form-group">
+<label>EMAIL</label>
+<input
+id="registerEmail"
+type="email"
+placeholder="email@example.com"
+required>
+</div>
+
+<div class="form-group">
+<label>ПАРОЛЬ</label>
+<input
+id="registerPassword"
+type="password"
+minlength="6"
+placeholder="Минимум 6 символов"
+required>
+</div>
+
+<div class="auth-buttons">
+
+<button
+class="primary"
+type="submit">
+СОЗДАТЬ
+</button>
+
+<button
+class="secondary"
+type="button"
+id="showLogin">
+НАЗАД
+</button>
 
 </div>
 
+<div id="registerStatus" class="status"></div>
+
+</form>
+
+</div>
+</div>
+
+
+<div id="app" class="hidden">
+
+<aside class="sidebar">
+
+<div>
+<div class="logo">
+CHAD <span>BANK</span>
+</div>
+
+<div class="sidebar-subtitle">
+SOCIAL SYSTEM
+</div>
+</div>
+
+<div class="nav">
+
+<button class="nav-button active" data-page="home">
+🏦 Главная
+</button>
+
+<button class="nav-button" data-page="users">
+🔎 Поиск юзеров
+</button>
+
+<button class="nav-button" data-page="chat">
+💬 Личные чаты
+</button>
+
+<button class="nav-button" data-page="profile">
+👤 Профиль
+</button>
+
+</div>
+
+<div class="account">
+
+<div id="sidebarUsername" class="account-name">
+@user
+</div>
+
+<div id="sidebarEmail" class="account-email">
+email
+</div>
+
+<button id="logoutButton" class="logout">
+Выйти
+</button>
+
+</div>
+
+</aside>
+
+
+<main class="main">
+
+<section id="home" class="page active">
+
+<div class="label">
+ACCOUNT / HOME
+</div>
+
+<h1 class="title">
+CHAD<br>
+<span>BANK</span>
+</h1>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Добро пожаловать</h3>
+
+<div class="muted">
+Твой username
+</div>
+
 <div
-    id="toast"
-    class="hidden"
-></div>
-    
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>   
+id="homeUsername"
+style="font-size:30px;font-weight:1000;margin-top:10px">
+@user
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Баланс</h3>
+
+<div id="balance" class="balance">
+0
+</div>
+
+<div class="muted">
+CHAD BANK balance
+</div>
+
+</div>
+
+</div>
+
+<div class="card" style="margin-top:16px">
+
+<h3>Социальная система</h3>
+
+<p class="muted">
+Найди пользователя по username,
+открой личный чат и отправляй сообщения.
+</p>
+
+</div>
+
+</section>
+
+
+<section id="users" class="page">
+
+<div class="label">
+SOCIAL / USERS
+</div>
+
+<h1 class="title">
+ПОИСК<br>
+<span>ЮЗЕРОВ</span>
+</h1>
+
+<div class="card">
+
+<div class="search-row">
+
+<input
+id="userSearch"
+maxlength="20"
+placeholder="Введите username">
+
+<button
+id="searchButton"
+class="primary"
+type="button">
+Найти
+</button>
+
+</div>
+
+<div id="searchStatus" class="status"></div>
+
+<div id="searchResult"></div>
+
+</div>
+
+</section>
+
+
+<section id="chat" class="page">
+
+<div class="label">
+SOCIAL / MESSAGES
+</div>
+
+<h1 class="title">
+ЛИЧНЫЕ<br>
+<span>ЧАТЫ</span>
+</h1>
+
+<div class="card chat-layout">
+
+<div class="chat-list">
+
+<div class="chat-list-title">
+НЕДАВНИЕ ЧАТЫ
+</div>
+
+<div id="chatContacts">
+<div class="empty">
+Пока нет чатов.
+</div>
+</div>
+
+</div>
+
+<div class="chat-window">
+
+<div id="chatHeader" class="chat-header">
+Выберите пользователя
+</div>
+
+<div id="messages" class="messages">
+
+<div class="empty">
+Найди пользователя
+и нажми «Написать».
+</div>
+
+</div>
+
+<form id="messageForm" class="chat-form">
+
+<textarea
+id="messageInput"
+maxlength="2000"
+placeholder="Введите сообщение..."
+disabled></textarea>
+
+<button
+id="sendMessageButton"
+class="primary"
+type="submit"
+disabled>
+Отправить
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="profile" class="page">
+
+<div class="label">
+ACCOUNT / PROFILE
+</div>
+
+<h1 class="title">
+ТВОЙ<br>
+<span>ПРОФИЛЬ</span>
+</h1>
+
+<div class="card">
+
+<div class="profile">
+
+<div id="bigAvatar" class="big-avatar">
+C
+</div>
+
+<div>
+
+<div id="profileUsername" class="profile-name">
+@user
+</div>
+
+<div id="profileEmail" class="profile-email">
+email
+</div>
+
+<input
+id="profileUsernameInput"
+class="profile-input"
+maxlength="20"
+placeholder="Новый username">
+
+<button
+id="saveUsername"
+class="primary"
+type="button"
+style="margin-top:10px">
+Сохранить username
+</button>
+
+<div id="usernameMessage" class="status"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+</div>
+
+
+<div id="toast" class="hidden"></div>
+
+
+<!-- SUPABASE LIBRARY -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =========================================================
-   SUPABASE
-========================================================= */
+/*
+=========================================================
+CHAD BANK
+SUPABASE CONFIG
+=========================================================
+*/
+
+/*
+ВАЖНО:
+
+Сюда вставь СВОЙ настоящий Project URL из Supabase.
+
+Например:
+
+https://abcdefghijkl.supabase.co
+
+Не оставляй старый адрес.
+*/
 
 const SUPABASE_URL =
-    "https://uqzpazgmuqctzaatcykv.supabase.co/rest/v1/";
+"https://uqzpazgmuqctzaatcykv.supabase.co/rest/v1/";
+
+
+/*
+Сюда вставь Publishable key из Supabase.
+
+НЕ используй service_role key.
+*/
 
 const SUPABASE_KEY =
-    "sb_publishable_AC8gPHzmwjTvH_W0JeAMww_3pngbAe1";
+"sb_publishable_AC8gPHzmwjTvW_WOjeAMww_3pngbAe1";
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
 
-/* =========================================================
-   STATE
-========================================================= */
+/*
+=========================================================
+ПРОВЕРКА SUPABASE
+=========================================================
+*/
+
+let supabaseClient = null;
+
+let supabaseReady = false;
+
+function initializeSupabase(){
+
+try{
+
+if(
+!SUPABASE_URL ||
+SUPABASE_URL.includes("ВСТАВЬ") ||
+!SUPABASE_KEY ||
+SUPABASE_KEY.includes("ВСТАВЬ")
+){
+
+console.warn(
+"Supabase ещё не настроен."
+);
+
+return false;
+
+}
+
+if(
+!window.supabase ||
+typeof window.supabase.createClient !== "function"
+){
+
+console.error(
+"Библиотека Supabase не загрузилась."
+);
+
+return false;
+
+}
+
+supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+supabaseReady = true;
+
+return true;
+
+}catch(error){
+
+console.error(
+"Ошибка инициализации Supabase:",
+error
+);
+
+return false;
+
+}
+
+}
+
+initializeSupabase();
+
+
+/*
+=========================================================
+STATE
+=========================================================
+*/
 
 let currentUser = null;
 
@@ -1534,1565 +1130,1883 @@ let selectedUser = null;
 
 let realtimeChannel = null;
 
-let recentContacts =
-    new Map();
+let recentContacts = new Map();
 
-/* =========================================================
-   SHORTCUT
-========================================================= */
 
-function $(id) {
+/*
+=========================================================
+SHORTCUT
+=========================================================
+*/
 
-    return document.getElementById(id);
+function $(id){
 
-}
-
-/* =========================================================
-   USERNAME
-========================================================= */
-
-function normalizeUsername(value) {
-
-    return value
-        .trim()
-        .toLowerCase();
+return document.getElementById(id);
 
 }
 
-function validUsername(username) {
 
-    return /^[a-z0-9_]{3,20}$/
-        .test(username);
+/*
+=========================================================
+STATUS
+=========================================================
+*/
+
+function setStatus(id,message,type=""){
+
+const element = $(id);
+
+if(!element){
+return;
+}
+
+element.textContent =
+message || "";
+
+element.className =
+"status " +
+(type || "");
 
 }
 
-/* =========================================================
-   STATUS
-========================================================= */
 
-function setStatus(
-    id,
-    message
-) {
+/*
+=========================================================
+TOAST
+=========================================================
+*/
 
-    const element = $(id);
+function toast(message){
 
-    if (!element) {
-        return;
-    }
+const element =
+$("toast");
 
-    element.textContent =
-        message || "";
+element.textContent =
+message;
 
-}
+element.classList.remove(
+"hidden"
+);
 
-/* =========================================================
-   TOAST
-========================================================= */
+clearTimeout(
+toast.timer
+);
 
-function showToast(message) {
+toast.timer =
+setTimeout(
+function(){
 
-    const toast =
-        $("toast");
+element.classList.add(
+"hidden"
+);
 
-    toast.textContent =
-        message;
-
-    toast.classList.remove(
-        "hidden"
-    );
-
-    clearTimeout(
-        showToast.timer
-    );
-
-    showToast.timer =
-        setTimeout(
-            () => {
-
-                toast.classList.add(
-                    "hidden"
-                );
-
-            },
-            3000
-        );
+},
+3500
+);
 
 }
 
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
 
-function showPage(pageId) {
+/*
+=========================================================
+USERNAME
+=========================================================
+*/
 
-    document
-        .querySelectorAll(".page")
-        .forEach(page => {
+function normalizeUsername(value){
 
-            page.classList.toggle(
-                "active",
-                page.id === pageId
-            );
-
-        });
-
-    document
-        .querySelectorAll(".nav-button")
-        .forEach(button => {
-
-            button.classList.toggle(
-                "active",
-                button.dataset.page === pageId
-            );
-
-        });
+return String(value || "")
+.trim()
+.toLowerCase();
 
 }
 
-/* =========================================================
-   REGISTER
-========================================================= */
+function validUsername(username){
 
-async function registerUser() {
-    
-    const username =
-        normalizeUsername(
-            $("registerUsername").value
-        );
-
-    const email =
-        $("registerEmail")
-            .value
-            .trim();
-
-    const password =
-        $("registerPassword")
-            .value;
-
-    setStatus(
-        "registerStatus",
-        ""
-    );
-
-    if (!validUsername(username)) {
-
-        setStatus(
-            "registerStatus",
-            "Username: 3-20 символов, a-z, 0-9 и _."
-        );
-
-        return;
-    }
-
-    if (password.length < 6) {
-
-        setStatus(
-            "registerStatus",
-            "Пароль должен быть минимум 6 символов."
-        );
-
-        return;
-    }
-    
-    console.log("Проверка Supabase");
-
-    const existing =
-        await supabaseClient
-            .from("profiles")
-            .select("id")
-            .eq(
-                "username",
-                username
-            )
-            .maybeSingle();
-
-    if (existing.error) {
-
-        setStatus(
-            "registerStatus",
-            existing.error.message
-        );
-
-        return;
-    }
-
-    if (existing.data) {
-
-        setStatus(
-            "registerStatus",
-            "Этот username уже занят."
-        );
-
-        return;
-    }
-
-    const result =
-        await supabaseClient
-            .auth
-            .signUp({
-
-                email: email,
-
-                password: password
-
-            });
-
-    if (result.error) {
-
-        setStatus(
-            "registerStatus",
-            result.error.message
-        );
-
-        return;
-    }
-
-    if (!result.data.user) {
-        setStatus(
-            "registerStatus",
-            "Проверь email для подтверждения."
-        );
-
-        return;
-    }
-
-    const profile =
-        await supabaseClient
-            .from("profiles")
-            .insert({
-
-                id:
-                    result.data.user.id,
-
-                username:
-                    username,
-
-                email:
-                    email,
-
-                balance:
-                    0
-
-            });
-
-    if (profile.error) {
-
-        setStatus(
-            "registerStatus",
-            "Ошибка создания профиля: " +
-            profile.error.message
-        );
-
-        return;
-    }
-
-    setStatus(
-        "registerStatus",
-        "Аккаунт создан."
-    );
+return /^[a-z0-9_]{3,20}$/
+.test(username);
 
 }
 
-/* =========================================================
-   LOGIN
-========================================================= */
 
-async function loginUser() {
+/*
+=========================================================
+NAVIGATION
+=========================================================
+*/
 
-    const email =
-        $("loginEmail")
-            .value
-            .trim();
+function showPage(pageId){
 
-    const password =
-        $("loginPassword")
-            .value;
+document
+.querySelectorAll(".page")
+.forEach(
+function(page){
 
-    setStatus(
-        "loginStatus",
-        ""
-    );
+page.classList.toggle(
+"active",
+page.id === pageId
+);
 
-    const result =
-        await supabaseClient
-            .auth
-            .signInWithPassword({
+}
+);
 
-                email:
-                    email,
+document
+.querySelectorAll(".nav-button")
+.forEach(
+function(button){
 
-                password:
-                    password
+button.classList.toggle(
+"active",
+button.dataset.page === pageId
+);
 
-            });
-
-    if (result.error) {
-
-        setStatus(
-            "loginStatus",
-            result.error.message
-        );
-
-        return;
-    }
-
-    await startApplication(
-        result.data.user
-    );
+}
+);
 
 }
 
-/* =========================================================
-   START APPLICATION
-========================================================= */
 
-async function startApplication(
-    user
-) {
+/*
+=========================================================
+AUTH SCREEN
+=========================================================
+*/
 
-    currentUser =
-        user;
+function showLogin(){
 
-    $("authScreen")
-        .classList
-        .add("hidden");
-
-    $("app")
-        .classList
-        .remove("hidden");
-
-    await loadProfile();
-
-    loadContacts();
-
-    subscribeToMessages();
-
-}
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-async function loadProfile() {
-
-    if (!currentUser) {
-        return;
-    }
-
-    const result =
-        await supabaseClient
-            .from("profiles")
-            .select(
-                "id,username,email,balance"
-            )
-            .eq(
-                "id",
-                currentUser.id
-            )
-            .maybeSingle();
-
-    if (result.error) {
-
-        showToast(
-            "Ошибка загрузки профиля."
-        );
-
-        console.error(
-            result.error
-        );
-
-        return;
-    }
-
-    currentProfile =
-        result.data;
-
-    if (!currentProfile) {
-
-        showToast(
-            "Профиль не найден."
-        );
-
-        return;
-    }
-
-    const username =
-        currentProfile.username ||
-        "user";
-
-    const email =
-        currentProfile.email ||
-        currentUser.email ||
-        "";
-
-    $("sidebarUsername")
-        .textContent =
-        "@" + username;
-
-    $("sidebarEmail")
-        .textContent =
-        email;
-
-    $("homeUsername")
-        .textContent =
-        "@" + username;
-
-    $("profileUsername")
-        .textContent =
-        "@" + username;
-
-    $("profileEmail")
-        .textContent =
-        email;
-
-    $("profileUsernameInput")
-        .value =
-        username;
-
-    $("bigAvatar")
-        .textContent =
-        username
-            .charAt(0)
-            .toUpperCase();
-
-    $("balance")
-        .textContent =
-        String(
-            currentProfile.balance ?? 0
-        );
-
-}
-
-/* =========================================================
-   SEARCH USER
-========================================================= */
-
-async function searchUser() {
-
-    const username =
-        normalizeUsername(
-            $("userSearch").value
-        );
-
-    $("searchResult")
-        .innerHTML = "";
-
-    setStatus(
-        "searchStatus",
-        ""
-    );
-
-    if (!username) {
-
-        setStatus(
-            "searchStatus",
-            "Введите username."
-        );
-
-        return;
-    }
-    if (!validUsername(username)) {
-
-        setStatus(
-            "searchStatus",
-            "Неверный username."
-        );
-
-        return;
-    }
-
-    const result =
-        await supabaseClient
-            .from("profiles")
-            .select(
-                "id,username,email"
-            )
-            .eq(
-                "username",
-                username
-            )
-            .maybeSingle();
-
-    if (result.error) {
-
-        setStatus(
-            "searchStatus",
-            "Ошибка: " +
-            result.error.message
-        );
-
-        return;
-    }
-
-    if (!result.data) {
-
-        setStatus(
-            "searchStatus",
-            "Пользователь не найден."
-        );
-
-        return;
-    }
-
-    if (
-        result.data.id ===
-        currentUser.id
-    ) {
-
-        setStatus(
-            "searchStatus",
-            "Это твой аккаунт."
-        );
-
-        return;
-    }
-
-    renderSearchResult(
-        result.data
-    );
-
-}
-
-/* =========================================================
-   SEARCH RESULT
-========================================================= */
-
-function renderSearchResult(
-    profile
-) {
-
-    const container =
-        $("searchResult");
-
-    const row =
-        document.createElement(
-            "div"
-        );
-
-    row.className =
-        "user-result";
-
-    const info =
-        document.createElement(
-            "div"
-        );
-
-    info.className =
-        "user-info";
-
-    const avatar =
-        document.createElement(
-            "div"
-        );
-
-    avatar.className =
-        "avatar";
-
-    avatar.textContent =
-        profile.username
-            .charAt(0)
-            .toUpperCase();
-
-    const text =
-        document.createElement(
-            "div"
-        );
-
-    const name =
-        document.createElement(
-            "div"
-        );
-
-    name.className =
-        "user-name";
-
-    name.textContent =
-        "@" +
-        profile.username;
-
-    const email =
-        document.createElement(
-            "div"
-        );
-
-    email.className =
-        "user-email";
-
-    email.textContent =
-        profile.email ||
-        "";
-
-    text.appendChild(
-        name
-    );
-
-    text.appendChild(
-        email
-    );
-
-    info.appendChild(
-        avatar
-    );
-
-    info.appendChild(
-        text
-    );
-
-    const button =
-        document.createElement(
-            "button"
-        );
-
-    button.className =
-        "primary-button";
-
-    button.type =
-        "button";
-
-    button.textContent =
-        "Написать";
-
-    button.addEventListener(
-        "click",
-        () => {
-
-            openChat(
-                profile
-            );
-
-        }
-    );
-
-    row.appendChild(
-        info
-    );
-
-    row.appendChild(
-        button
-    );
-
-    container.appendChild(
-        row
-    );
-
-}
-
-/* =========================================================
-   OPEN CHAT
-========================================================= */
-
-async function openChat(
-    profile
-) {
-
-    if (!profile) {
-        return;
-    }
-
-    if (
-        profile.id ===
-        currentUser.id
-    ) {
-        return;
-    }
-
-    selectedUser =
-        profile;
-
-    recentContacts.set(
-        profile.id,
-        profile
-    );
-
-    saveContacts();
-
-    showPage(
-        "chat"
-    );
-
-    $("chatHeader")
-        .textContent =
-        "@" +
-        profile.username;
-
-    $("messageInput")
-        .disabled =
-        false;
-
-    $("sendMessageButton")
-        .disabled =
-        false;
-
-    renderContacts();
-
-    await loadMessages();
-
-    $("messageInput")
-        .focus();
-
-}
-
-/* =========================================================
-   LOAD MESSAGES
-========================================================= */
-
-async function loadMessages() {
-
-    if (
-        !currentUser ||
-        !selectedUser
-    ) {
-        return;
-    }
-
-    const container =
-        $("messages");
-
-    container.innerHTML =
-        "";
-
-    const result =
-        await supabaseClient
-            .from("messages")
-            .select(
-                "id,sender_id,receiver_id,text,created_at"
-            )
-            .or(
-                "and(sender_id.eq." +
-                currentUser.id +
-                ",receiver_id.eq." +
-                selectedUser.id +
-                "),and(sender_id.eq." +
-                selectedUser.id +
-                ",receiver_id.eq." +
-                currentUser.id +
-                ")"
-            )
-            .order(
-                "created_at",
-                {
-                    ascending:
-                        true
-                }
-            );
-
-    if (result.error) {
-
-        console.error(
-            result.error
-        );
-
-        container.innerHTML =
-            '<div class="empty">Ошибка загрузки сообщений.</div>';
-
-        return;
-    }
-
-    if (
-        !result.data ||
-        result.data.length === 0
-    ) {
-
-        container.innerHTML =
-            '<div class="empty">Сообщений пока нет.</div>';
-
-        return;
-    }
-
-    result.data.forEach(
-        message => {
-
-            renderMessage(
-                message
-            );
-
-        }
-    );
-
-    scrollMessages();
-
-}
-
-/* =========================================================
-   RENDER MESSAGE
-========================================================= */
-
-function renderMessage(
-    message
-) {
-
-    const container =
-        $("messages");
-
-    const empty =
-        container.querySelector(
-            ".empty"
-        );
-
-    if (empty) {
-
-        empty.remove();
-
-    }
-
-    if (
-        container.querySelector(
-            '[data-message-id="' +
-            message.id +
-            '"]'
-        )
-    ) {
-
-        return;
-    }
-
-    const element =
-        document.createElement(
-            "div"
-        );
-
-    element.className =
-        "message " +
-        (
-            message.sender_id ===
-            currentUser.id
-                ? "mine"
-                : "theirs"
-        );
-
-    element.dataset.messageId =
-        message.id;
-
-    const text =
-        document.createElement(
-            "div"
-        );
-
-    text.textContent =
-        message.text;
-
-    const time =
-        document.createElement(
-            "div"
-        );
-
-    time.className =
-        "message-time";
-
-    time.textContent =
-        formatDate(
-            message.created_at
-        );
-
-    element.appendChild(
-        text
-    );
-
-    element.appendChild(
-        time
-    );
-
-    container.appendChild(
-        element
-    );
-
-}
-
-/* =========================================================
-   DATE
-========================================================= */
-
-function formatDate(
-    value
-) {
-
-    if (!value) {
-        return "";
-    }
-
-    try {
-
-        return new Date(
-            value
-        ).toLocaleString(
-            "ru-RU",
-            {
-                day: "2-digit",
-                month: "2-digit",
-                hour: "2-digit",
-                minute: "2-digit"
-            }
-        );
-
-    } catch {
-
-        return "";
-
-    }
-
-}
-
-/* =========================================================
-   SEND MESSAGE
-========================================================= */
-
-async function sendMessage() {
-
-    if (
-        !currentUser ||
-        !selectedUser
-    ) {
-        return;
-    }
-
-    const input =
-        $("messageInput");
-
-    const text =
-        input.value.trim();
-
-    if (!text) {
-        return;
-    }
-
-    const result =
-        await supabaseClient
-            .from("messages")
-            .insert({
-
-                sender_id:
-                    currentUser.id,
-
-                receiver_id:
-                    selectedUser.id,
-
-                text:
-                    text
-
-            });
-
-    if (result.error) {
-
-        console.error(
-            result.error
-        );
-
-        showToast(
-            "Ошибка отправки: " +
-            result.error.message
-        );
-
-        return;
-    }
-
-    input.value =
-        "";
-
-    await loadMessages();
-
-    scrollMessages();
-
-    input.focus();
-
-}
-
-/* =========================================================
-   SCROLL
-========================================================= */
-
-function scrollMessages() {
-
-    const container =
-        $("messages");
-    container.scrollTop =
-        container.scrollHeight;
-
-}
-
-/* =========================================================
-   REALTIME
-========================================================= */
-
-function subscribeToMessages() {
-
-    if (!currentUser) {
-        return;
-    }
-
-    if (realtimeChannel) {
-
-        supabaseClient
-            .removeChannel(
-                realtimeChannel
-            );
-
-    }
-
-    realtimeChannel =
-        supabaseClient
-            .channel(
-                "messages-" +
-                currentUser.id
-            )
-            .on(
-                "postgres_changes",
-                {
-                    event: "INSERT",
-                    schema: "public",
-                    table: "messages"
-                },
-                payload => {
-
-                    const message =
-                        payload.new;
-
-                    if (
-                        selectedUser &&
-                        (
-                            (
-                                message.sender_id ===
-                                currentUser.id &&
-                                message.receiver_id ===
-                                selectedUser.id
-                            ) ||
-                            (
-                                message.sender_id ===
-                                selectedUser.id &&
-                                message.receiver_id ===
-                                currentUser.id
-                            )
-                        )
-                    ) {
-
-                        renderMessage(
-                            message
-                        );
-
-                        scrollMessages();
-
-                    }
-
-                }
-            )
-            .subscribe();
-
-}
-
-/* =========================================================
-   CONTACT STORAGE
-========================================================= */
-
-function saveContacts() {
-
-    if (!currentUser) {
-        return;
-    }
-
-    const key =
-        "chad_contacts_" +
-        currentUser.id;
-
-    const contacts =
-        Array.from(
-            recentContacts.values()
-        );
-
-    localStorage.setItem(
-        key,
-        JSON.stringify(
-            contacts
-        )
-    );
-
-}
-
-function loadContacts() {
-
-    if (!currentUser) {
-        return;
-    }
-
-    const key =
-        "chad_contacts_" +
-        currentUser.id;
-
-    const raw =
-        localStorage.getItem(
-            key
-        );
-
-    if (!raw) {
-        return;
-    }
-
-    try {
-
-        const contacts =
-            JSON.parse(
-                raw
-            );
-
-        contacts.forEach(
-            profile => {
-
-                if (
-                    profile &&
-                    profile.id &&
-                    profile.id !==
-                    currentUser.id
-                ) {
-
-                    recentContacts.set(
-                        profile.id,
-                        profile
-                    );
-
-                }
-
-            }
-        );
-
-    } catch {
-
-        localStorage.removeItem(
-            key
-        );
-
-    }
-
-}
-
-/* =========================================================
-   CONTACT RENDER
-========================================================= */
-
-function renderContacts() {
-
-    const container =
-        $("chatContacts");
-
-    container.innerHTML =
-        "";
-
-    if (
-        recentContacts.size ===
-        0
-    ) {
-
-        container.innerHTML =
-            '<div class="empty">Пока нет чатов.</div>';
-
-        return;
-    }
-
-    recentContacts.forEach(
-        profile => {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.className =
-                "chat-contact";
-
-            if (
-                selectedUser &&
-                selectedUser.id ===
-                profile.id
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
-            button.type =
-                "button";
-
-            button.textContent =
-                "@" +
-                profile.username;
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    openChat(
-                        profile
-                    );
-
-                }
-            );
-
-            container.appendChild(
-                button
-            );
-
-        }
-    );
-
-}
-
-/* =========================================================
-   SAVE USERNAME
-========================================================= */
-
-async function saveUsername() {
-
-    const username =
-        normalizeUsername(
-            $("profileUsernameInput")
-                .value
-        );
-
-    if (!validUsername(username)) {
-
-        setStatus(
-            "usernameMessage",
-            "Username: 3-20 символов, a-z, 0-9 и _."
-        );
-
-        return;
-    }
-
-    const existing =
-        await supabaseClient
-            .from("profiles")
-            .select("id")
-            .eq(
-                "username",
-                username
-            )
-            .neq(
-                "id",
-                currentUser.id
-            )
-            .maybeSingle();
-
-    if (existing.error) {
-
-        setStatus(
-            "usernameMessage",
-            existing.error.message
-        );
-
-        return;
-    }
-
-    if (existing.data) {
-
-        setStatus(
-            "usernameMessage",
-            "Этот username уже занят."
-        );
-
-        return;
-    }
-
-    const result =
-        await supabaseClient
-            .from("profiles")
-            .update({
-                username:
-                    username
-            })
-            .eq(
-                "id",
-                currentUser.id
-            );
-
-    if (result.error) {
-
-        setStatus(
-            "usernameMessage",
-            result.error.message
-        );
-
-        return;
-    }
-
-    await loadProfile();
-
-    setStatus(
-        "usernameMessage",
-        "Username успешно изменён."
-    );
-
-}
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-async function logout() {
-
-    if (realtimeChannel) {
-
-        await supabaseClient
-            .removeChannel(
-                realtimeChannel
-            );
-
-        realtimeChannel =
-            null;
-
-    }
-
-    await supabaseClient
-        .auth
-        .signOut();
-
-    currentUser =
-        null;
-
-    currentProfile =
-        null;
-
-    selectedUser =
-        null;
-
-    recentContacts.clear();
-
-    $("app")
-        .classList
-        .add("hidden");
-
-    $("authScreen")
-        .classList
-        .remove("hidden");
-
+$("registerForm")
+.classList
+.add("hidden");
     $("loginForm")
-        .classList
-        .remove("hidden");
-
-    $("registerForm")
-        .classList
-        .add("hidden");
+.classList
+.remove("hidden");
 
 }
 
-/* =========================================================
-   EVENTS
-========================================================= */
+function showRegister(){
 
-function setupEvents() {
+$("loginForm")
+.classList
+.add("hidden");
 
-    $("showRegister")
-        .addEventListener(
-            "click",
-            () => {
+$("registerForm")
+.classList
+.remove("hidden");
 
-                $("loginForm")
-                    .classList
-                    .add("hidden");
+}
 
-                $("registerForm")
-                    .classList
-                    .remove("hidden");
 
-            }
-        );
+/*
+=========================================================
+REGISTER
+=========================================================
+*/
 
-    $("showLogin")
-        .addEventListener(
-            "click",
-            () => {
+async function registerUser(){
 
-                $("registerForm")
-                    .classList
-                    .add("hidden");
+setStatus(
+"registerStatus",
+""
+);
 
-                $("loginForm")
-                    .classList
-                    .remove("hidden");
+if(!supabaseReady){
 
-            }
-        );
+setStatus(
+"registerStatus",
+"Supabase не настроен. Проверь SUPABASE_URL и SUPABASE_KEY.",
+"error"
+);
 
-    $("loginForm")
-        .addEventListener(
-            "submit",
-            event => {
+return;
 
-                event.preventDefault();
+}
 
-                loginUser();
+const username =
+normalizeUsername(
+$("registerUsername").value
+);
 
-            }
-        );
+const email =
+$("registerEmail")
+.value
+.trim();
 
-   $("registerForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    registerUser();
+const password =
+$("registerPassword")
+.value;
+
+if(!validUsername(username)){
+
+setStatus(
+"registerStatus",
+"Username должен содержать 3–20 символов: a-z, 0-9 и _.",
+"error"
+);
+
+return;
+
+}
+
+if(password.length < 6){
+
+setStatus(
+"registerStatus",
+"Пароль должен быть минимум 6 символов.",
+"error"
+);
+
+return;
+
+}
+
+if(!email){
+
+setStatus(
+"registerStatus",
+"Введите email.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+Проверяем username.
+*/
+
+try{
+
+const existing =
+await supabaseClient
+.from("profiles")
+.select("id")
+.eq(
+"username",
+username
+)
+.maybeSingle();
+
+if(existing.error){
+
+console.error(
+existing.error
+);
+
+setStatus(
+"registerStatus",
+"Ошибка profiles: " +
+existing.error.message,
+"error"
+);
+
+return;
+
+}
+
+if(existing.data){
+
+setStatus(
+"registerStatus",
+"Этот username уже занят.",
+"error"
+);
+
+return;
+
+}
+
+
+/*
+Создаём аккаунт.
+*/
+
+const result =
+await supabaseClient
+.auth
+.signUp({
+
+email:email,
+
+password:password,
+
+options:{
+data:{
+username:username
+}
+}
+
 });
-    
-    $("logoutButton")
-        .addEventListener(
-            "click",
-            logout
-        );
 
-    $("searchButton")
-        .addEventListener(
-            "click",
-            searchUser
-            );
+if(result.error){
 
-    $("userSearch")
-        .addEventListener(
-            "keydown",
-            event => {
+console.error(
+result.error
+);
 
-                if (
-                    event.key ===
-                    "Enter"
-                ) {
+setStatus(
+"registerStatus",
+result.error.message,
+"error"
+);
 
-                    event.preventDefault();
-
-                    searchUser();
-
-                }
-
-            }
-        );
-
-    $("messageForm")
-        .addEventListener(
-            "submit",
-            event => {
-
-                event.preventDefault();
-
-                sendMessage();
-
-            }
-        );
-
-    $("messageInput")
-        .addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Enter" &&
-                    !event.shiftKey
-                ) {
-
-                    event.preventDefault();
-
-                    sendMessage();
-
-                }
-
-            }
-        );
-
-    $("saveUsername")
-        .addEventListener(
-            "click",
-            saveUsername
-        );
-
-    document
-        .querySelectorAll(
-            ".nav-button"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        showPage(
-                            button.dataset.page
-                        );
-
-                    }
-                );
-
-            }
-        );
+return;
 
 }
 
-/* =========================================================
-   BOOT
-========================================================= */
+if(!result.data.user){
 
-async function boot() {
+setStatus(
+"registerStatus",
+"Регистрация выполнена. Проверь email для подтверждения.",
+"success"
+);
 
-    setupEvents();
-
-    const session =
-        await supabaseClient
-            .auth
-            .getSession();
-
-    if (
-        session.data &&
-        session.data.session &&
-        session.data.session.user
-    ) {
-
-        await startApplication(
-            session.data.session.user
-        );
-
-    }
-
-    supabaseClient
-        .auth
-        .onAuthStateChange(
-            async (
-                event,
-                session
-            ) => {
-
-                if (
-                    event ===
-                    "SIGNED_IN" &&
-                    session &&
-                    session.user
-                ) {
-
-                    if (
-                        !currentUser
-                    ) {
-
-                        await startApplication(
-                            session.user
-                        );
-
-                    }
-
-                }
-
-                if (
-                    event ===
-                    "SIGNED_OUT"
-                ) {
-
-                    currentUser =
-                        null;
-
-                    currentProfile =
-                        null;
-
-                }
-
-            }
-        );
+return;
 
 }
 
-/* =========================================================
-   START
-========================================================= */
+
+/*
+Создаём profile.
+*/
+
+const profile =
+await supabaseClient
+.from("profiles")
+.insert({
+
+id:result.data.user.id,
+
+username:username,
+
+email:email,
+
+balance:0
+
+});
+
+if(profile.error){
+
+console.error(
+profile.error
+);
+
+setStatus(
+"registerStatus",
+"Аккаунт создан, но профиль не создан: " +
+profile.error.message,
+"error"
+);
+
+return;
+
+}
+
+setStatus(
+"registerStatus",
+"Аккаунт успешно создан!",
+"success"
+);
+
+$("registerForm").reset();
+
+}catch(error){
+
+console.error(
+error
+);
+
+setStatus(
+"registerStatus",
+"Ошибка: " +
+(error.message || error),
+"error"
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+LOGIN
+=========================================================
+*/
+
+async function loginUser(){
+
+setStatus(
+"loginStatus",
+""
+);
+
+if(!supabaseReady){
+
+setStatus(
+"loginStatus",
+"Supabase не настроен.",
+"error"
+);
+
+return;
+
+}
+
+const email =
+$("loginEmail")
+.value
+.trim();
+
+const password =
+$("loginPassword")
+.value;
+
+try{
+
+const result =
+await supabaseClient
+.auth
+.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+if(result.error){
+
+setStatus(
+"loginStatus",
+result.error.message,
+"error"
+);
+
+return;
+
+}
+
+await startApplication(
+result.data.user
+);
+
+}catch(error){
+
+console.error(
+error
+);
+
+setStatus(
+"loginStatus",
+"Ошибка входа: " +
+(error.message || error),
+"error"
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+START APP
+=========================================================
+*/
+
+async function startApplication(user){
+
+if(!user){
+return;
+}
+
+currentUser =
+user;
+
+$("authScreen")
+.classList
+.add("hidden");
+
+$("app")
+.classList
+.remove("hidden");
+
+await loadProfile();
+
+loadContacts();
+
+renderContacts();
+
+subscribeToMessages();
+
+}
+
+
+/*
+=========================================================
+PROFILE
+=========================================================
+*/
+
+async function loadProfile(){
+
+if(!currentUser || !supabaseReady){
+return;
+}
+
+try{
+
+const result =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,email,balance"
+)
+.eq(
+"id",
+currentUser.id
+)
+.maybeSingle();
+
+if(result.error){
+
+console.error(
+result.error
+);
+
+toast(
+"Не удалось загрузить профиль."
+);
+
+return;
+
+}
+
+if(!result.data){
+
+toast(
+"Профиль не найден в таблице profiles."
+);
+
+return;
+
+}
+    currentProfile =
+result.data;
+
+const username =
+currentProfile.username ||
+"user";
+
+const email =
+currentProfile.email ||
+currentUser.email ||
+"";
+
+$("sidebarUsername")
+.textContent =
+"@" + username;
+
+$("sidebarEmail")
+.textContent =
+email;
+
+$("homeUsername")
+.textContent =
+"@" + username;
+
+$("profileUsername")
+.textContent =
+"@" + username;
+
+$("profileEmail")
+.textContent =
+email;
+
+$("profileUsernameInput")
+.value =
+username;
+
+$("bigAvatar")
+.textContent =
+username
+.charAt(0)
+.toUpperCase();
+
+$("balance")
+.textContent =
+String(
+currentProfile.balance ?? 0
+);
+
+}catch(error){
+
+console.error(
+error
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+SEARCH USER
+=========================================================
+*/
+
+async function searchUser(){
+
+$("searchResult")
+.innerHTML = "";
+
+setStatus(
+"searchStatus",
+""
+);
+
+if(!supabaseReady){
+
+setStatus(
+"searchStatus",
+"Supabase не настроен.",
+"error"
+);
+
+return;
+
+}
+
+const username =
+normalizeUsername(
+$("userSearch").value
+);
+
+if(!username){
+
+setStatus(
+"searchStatus",
+"Введите username.",
+"error"
+);
+
+return;
+
+}
+
+if(!validUsername(username)){
+
+setStatus(
+"searchStatus",
+"Неверный username.",
+"error"
+);
+
+return;
+
+}
+
+try{
+
+const result =
+await supabaseClient
+.from("profiles")
+.select(
+"id,username,email"
+)
+.eq(
+"username",
+username
+)
+.maybeSingle();
+
+if(result.error){
+
+console.error(
+result.error
+);
+
+setStatus(
+"searchStatus",
+result.error.message,
+"error"
+);
+
+return;
+
+}
+
+if(!result.data){
+
+setStatus(
+"searchStatus",
+"Пользователь не найден.",
+"error"
+);
+
+return;
+
+}
+
+if(
+currentUser &&
+result.data.id === currentUser.id
+){
+
+setStatus(
+"searchStatus",
+"Это твой аккаунт."
+);
+
+return;
+
+}
+
+renderSearchResult(
+result.data
+);
+
+}catch(error){
+
+console.error(
+error
+);
+
+setStatus(
+"searchStatus",
+error.message || String(error),
+"error"
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+SEARCH RESULT
+=========================================================
+*/
+
+function renderSearchResult(profile){
+
+const container =
+$("searchResult");
+
+const row =
+document.createElement("div");
+
+row.className =
+"user-result";
+
+const info =
+document.createElement("div");
+
+info.className =
+"user-info";
+
+const avatar =
+document.createElement("div");
+
+avatar.className =
+"avatar";
+
+avatar.textContent =
+profile.username
+.charAt(0)
+.toUpperCase();
+
+const text =
+document.createElement("div");
+
+const username =
+document.createElement("div");
+
+username.className =
+"username";
+
+username.textContent =
+"@" + profile.username;
+
+const email =
+document.createElement("div");
+
+email.className =
+"email";
+
+email.textContent =
+profile.email || "";
+
+text.appendChild(
+username
+);
+
+text.appendChild(
+email
+);
+
+info.appendChild(
+avatar
+);
+
+info.appendChild(
+text
+);
+
+const button =
+document.createElement("button");
+
+button.className =
+"primary";
+
+button.type =
+"button";
+
+button.textContent =
+"Написать";
+
+button.addEventListener(
+"click",
+function(){
+
+openChat(profile);
+
+}
+);
+
+row.appendChild(
+info
+);
+
+row.appendChild(
+button
+);
+
+container.appendChild(
+row
+);
+
+}
+
+
+/*
+=========================================================
+OPEN CHAT
+=========================================================
+*/
+
+async function openChat(profile){
+
+if(!profile || !currentUser){
+return;
+}
+
+if(profile.id === currentUser.id){
+return;
+}
+
+selectedUser =
+profile;
+
+recentContacts.set(
+profile.id,
+profile
+);
+
+saveContacts();
+
+showPage("chat");
+
+$("chatHeader")
+.textContent =
+"@" + profile.username;
+
+$("messageInput")
+.disabled =
+false;
+
+$("sendMessageButton")
+.disabled =
+false;
+
+renderContacts();
+
+await loadMessages();
+
+$("messageInput")
+.focus();
+
+}
+
+
+/*
+=========================================================
+LOAD MESSAGES
+=========================================================
+*/
+
+async function loadMessages(){
+
+if(
+!currentUser ||
+!selectedUser ||
+!supabaseReady
+){
+return;
+}
+
+const container =
+$("messages");
+
+container.innerHTML = "";
+
+try{
+
+const result =
+await supabaseClient
+.from("messages")
+.select(
+"id,sender_id,receiver_id,text,created_at"
+)
+.or(
+"and(sender_id.eq." +
+currentUser.id +
+",receiver_id.eq.
+    " +
+selectedUser.id +
+"),and(sender_id.eq." +
+selectedUser.id +
+",receiver_id.eq." +
+currentUser.id +
+")"
+)
+.order(
+"created_at",
+{
+ascending:true
+}
+);
+
+if(result.error){
+
+console.error(
+result.error
+);
+
+container.innerHTML =
+'<div class="empty">Ошибка загрузки сообщений.</div>';
+
+return;
+
+}
+
+if(
+!result.data ||
+result.data.length === 0
+){
+
+container.innerHTML =
+'<div class="empty">Сообщений пока нет.</div>';
+
+return;
+
+}
+
+result.data.forEach(
+function(message){
+
+renderMessage(
+message
+);
+
+}
+);
+
+scrollMessages();
+
+}catch(error){
+
+console.error(
+error
+);
+
+container.innerHTML =
+'<div class="empty">Ошибка загрузки сообщений.</div>';
+
+}
+
+}
+
+
+/*
+=========================================================
+RENDER MESSAGE
+=========================================================
+*/
+
+function renderMessage(message){
+
+const container =
+$("messages");
+
+const empty =
+container.querySelector(
+".empty"
+);
+
+if(empty){
+empty.remove();
+}
+
+if(
+container.querySelector(
+'[data-message-id="' +
+message.id +
+'"]'
+)
+){
+
+return;
+
+}
+
+const element =
+document.createElement("div");
+
+element.className =
+"message " +
+(
+message.sender_id ===
+currentUser.id
+?
+"mine"
+:
+"theirs"
+);
+
+element.dataset.messageId =
+message.id;
+
+const text =
+document.createElement("div");
+
+text.textContent =
+message.text;
+
+const time =
+document.createElement("div");
+
+time.className =
+"message-time";
+
+time.textContent =
+formatDate(
+message.created_at
+);
+
+element.appendChild(
+text
+);
+
+element.appendChild(
+time
+);
+
+container.appendChild(
+element
+);
+
+}
+
+
+/*
+=========================================================
+DATE
+=========================================================
+*/
+
+function formatDate(value){
+
+if(!value){
+return "";
+}
+
+try{
+
+return new Date(
+value
+).toLocaleString(
+"ru-RU",
+{
+day:"2-digit",
+month:"2-digit",
+hour:"2-digit",
+minute:"2-digit"
+}
+);
+
+}catch{
+
+return "";
+
+}
+
+}
+
+
+/*
+=========================================================
+SEND MESSAGE
+=========================================================
+*/
+
+async function sendMessage(){
+
+if(
+!currentUser ||
+!selectedUser ||
+!supabaseReady
+){
+return;
+}
+
+const input =
+$("messageInput");
+
+const text =
+input.value.trim();
+
+if(!text){
+return;
+}
+
+try{
+
+const result =
+await supabaseClient
+.from("messages")
+.insert({
+
+sender_id:
+currentUser.id,
+
+receiver_id:
+selectedUser.id,
+
+text:text
+
+})
+.select()
+.single();
+
+if(result.error){
+
+console.error(
+result.error
+);
+
+toast(
+"Ошибка отправки: " +
+result.error.message
+);
+
+return;
+
+}
+
+input.value = "";
+
+renderMessage(
+result.data
+);
+
+scrollMessages();
+
+input.focus();
+
+}catch(error){
+
+console.error(
+error
+);
+
+toast(
+"Ошибка: " +
+(error.message || error)
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+SCROLL
+=========================================================
+*/
+
+function scrollMessages(){
+
+const container =
+$("messages");
+
+container.scrollTop =
+container.scrollHeight;
+
+}
+
+
+/*
+=========================================================
+REALTIME
+=========================================================
+*/
+
+function subscribeToMessages(){
+
+if(
+!currentUser ||
+!supabaseReady
+){
+return;
+}
+
+if(realtimeChannel){
+
+supabaseClient
+.removeChannel(
+realtimeChannel
+);
+
+}
+
+realtimeChannel =
+supabaseClient
+.channel(
+"messages-" +
+currentUser.id
+)
+.on(
+"postgres_changes",
+{
+event:"INSERT",
+schema:"public",
+table:"messages"
+},
+function(payload){
+
+const message =
+payload.new;
+
+if(
+!selectedUser
+){
+return;
+}
+
+const belongs =
+(
+message.sender_id === currentUser.id &&
+message.receiver_id === selectedUser.id
+)
+||
+(
+message.sender_id === selectedUser.id &&
+message.receiver_id === currentUser.id
+);
+
+if(belongs){
+
+renderMessage(
+message
+);
+
+scrollMessages();
+
+}
+
+}
+)
+.subscribe();
+
+}
+
+
+/*
+=========================================================
+CONTACT STORAGE
+=========================================================
+*/
+
+function saveContacts(){
+
+if(!currentUser){
+return;
+}
+
+const key =
+"chad_contacts_" +
+currentUser.id;
+
+const contacts =
+Array.from(
+recentContacts.values()
+);
+
+localStorage.setItem(
+key,
+JSON.stringify(
+contacts
+)
+);
+
+}
+
+function loadContacts(){
+
+if(!currentUser){
+    return;
+}
+
+const key =
+"chad_contacts_" +
+currentUser.id;
+
+const raw =
+localStorage.getItem(
+key
+);
+
+if(!raw){
+return;
+}
+
+try{
+
+const contacts =
+JSON.parse(raw);
+
+if(!Array.isArray(contacts)){
+return;
+}
+
+contacts.forEach(
+function(profile){
+
+if(
+profile &&
+profile.id &&
+profile.id !==
+currentUser.id
+){
+
+recentContacts.set(
+profile.id,
+profile
+);
+
+}
+
+}
+);
+
+}catch(error){
+
+console.error(
+error
+);
+
+localStorage.removeItem(
+key
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+RENDER CONTACTS
+=========================================================
+*/
+
+function renderContacts(){
+
+const container =
+$("chatContacts");
+
+container.innerHTML = "";
+
+if(
+recentContacts.size === 0
+){
+
+container.innerHTML =
+'<div class="empty">Пока нет чатов.</div>';
+
+return;
+
+}
+
+recentContacts.forEach(
+function(profile){
+
+const button =
+document.createElement(
+"button"
+);
+
+button.className =
+"contact";
+
+button.type =
+"button";
+
+if(
+selectedUser &&
+selectedUser.id ===
+profile.id
+){
+
+button.classList.add(
+"active"
+);
+
+}
+
+button.textContent =
+"@" + profile.username;
+
+button.addEventListener(
+"click",
+function(){
+
+openChat(profile);
+
+}
+);
+
+container.appendChild(
+button
+);
+
+}
+);
+
+}
+
+
+/*
+=========================================================
+SAVE USERNAME
+=========================================================
+*/
+
+async function saveUsername(){
+
+setStatus(
+"usernameMessage",
+""
+);
+
+if(
+!currentUser ||
+!supabaseReady
+){
+
+setStatus(
+"usernameMessage",
+"Supabase не подключён.",
+"error"
+);
+
+return;
+
+}
+
+const username =
+normalizeUsername(
+$("profileUsernameInput").value
+);
+
+if(!validUsername(username)){
+
+setStatus(
+"usernameMessage",
+"Username должен содержать 3–20 символов: a-z, 0-9 и _.",
+"error"
+);
+
+return;
+
+}
+
+try{
+
+const existing =
+await supabaseClient
+.from("profiles")
+.select("id")
+.eq(
+"username",
+username
+)
+.neq(
+"id",
+currentUser.id
+)
+.maybeSingle();
+
+if(existing.error){
+
+setStatus(
+"usernameMessage",
+existing.error.message,
+"error"
+);
+
+return;
+
+}
+
+if(existing.data){
+
+setStatus(
+"usernameMessage",
+"Этот username уже занят.",
+"error"
+);
+
+return;
+
+}
+
+const result =
+await supabaseClient
+.from("profiles")
+.update({
+username:username
+})
+.eq(
+"id",
+currentUser.id
+);
+
+if(result.error){
+
+setStatus(
+"usernameMessage",
+result.error.message,
+"error"
+);
+
+return;
+
+}
+
+await loadProfile();
+
+setStatus(
+"usernameMessage",
+"Username успешно изменён.",
+"success"
+);
+
+}catch(error){
+
+setStatus(
+"usernameMessage",
+error.message || String(error),
+"error"
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+LOGOUT
+=========================================================
+*/
+
+async function logout(){
+
+try{
+
+if(
+realtimeChannel &&
+supabaseClient
+){
+
+await supabaseClient
+.removeChannel(
+realtimeChannel
+);
+
+realtimeChannel =
+null;
+
+}
+
+if(
+supabaseClient
+){
+
+await supabaseClient
+.auth
+.signOut();
+
+}
+
+}catch(error){
+
+console.error(
+error
+);
+
+}
+
+currentUser = null;
+
+currentProfile = null;
+
+selectedUser = null;
+
+recentContacts.clear();
+
+$("app")
+.classList
+.add("hidden");
+
+$("authScreen")
+.classList
+.remove("hidden");
+
+showLogin();
+
+$("loginForm").reset();
+
+$("registerForm").reset();
+
+}
+
+
+/*
+=========================================================
+EVENTS
+=========================================================
+*/
+
+function setupEvents(){
+
+$("showRegister")
+.addEventListener(
+"click",
+showRegister
+);
+
+$("showLogin")
+.addEventListener(
+"click",
+showLogin
+);
+
+$("loginForm")
+.addEventListener(
+"submit",
+function(event){
+
+event.preventDefault();
+
+loginUser();
+
+}
+);
+
+$("registerForm")
+.addEventListener(
+"submit",
+function(event){
+
+event.preventDefault();
+
+registerUser();
+
+}
+);
+
+$("logoutButton")
+.addEventListener(
+"click",
+logout
+);
+
+$("searchButton")
+.addEventListener(
+"click",
+searchUser
+);
+
+$("userSearch")
+.addEventListener(
+"keydown",
+function(event){
+
+if(event.key === "Enter"){
+
+event.preventDefault();
+
+searchUser();
+
+}
+
+}
+);
+
+$("messageForm")
+.addEventListener(
+"submit",
+function(event){
+
+event.preventDefault();
+
+sendMessage();
+
+}
+);
+
+$("messageInput")
+.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter" &&
+    !event.shiftKey
+){
+
+event.preventDefault();
+
+sendMessage();
+
+}
+
+}
+);
+
+$("saveUsername")
+.addEventListener(
+"click",
+saveUsername
+);
+
+document
+.querySelectorAll(".nav-button")
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+showPage(
+button.dataset.page
+);
+
+}
+);
+
+}
+);
+
+}
+
+
+/*
+=========================================================
+BOOT
+=========================================================
+*/
+
+async function boot(){
+
+setupEvents();
+
+if(!supabaseReady){
+
+console.warn(
+"CHAD BANK: Supabase не настроен."
+);
+
+return;
+
+}
+
+try{
+
+const session =
+await supabaseClient
+.auth
+.getSession();
+
+if(
+session.data &&
+session.data.session &&
+session.data.session.user
+){
+
+await startApplication(
+session.data.session.user
+);
+
+}
+
+supabaseClient
+.auth
+.onAuthStateChange(
+function(event,session){
+
+if(
+event === "SIGNED_OUT"
+){
+
+currentUser = null;
+
+currentProfile = null;
+
+selectedUser = null;
+
+}
+
+}
+);
+
+}catch(error){
+
+console.error(
+"Ошибка запуска:",
+error
+);
+
+}
+
+}
+
+
+/*
+=========================================================
+START
+=========================================================
+*/
 
 boot();
 
