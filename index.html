@@ -2924,18 +2924,11 @@ function setupEvents() {
             }
         );
 
-    $("registerForm")
-        .addEventListener(
-            "submit",
-            event => {
-
-                event.preventDefault();
-                
-                registerUser();
-
-            }
-        );
-
+   $("registerForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("КНОПКА СОЗДАТЬ РАБОТАЕТ");
+});
+    
     $("logoutButton")
         .addEventListener(
             "click",
